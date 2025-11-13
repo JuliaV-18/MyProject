@@ -1,7 +1,7 @@
 package com.lian.myproject.model;
 
 public class Date {
-    private String day;
-    private String month;
-    private String year;
+    protected String day;
+    protected String month;
+    protected String year;
 }
