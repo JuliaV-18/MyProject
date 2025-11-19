@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
         <activity
+            android:name=".model.ListUser"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
