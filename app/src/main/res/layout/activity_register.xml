@@ -8,85 +8,105 @@
     tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/textRegTitle"
+        android:id="@+id/txtRegTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="109dp"
+        android:layout_marginBottom="16dp"
         android:text="REGISTER"
         android:textSize="50dp"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="109dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnLog"
+        app:layout_constraintStart_toStartOf="@+id/btnLog"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/textRegTitle2"
-        android:layout_width="124dp"
-        android:layout_height="20dp"
+        android:id="@+id/txtReg"
+        android:layout_width="109dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:text="NOT registered yet?"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="188dp" />
-    <Button
-        android:id="@+id/buttonToSign"
-        android:layout_width="93dp"
-        android:layout_height="42dp"
-        android:text="sign in"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="176dp" />
-
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLog" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="continue"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="550dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
+    <Button
+        android:id="@+id/btnLog"
+        android:layout_width="109dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginBottom="25dp"
+        android:text="sign in"
+        app:layout_constraintBottom_toTopOf="@+id/txtReg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRegTitle" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="291dp"
-        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center_horizontal"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="232dp">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnCont"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReg">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/etFname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:hint="Name" />
+            android:hint="First Name"
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/etLname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:hint="E-mail Adress"/>
+            android:hint="Last Name"
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/pswReg"
+            android:id="@+id/etEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="E-mail Adress"
+            android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/confirmPswReg"
+            android:id="@+id/etPsw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:hint="Check Password"/>
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/etPsw2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Check Password"
+            android:inputType="textPassword" />
 
     </LinearLayout>
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

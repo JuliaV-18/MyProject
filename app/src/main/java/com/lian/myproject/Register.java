@@ -10,49 +10,47 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.testapp.R;
-import com.example.testapp.models.User;
-import com.example.testapp.services.DatabaseService;
-import com.example.testapp.utils.SharedPreferencesUtil;
-import com.example.testapp.utils.Validator;
+
+import com.lian.myproject.R;
+import com.lian.myproject.model.User;
+import com.lian.myproject.services.DatabaseService;
 
 /// Activity for registering the user
 /// This activity is used to register the user
 /// It contains fields for the user to enter their information
 /// It also contains a button to register the user
 /// When the user is registered, they are redirected to the main activity
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class Register extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "RegisterActivity";
 
     private EditText etEmail, etPassword, etFName, etLName, etPhone;
     private Button btnRegister;
     private TextView tvLogin;
+    private DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         /// set the layout for the activity
-        setContentView(R.layout.activity_register);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        setContentView(com.lian.myproject.R.layout.activity_register);
+
+        databaseService=DatabaseService.getInstance();
 
         /// get the views
-        etEmail = findViewById(R.id.et_register_email);
-        etPassword = findViewById(R.id.et_register_password);
-        etFName = findViewById(R.id.et_register_first_name);
-        etLName = findViewById(R.id.et_register_last_name);
-        etPhone = findViewById(R.id.et_register_phone);
-        btnRegister = findViewById(R.id.btn_register_register);
-        tvLogin = findViewById(R.id.tv_register_login);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPsw);
+        etFName = findViewById(R.id.etFname);
+        etLName = findViewById(R.id.etLname);
+        etPhone = findViewById(R.id.etPsw2);
+        btnRegister = findViewById(R.id.btnReg);
+        tvLogin = findViewById(R.id.btnLog);
 
         /// set the click listener
         btnRegister.setOnClickListener(this);
@@ -74,10 +72,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
           
             /// Validate input
             Log.d(TAG, "onClick: Validating input...");
-            if (!checkInput(email, password, fName, lName, phone)) {
-                /// stop if input is invalid
-                return;
-            }
+//            if (!checkInput(email, password, fName, lName, phone)) {
+//                / stop if input is invalid
+//                return;
+//            }
 
             Log.d(TAG, "onClick: Registering user...");
 
@@ -98,43 +96,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void registerUser(String fname, String lname, String phone, String email, String password) {
         Log.d(TAG, "registerUser: Registering user...");
 
-        String uid = databaseService.generateUserId();
 
         /// create a new user object
-        User user = new User(uid, fname, lname, phone,email, password, false);
+        User user = new User("uid", fname, lname, phone,email, password,"hhh",false);
 
-        databaseService.checkIfEmailExists(email, new DatabaseService.DatabaseCallback<>() {
-            @Override
-            public void onCompleted(Boolean exists) {
-                if (exists) {
-                    Log.e(TAG, "onCompleted: Email already exists");
-                    /// show error message to user
-                    Toast.makeText(RegisterActivity.this, "Email already exists", Toast.LENGTH_SHORT).show();
-                } else {
+
                     /// proceed to create the user
                     createUserInDatabase(user);
-                }
-            }
 
-            @Override
-            public void onFailed(Exception e) {
-                Log.e(TAG, "onFailed: Failed to check if email exists", e);
-                /// show error message to user
-                Toast.makeText(RegisterActivity.this, "Failed to register user", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void createUserInDatabase(User user) {
-        databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Void>() {
+        databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<String>() {
             @Override
-            public void onCompleted(Void object) {
+            public void onCompleted(String uid) {
                 Log.d(TAG, "createUserInDatabase: User created successfully");
                 /// save the user to shared preferences
-               
+               user.setId(uid);
                 Log.d(TAG, "createUserInDatabase: Redirecting to MainActivity");
                 /// Redirect to MainActivity and clear back stack to prevent user from going back to register screen
-                Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent mainIntent = new Intent(Register.this, MainActivity.class);
                 /// clear the back stack (clear history) and start the MainActivity
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
@@ -144,7 +125,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             public void onFailed(Exception e) {
                 Log.e(TAG, "createUserInDatabase: Failed to create user", e);
                 /// show error message to user
-                Toast.makeText(RegisterActivity.this, "Failed to register user", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "Failed to register user", Toast.LENGTH_SHORT).show();
                 /// sign out the user if failed to register
                
             }

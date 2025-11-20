@@ -7,19 +7,21 @@ public class User {
     protected String phone;
     protected String email;
     protected  String password;
-    protected Date joined;
-    protected  String isAdmin;
+    protected String joined;
+    protected  boolean isAdmin;
 
-    public User(String id, String fname, String lname, String phone, String email, String password, Date joined, String isAdmin) {
+    public User(String id, String fname, String lname, String phone, String email, String password, String joined, boolean isAdmin) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.joined = joined;
+        this.joined ="khhk";
         this.isAdmin = isAdmin;
     }
+
+
 
     public User() {
     }
@@ -72,20 +74,20 @@ public class User {
         this.password = password;
     }
 
-    public Date getJoined() {
+    public String getJoined() {
         return joined;
     }
 
-    public void setJoined(Date joined) {
+    public void setJoined(String joined) {
         this.joined = joined;
     }
 
-    public String getIsAdmin() {
+    public boolean isAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     @Override
@@ -97,8 +99,8 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", joined=" + joined +
-                ", isAdmin='" + isAdmin + '\'' +
+                ", joined='" + joined + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }

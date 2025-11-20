@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,19 +21,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.lian.myproject.R;
 
-public class ListUser extends AppCompatActivity {
+public class PickUserActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
     public class GoToContacts extends  AppCompatActivity {
         private static final int ResultPickContact = 1;
-        protected TextView ContactName;
-        protected TextView ContactNumber;
-        protected Button PickContact;
+        protected EditText etContactName;
+        protected EditText etContactNumber;
+        protected Button btnPickContact;
 
-    }
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +42,12 @@ public class ListUser extends AppCompatActivity {
 
             EvanrHandler ();
         }
-}
+
 
 private void EvanrHandler() {
     PickContact.setOnClickListener(new View.OnClickListener()) {
         @Override
-                public void onClick(View v){
+        public void onClick(View v){
             Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
             startActivityForResult(i, GoToContacts.ResultPickContact);
         }
@@ -72,7 +69,7 @@ protected void onActivityResult (int requestCode, int resultCode, Intent data){
         String phoneN = cursor.getString(phoneIndex);
         String name = cursor.getString(nameIndex);
 
-        ContactName.SetTExt(name);
+        ContactName.SetText(name);
         ContactNumber.setText(phoneN);
     }
 }

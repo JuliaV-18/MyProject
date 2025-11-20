@@ -8,23 +8,23 @@
     tools:context=".Login">
 
     <TextView
-        android:id="@+id/textSignTitle"
+        android:id="@+id/txtLogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN IN"
+        android:text="LOG IN"
         android:textSize="50dp"
         tools:layout_editor_absoluteX="118dp"
         tools:layout_editor_absoluteY="113dp" />
 
     <TextView
-        android:id="@+id/textSignTitle2"
+        android:id="@+id/txtLog"
         android:layout_width="131dp"
         android:layout_height="19dp"
         android:text="ALREADY signed in?"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="189dp" />
     <Button
-        android:id="@+id/buttonToReg"
+        android:id="@+id/btnReg"
         android:layout_width="97dp"
         android:layout_height="38dp"
         android:text="register"
@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteY="180dp" />
 
     <Button
-        android:id="@+id/btnRegCont"
+        android:id="@+id/btnCont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="continue"
