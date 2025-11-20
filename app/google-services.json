@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "71062385431",
+    "firebase_url": "https://myproject-2595a-default-rtdb.firebaseio.com",
+    "project_id": "myproject-2595a",
+    "storage_bucket": "myproject-2595a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71062385431:android:21dd527356a02b187bfd52",
+        "android_client_info": {
+          "package_name": "com.lian.myproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaVZnHbS4Fc20eD8rFaVbRqYeM9jnPxuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
