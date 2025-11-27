@@ -8,12 +8,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="253dp"
-        android:layout_height="94dp"
+        android:layout_width="255dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="213dp"
+        android:layout_marginBottom="156dp"
         android:text="Library"
-        android:textSize="50dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/signBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,27 +23,44 @@
 
     <Button
         android:id="@+id/logBtn"
-        android:layout_width="150dp"
-        android:layout_height="65dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="463dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="goLogin"
         android:text="Log in"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="463dp" />
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/thxBtn"
+        app:layout_constraintEnd_toStartOf="@+id/signBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signBtn"
-        android:layout_width="150dp"
-        android:layout_height="65dp"
-        android:text="Sign up"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="463dp" />
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="216dp"
+        android:onClick="goRegister"
+        android:text="Register"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logBtn" />
 
     <Button
         android:id="@+id/thxBtn"
-        android:layout_width="149dp"
-        android:layout_height="55dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="123dp"
         android:text="My Thanks"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="553dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/logBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/logBtn"
+        app:layout_constraintTop_toBottomOf="@+id/logBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

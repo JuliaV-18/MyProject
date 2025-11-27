@@ -49,12 +49,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         etFName = findViewById(R.id.etFname);
         etLName = findViewById(R.id.etLname);
         etPhone = findViewById(R.id.etPsw2);
-        btnRegister = findViewById(R.id.btnReg);
-        tvLogin = findViewById(R.id.btnLog);
+        btnRegister = findViewById(R.id.btnSubmit);
+
 
         /// set the click listener
         btnRegister.setOnClickListener(this);
-        tvLogin.setOnClickListener(this);
+
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             String lName = etLName.getText().toString();
             String phone = etPhone.getText().toString();
 
-          
+
             /// Validate input
             Log.d(TAG, "onClick: Validating input...");
 //            if (!checkInput(email, password, fName, lName, phone)) {
@@ -81,9 +81,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             /// Register user
             registerUser(fName, lName, phone, email, password);
-        } else if (v.getId() == tvLogin.getId()) {
-            /// Navigate back to Login Activity
-            finish();
+
         }
     }
 
@@ -101,7 +99,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         User user = new User("uid", fname, lname, phone,email, password,"hhh",false);
 
 
-                    /// proceed to create the user
+        Log.d(TAG, user.toString());
+
+
+            /// proceed to create the user
                     createUserInDatabase(user);
 
     }

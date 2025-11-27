@@ -17,7 +17,7 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.joined ="khhk";
+        this.joined =joined;
         this.isAdmin = isAdmin;
     }
 

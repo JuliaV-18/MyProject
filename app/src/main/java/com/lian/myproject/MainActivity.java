@@ -1,6 +1,8 @@
 package com.lian.myproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,5 +18,16 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+    }
+
+
+
+    public void goRegister(View view) {
+        Intent go= new Intent( this, Register.class);
+        startActivity(go);
+
+    }
+
+    public void goLogin(View view) {
     }
 }

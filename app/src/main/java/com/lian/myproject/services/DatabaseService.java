@@ -213,19 +213,7 @@ public class DatabaseService {
 
     }
 
-    // endregion of private methods for reading and writing data
 
-    // public methods to interact with the database
-
-    // region User Section
-
-    /// generate a new id for a new user in the database
-    /// @return a new id for the user
-    /// @see #generateNewId(String)
-    /// @see User
-    public String generateUserId() {
-        return generateNewId(USERS_PATH);
-    }
 
     /// create a new user in the database
     /// @param user the user object to create
@@ -298,10 +286,6 @@ public class DatabaseService {
                 });
     }
 
-
-
-
-
     /// get a user from the database
     /// @param uid the id of the user to get
     /// @param callback the callback to call when the operation is completed
@@ -373,12 +357,12 @@ public class DatabaseService {
     // region book section
 
     /// create a new food in the database
-    /// @param food the food object to create
+    /// @param //food the food object to create
     /// @param callback the callback to call when the operation is completed
     ///              the callback will receive void
     ///             if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
-    /// @see Food
+    /// @see
     public void createNewBook(@NotNull final Book book, @Nullable final DatabaseCallback<Void> callback) {
         writeData(BOOKS_PATH + "/" + book.toString(), book, callback);
     }
@@ -389,7 +373,7 @@ public class DatabaseService {
     ///               the callback will receive the food object
     ///              if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
-    /// @see Food
+    /// @see
     public void getFood(@NotNull final String foodId, @NotNull final DatabaseCallback<Book> callback) {
         getData(BOOKS_PATH + "/" + foodId, Book.class, callback);
     }
@@ -401,24 +385,24 @@ public class DatabaseService {
     /// @see DatabaseCallback
     /// @see List
     /// @see Food
-    public void getFoodList(@NotNull final DatabaseCallback<List<Book>> callback) {
-        getDataList(BOOKS_PATH, Book.class, callback);
-    }
+//    public void getFoodList(@NotNull final DatabaseCallback<List<Book>> callback) {
+//        getDataList(BOOKS_PATH, Book.class, callback);
+//    }
 
     /// generate a new id for a new food in the database
     /// @return a new id for the food
     /// @see #generateNewId(String)
     /// @see Food
-    public String generateFoodId() {
-        return generateNewId(BOOKS_PATH);
-    }
+//    public String generateFoodId() {
+//        return generateNewId(BOOKS_PATH);
+//    }
 
     /// delete a food from the database
     /// @param foodId the id of the food to delete
     /// @param callback the callback to call when the operation is completed
-    public void deleteFood(@NotNull final String bookId, @Nullable final DatabaseCallback<Void> callback) {
-        deleteData(BOOKS_PATH + "/" + bookId, callback);
-    }
+//    public void deleteFood(@NotNull final String bookId, @Nullable final DatabaseCallback<Void> callback) {
+//        deleteData(BOOKS_PATH + "/" + bookId, callback);
+//    }
 
     // endregion food section
 
@@ -476,17 +460,17 @@ public class DatabaseService {
     /// generate a new id for a new cart in the database
     /// @return a new id for the cart
     /// @see #generateNewId(String)
-    /// @see Cart
-    public String generateCartId() {
-        return generateNewId(CARTS_PATH);
-    }
+    /// @see
+//    public String generateCartId() {
+//        return generateNewId(CARTS_PATH);
+//    }
 
     /// delete a cart from the database
     /// @param cartId the id of the cart to delete
     /// @param callback the callback to call when the operation is completed
-    public void deleteCart(@NotNull final String cartId, @Nullable final DatabaseCallback<Void> callback) {
-        deleteData(CARTS_PATH + "/" + cartId, callback);
-    }
+//    public void deleteCart(@NotNull final String cartId, @Nullable final DatabaseCallback<Void> callback) {
+//        deleteData(CARTS_PATH + "/" + cartId, callback);
+//    }
 
     // endregion cart section
 
