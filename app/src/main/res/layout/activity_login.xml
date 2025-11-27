@@ -11,35 +11,50 @@
         android:id="@+id/txtLogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginBottom="9dp"
         android:text="LOG IN"
         android:textSize="50dp"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnReg"
+        app:layout_constraintStart_toStartOf="@+id/txtLog"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtLog"
-        android:layout_width="131dp"
-        android:layout_height="19dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginBottom="342dp"
         android:text="ALREADY signed in?"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="189dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnCont"
+        app:layout_constraintEnd_toStartOf="@+id/btnReg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogTitle" />
+
     <Button
         android:id="@+id/btnReg"
-        android:layout_width="97dp"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="513dp"
         android:text="register"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtLog"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogTitle" />
 
     <Button
         android:id="@+id/btnCont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="121dp"
         android:text="continue"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="550dp" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

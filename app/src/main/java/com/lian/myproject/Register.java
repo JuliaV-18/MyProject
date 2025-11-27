@@ -48,7 +48,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         etPassword = findViewById(R.id.etPsw);
         etFName = findViewById(R.id.etFname);
         etLName = findViewById(R.id.etLname);
-        etPhone = findViewById(R.id.etPsw2);
+        etPhone = findViewById(R.id.atPhone);
         btnRegister = findViewById(R.id.btnSubmit);
 
 
