@@ -1,6 +1,8 @@
 package com.lian.myproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +35,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private Button btnRegister;
     private TextView tvLogin;
     private DatabaseService databaseService;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         /// set the click listener
         btnRegister.setOnClickListener(this);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
     }
 
@@ -86,10 +91,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-
-      
-    
-
     /// Register the user
     private void registerUser(String fname, String lname, String phone, String email, String password) {
         Log.d(TAG, "registerUser: Registering user...");
@@ -115,6 +116,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 /// save the user to shared preferences
                user.setId(uid);
                 Log.d(TAG, "createUserInDatabase: Redirecting to MainActivity");
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                editor.putString("email", email);
+                editor.putString("password", pass);
+
+                editor.commit();
+
                 /// Redirect to MainActivity and clear back stack to prevent user from going back to register screen
                 Intent mainIntent = new Intent(Register.this, MainActivity.class);
                 /// clear the back stack (clear history) and start the MainActivity

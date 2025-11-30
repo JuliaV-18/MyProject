@@ -11,22 +11,23 @@
         android:layout_width="266dp"
         android:layout_height="133dp"
         android:layout_marginTop="213dp"
-        android:layout_marginBottom="156dp"
         android:text="Library"
         android:textAlignment="center"
         android:textSize="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="134dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="375dp"
+        android:layout_marginBottom="59dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="375dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/logBtn"
@@ -56,11 +57,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="91dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="568dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/thxBtn"
