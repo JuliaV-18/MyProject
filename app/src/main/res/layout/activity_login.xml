@@ -42,7 +42,8 @@
             android:layout_height="50dp"
             android:layout_marginEnd="96dp"
             android:layout_marginBottom="513dp"
-            android:text="register" />
+            android:text="register"
+            android:onClick="goRegister"/>
 
     </LinearLayout>
 

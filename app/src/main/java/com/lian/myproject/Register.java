@@ -119,8 +119,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
                 SharedPreferences.Editor editor = sharedpreferences.edit();
 
-                editor.putString("email", email);
-                editor.putString("password", pass);
+                editor.putString("email", user.getEmail());
+                editor.putString("password", user.getPassword());
 
                 editor.commit();
 
