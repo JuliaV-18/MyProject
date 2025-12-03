@@ -22,8 +22,10 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
 
     private static final String TAG = "LoginActivity";
 
-    private EditText etEmail, etPassword, etFName, etLName;
+    private EditText etEmail, etPassword;
     private Button btnLogin;
+
+    String email, password;
     private TextView tvLogin;
     private DatabaseService databaseService;
     public static final String MyPREFERENCES = "MyPrefs" ;
@@ -34,18 +36,26 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         databaseService=DatabaseService.getInstance();
 
         /// get the views
-        etPassword = findViewById(R.id.etPsw);
-        etFName = findViewById(R.id.etFname);
-        etLName = findViewById(R.id.etLname);
+
+        etEmail = findViewById(R.id.etEmailLogIn);
+        etPassword = findViewById(R.id.etPswLogIn);
         btnLogin = findViewById(R.id.btnSubmit);
+
+        email=sharedpreferences.getString("email","");
+        password=sharedpreferences.getString("password","");
+        etEmail.setText(email);
+        etPassword.setText(password);
+
+
+
 
         /// set the click listener
         btnLogin.setOnClickListener(this);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
     }
 
     private void loginUser(String email, String password) {
@@ -57,6 +67,15 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
                 Log.d(TAG, "onCompleted: User logged in: " + uid.toString());
                 /// save the user data to shared preferences
                 // SharedPreferencesUtil.saveUser(Login.this, user);
+
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                editor.putString("email", email);
+                editor.putString("password",password);
+
+                editor.commit();
+
                 /// Redirect to main activity and clear back stack to prevent user from going back to login screen
                 Intent mainIntent = new Intent(Login.this, MainActivity.class);
                 /// Clear the back stack (clear history) and start the MainActivity

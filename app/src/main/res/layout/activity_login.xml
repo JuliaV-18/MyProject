@@ -12,17 +12,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
+        android:layout_marginBottom="53dp"
         android:text="LOG IN"
         android:textSize="50dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="128dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="477dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="179dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogTitle">
 
         <TextView
             android:id="@+id/txtLog"
@@ -42,38 +48,25 @@
             android:layout_height="50dp"
             android:layout_marginEnd="96dp"
             android:layout_marginBottom="513dp"
-            android:text="register"
-            android:onClick="goRegister"/>
+            android:onClick="goRegister"
+            android:text="register" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="98dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="232dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogTitle">
 
         <EditText
-            android:id="@+id/etFname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="First Name"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/etLname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Last Name"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etEmailLogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -81,20 +74,13 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/etPsw"
+            android:id="@+id/etPswLogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/etPsw2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Check password"
-            android:inputType="textPassword" />
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="180dp"
