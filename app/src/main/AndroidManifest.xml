@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
-
+        <activity
+            android:name=".UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="false" />
@@ -21,11 +26,9 @@
         <activity
             android:name=".Splash"
             android:exported="false" />
-
         <activity
             android:name=".Thanks"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

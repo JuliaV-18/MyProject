@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,7 +16,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.firebase.database.core.view.View;
 import com.lian.myproject.services.DatabaseService;
 
 public class Login extends AppCompatActivity implements android.view.View.OnClickListener {
@@ -120,6 +120,16 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
         }
         //  Intent registerIntent = new Intent(Login.this, Login.class);
         //startActivity(registerIntent);
+    }
+
+
+    public void goRegister2(View view) {
+        Intent go= new Intent( this, Register.class);
+        startActivity(go);
+    }
+    public void goUserActivity(View view) {
+        Intent go= new Intent( this, UserActivity.class);
+        startActivity(go);
     }
 }
 // email2=sharedpreferences.getString("email","");

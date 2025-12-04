@@ -10,25 +10,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user);
 
     }
 
-
-
-    public void goRegister(View view) {
-        Intent go= new Intent( this, Register.class);
-        startActivity(go);
-    }
-
-    public void goLogin(View view) {
-        Intent go= new Intent( this, Login.class);
+    public void goSearch(View view) {
+        Intent go= new Intent( this, MainActivity.class);
         startActivity(go);
     }
 }
