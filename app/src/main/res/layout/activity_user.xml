@@ -57,21 +57,25 @@
 
         <Button
             android:id="@+id/btnSearchUserA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:textSize="20dp"
             android:text="SEARCH" />
 
         <Button
             android:id="@+id/btnSettUserA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:textSize="20dp"
             android:text="SETTINGS" />
 
         <Button
             android:id="@+id/btnIdkUserA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:textSize="20dp"
             android:text="idk" />
+
     </LinearLayout>
 
 
