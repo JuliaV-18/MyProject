@@ -47,5 +47,32 @@
             tools:layout_editor_absoluteY="16dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="359dp"
+        android:layout_height="404dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="182dp">
+
+        <Button
+            android:id="@+id/btnSearchUserA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEARCH" />
+
+        <Button
+            android:id="@+id/btnSettUserA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SETTINGS" />
+
+        <Button
+            android:id="@+id/btnIdkUserA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="idk" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
