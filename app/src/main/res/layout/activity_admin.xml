@@ -8,5 +8,16 @@
     tools:context=".AdminActivity">
 
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="348dp"
+        android:layout_height="133dp"
+        android:text="Admin Control"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="50dp"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="42dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

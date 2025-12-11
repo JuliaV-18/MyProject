@@ -8,6 +8,16 @@
     tools:context=".AddBook">
 
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD BOOK"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="85dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="336dp"
@@ -26,7 +36,7 @@
 
             <EditText
                 android:id="@+id/editTextText2"
-                android:layout_width="wrap_content"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Title"
@@ -34,7 +44,7 @@
 
             <EditText
                 android:id="@+id/editTextText3"
-                android:layout_width="wrap_content"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
@@ -47,16 +57,18 @@
                 android:text="Number of copies:" />
 
             <LinearLayout
-                android:layout_width="178dp"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editTextText4"
-                    android:layout_width="55dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:hint="Taken"
+                    android:inputType="number"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -66,14 +78,22 @@
 
                 <EditText
                     android:id="@+id/editTextText5"
-                    android:layout_width="62dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:hint="Total"
+                    android:inputType="number"
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
-
+            <EditText
+                android:id="@+id/editTextText6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Description" />
 
         </LinearLayout>
 
@@ -82,6 +102,9 @@
             android:layout_width="139dp"
             android:layout_height="186dp"
             tools:srcCompat="@tools:sample/avatars" />
+
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
