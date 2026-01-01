@@ -19,7 +19,7 @@ import com.example.testapp.services.DatabaseService;
 
 import java.util.List;
 
-public class UsersListActivity extends BaseActivity {
+public class UsersListActivity extends com.example.testapp.screens.BaseActivity {
 
     private static final String TAG = "UsersListActivity";
     private UserAdapter userAdapter;
@@ -30,7 +30,7 @@ public class UsersListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_users_list);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(tvUserCount.findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
