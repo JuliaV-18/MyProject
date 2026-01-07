@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Login">
 
     <TextView
@@ -88,9 +89,9 @@
             android:id="@+id/btnSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="goUserActivity"
             android:text="CONTINUE"
             android:textSize="30dp"
-            android:onClick="goUserActivity"
             tools:layout_editor_absoluteX="115dp"
             tools:layout_editor_absoluteY="367dp" />
 

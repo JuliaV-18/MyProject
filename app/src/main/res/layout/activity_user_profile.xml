@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="User Name"
-                        android:textColor="?attr/colorOnBackground"
+                        android:textColor="@color/txt2"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -72,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="user@example.com"
-                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textColor="@color/txt1"
                         android:textSize="14sp" />
 
                     <com.google.android.material.card.MaterialCardView
@@ -195,6 +195,7 @@
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusTopStart="12dp"
+                        app:hintTextColor="@color/background"
                         app:startIconDrawable="@android:drawable/ic_dialog_email">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -202,7 +203,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Email"
-                            android:inputType="textEmailAddress" />
+                            android:inputType="textEmailAddress"
+                            android:textColorLink="@color/dark" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,7 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginVertical="20dp"
-                        android:background="?attr/colorSurfaceVariant" />
+                        android:background="@color/dark" />
 
                     <TextView
                         android:layout_width="wrap_content"
