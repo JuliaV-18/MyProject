@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="My Library"
             android:textAlignment="center"
-            android:textSize="80dp" />
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/imageView2"
