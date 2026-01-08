@@ -11,12 +11,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.testapp.R;
+import com.lian.myproject.Login;
+import com.lian.myproject.R;
+import com.lian.myproject.Register;
 
 /// Landing activity for the app
 /// This activity is the first activity that is shown when the app is first opened (when the user is not signed in)
 /// It contains buttons to navigate to the login and register activities
-public class LandingActivity extends BaseActivity implements View.OnClickListener {
+public class LandingActivity extends com.example.testapp.screens.BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "LandingActivity";
 
@@ -47,11 +49,11 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         if (v.getId() == btnLogin.getId()) {
             Log.d(TAG, "onClick: Login button clicked");
-            Intent loginIntent = new Intent(LandingActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(LandingActivity.this, Login.class);
             startActivity(loginIntent);
         } else if (v.getId() == btnRegister.getId()) {
             Log.d(TAG, "onClick: Register button clicked");
-            Intent registerIntent = new Intent(LandingActivity.this, RegisterActivity.class);
+            Intent registerIntent = new Intent(LandingActivity.this, Register.class);
             startActivity(registerIntent);
         }
     }

@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.example.testapp.R;
-import com.example.testapp.adapters.UserAdapter;
-import com.example.testapp.models.User;
-import com.example.testapp.services.DatabaseService;
+import com.lian.myproject.R;
+import com.lian.myproject.adapters.UserAdapter;
+import com.lian.myproject.model.User;
+import com.lian.myproject.services.DatabaseService;
 
 import java.util.List;
 
