@@ -61,14 +61,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_main_add_food"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:text="🍔 Add Food"
-                    android:textSize="18sp"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:text="🍔 Add Book"
                     android:textAllCaps="false"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="?attr/colorOnSurface"
-                    android:backgroundTint="?attr/colorSurface" />
+                    android:textSize="18sp" />
 
             </com.google.android.material.card.MaterialCardView>
 
