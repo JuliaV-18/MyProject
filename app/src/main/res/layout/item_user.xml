@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FDFFF2"
+        android:background="@color/background"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp">
@@ -34,7 +34,7 @@
                 android:background="#F4FF81"
                 android:gravity="center"
                 android:text="JD"
-                android:textColor="#D32F2F"
+                android:textColor="@color/txt3"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="John Doe"
-                android:textColor="#6B0606"
+                android:textColor="@color/txt2"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="@tools:sample/full_names" />
@@ -71,14 +71,14 @@
                     android:layout_height="14dp"
                     android:layout_marginEnd="6dp"
                     android:src="@android:drawable/ic_dialog_email"
-                    app:tint="#BF360C" />
+                    app:tint="@color/txt3" />
 
                 <TextView
                     android:id="@+id/tv_item_user_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="john.doe@example.com"
-                    android:textColor="#E65100"
+                    android:textColor="@color/txt1"
                     android:textSize="14sp"
                     tools:text="user@example.com" />
 
@@ -95,14 +95,14 @@
                     android:layout_height="14dp"
                     android:layout_marginEnd="6dp"
                     android:src="@android:drawable/sym_action_call"
-                    app:tint="#BF360C" />
+                    app:tint="@color/txt3" />
 
                 <TextView
                     android:id="@+id/tv_item_user_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+1 234 567 8900"
-                    android:textColor="#E65100"
+                    android:textColor="@color/txt1"
                     android:textSize="14sp"
                     tools:text="@tools:sample/us_phones" />
 
@@ -122,9 +122,10 @@
                 android:layout_height="32dp"
                 android:background="#00C0CA33"
                 android:text="Admin"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:visibility="gone"
-                app:chipBackgroundColor="#FFAB40"
+                app:chipBackgroundColor="@color/highlight"
                 app:chipStrokeWidth="0dp"
                 tools:visibility="visible" />
 

@@ -9,6 +9,8 @@
     <color name="dark1">#528F08</color>
 
     <color name="txt1">#e0714c</color>
-    <color name="txt2">#6e3a28</color>
+    <color name="txt2">#8F2918</color>
+    <color name="txt3">#D45125</color>
+    <color name="highlight">#e75018</color>
 
 </resources>
