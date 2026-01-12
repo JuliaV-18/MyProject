@@ -21,12 +21,10 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-
-
     public User() {
     }
 
-    public String getId() {
+    public String getUid() {
         return id;
     }
 
@@ -34,20 +32,24 @@ public class User {
         this.id = id;
     }
 
-    public String getFname() {
+    public String getFirstName() {
         return fname;
     }
 
-    public void setFname(String fname) {
+    public void setFirstName(String fname) {
         this.fname = fname;
     }
 
-    public String getLname() {
+    public String getLastName() {
         return lname;
     }
 
-    public void setLname(String lname) {
+    public void setLastName(String lname) {
         this.lname = lname;
+    }
+
+    public String getFullName() {
+        return fname + lname;
     }
 
     public String getPhone() {

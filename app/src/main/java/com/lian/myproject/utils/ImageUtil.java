@@ -1,4 +1,4 @@
-package com.example.testapp.utils;
+package com.lian.myproject.utils;
 
 import android.Manifest;
 import android.app.Activity;

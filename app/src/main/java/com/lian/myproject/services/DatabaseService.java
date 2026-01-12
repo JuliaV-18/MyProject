@@ -1,5 +1,7 @@
 package com.lian.myproject.services;
 
+import static android.util.Log.d;
+
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -231,7 +233,7 @@ public class DatabaseService {
         mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Log.d("TAG", "createUserWithEmail:success");
+                        d("TAG", "createUserWithEmail:success");
                         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         user.setId(uid);
                         writeData(USERS_PATH + "/" + uid, user, new DatabaseCallback<Void>() {
@@ -272,7 +274,7 @@ public class DatabaseService {
                 .addOnCompleteListener(task -> {
 
                     if (task.isSuccessful()) {
-                        Log.d("TAG", "createUserWithEmail:success");
+                        d("TAG", "createUserWithEmail:success");
 
                         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         callback.onCompleted(uid);
@@ -334,7 +336,7 @@ public class DatabaseService {
     }
 
     public void updateUser(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
-        runTransaction(USERS_PATH + "/" + user.getId(), User.class, currentUser -> user, new DatabaseCallback<User>() {
+        runTransaction(USERS_PATH + "/" + user.getUid(), User.class, currentUser -> user, new DatabaseCallback<User>() {
             @Override
             public void onCompleted(User object) {
                 if (callback != null) {
@@ -357,7 +359,7 @@ public class DatabaseService {
     // region book section
 
     /// create a new food in the database
-    /// @param //food the food object to create
+    /// @param //book the food object to create
     /// @param callback the callback to call when the operation is completed
     ///              the callback will receive void
     ///             if the operation fails, the callback will receive an exception

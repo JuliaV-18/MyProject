@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.testapp.R;
-import com.example.testapp.models.User;
+import com.lian.myproject.R;
+import com.lian.myproject.model.User;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;

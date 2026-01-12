@@ -1,11 +1,11 @@
-package com.example.testapp.utils;
+package com.lian.myproject.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.Nullable;
 
-import com.example.testapp.models.User;
+import com.lian.myproject.model.User;
 import com.google.gson.Gson;
 
 /// Utility class for shared preferences operations
