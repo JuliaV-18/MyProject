@@ -1,4 +1,4 @@
-package com.example.testapp.screens;
+package com.lian.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,10 +40,10 @@ public class SplashActivity extends AppCompatActivity {
                 /// Check if user is signed in or not and redirect to LandingActivity if not signed in
                 if (SharedPreferencesUtil.isUserLoggedIn(this)) {
                     Log.d(TAG, "User signed in, redirecting to MainActivity");
-                    intent = new Intent(SplashActivity.this, LandingActivity.class);
+                    intent = new Intent(SplashActivity.this, com.example.testapp.screens.LandingActivity.class);
                 } else {
                     Log.d(TAG, "User not signed in, redirecting to LandingActivity");
-                    intent = new Intent(SplashActivity.this, LandingActivity.class);
+                    intent = new Intent(SplashActivity.this, com.example.testapp.screens.LandingActivity.class);
                 }
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
