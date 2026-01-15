@@ -27,8 +27,8 @@ import com.lian.myproject.services.ImageUtil;
 
 public class AddBook extends AppCompatActivity {
 
-    private EditText etItemName, etItemInfo, etItemPrice;
-    private Spinner spType, spColor,spCompany;
+    private EditText etBookTitle, etBookAuthor, etBookCopies, etCategory, atDescription;
+    private Spinner spCategory;
     private Button btnGallery, btnTakePic, btnAddItem;
     private ImageView imageView;
 
@@ -76,8 +76,6 @@ public class AddBook extends AppCompatActivity {
                     }
                 });
 
-        btnBack = findViewById(R.id.btnBack6);
-
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(AddBook.this, AdminActivity.class);
             startActivity(intent);
@@ -107,15 +105,14 @@ public class AddBook extends AppCompatActivity {
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String itemName = etItemName.getText().toString();
-                String itemInfo = etItemInfo.getText().toString();
-                String itemPrice = etItemPrice.getText().toString();
-                String itemType = spType.getSelectedItem().toString();
-                String itemColor = spColor.getSelectedItem().toString();
-                String itemCompany = spCompany.getSelectedItem().toString();
+                String bookTitle= etItemName.getText().toString();
+                String bookAuthor= etItemInfo.getText().toString();
+                String stCopiesAvailabale = etItemPrice.getText().toString();
+                String bookCategory = spType.getSelectedItem().toString();
+                String bookDescription = spCompany.getSelectedItem().toString();
 
                 String imageBase64 = ImageUtil.convertTo64Base(imageView);
-                double price = Double.parseDouble(itemPrice);
+                double copiesAvailable = Integer.parseInt(stCopiesAvailabale);
 
                 if (itemName.isEmpty() || itemCompany.isEmpty() || itemInfo.isEmpty() ||
                         itemPrice.isEmpty() || itemType.isEmpty() || itemColor.isEmpty()) {
@@ -125,13 +122,10 @@ public class AddBook extends AppCompatActivity {
                 }
 
                 /// generate a new id for the item
-                String id = databaseService.createNewBook();
+                String id = databaseService.generateBookId();
 
-
-                //Item newItem = new Item(id, itemName, itemType, itemColor, itemCompany, itemInfo, price, imageBase64);
-                Book newBook = new Book();
-
-                /// save the item to the database and get the result in the callback
+                Book newBook = new Book(String id, String bookTitle, String bookAuthor, boolean isAvailable, int stcopiesAvailable, int copiesTotal, String bookCategory, String coverUrl, Date added, String bookDescription);
+                      /// save the item to the database and get the result in the callback
                 databaseService.createNewBook(newBook, new DatabaseService.DatabaseCallback<Void>() {
                     @Override
                     public void onCompleted(Void object) {
@@ -159,16 +153,11 @@ public class AddBook extends AppCompatActivity {
     }
 
     private void InitViews() {
-        etItemName = findViewById(R.id.etItemName);
-        etItemInfo = findViewById(R.id.etItemInfo);
-        etItemPrice = findViewById(R.id.etItemPrice);
-        spType = findViewById(R.id.spType);
-        spColor = findViewById(R.id.spColor);
-        spCompany = findViewById(R.id.spCompany);
-        btnGallery = findViewById(R.id.btnGallery);
-        btnTakePic = findViewById(R.id.btnTakePic);
-        btnAddItem = findViewById(R.id.btnAddItem);
-        imageView = findViewById(R.id.imageView);
+        etItemName = findViewById(R.id.etBookTitle);
+        etItemInfo = findViewById(R.id.etBookAuthor);
+        etItemPrice = findViewById(R.id.etCopiesAvailable);
+        spColor = findViewById(R.id.etDescription);
+        imageView = findViewById(R.id.ivCover);
     }
 
 

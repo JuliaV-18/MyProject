@@ -1,4 +1,4 @@
-package com.example.testapp.screens;
+package com.lian.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;

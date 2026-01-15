@@ -37,7 +37,7 @@
             tools:layout_editor_absoluteY="191dp">
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/etBookTitle"
                 android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -45,7 +45,7 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/editTextText3"
+                android:id="@+id/etBookAuthor"
                 android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -64,22 +64,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextText4"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Taken"
-                    android:inputType="number"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="out of" />
-
-                <EditText
-                    android:id="@+id/editTextText5"
+                    android:id="@+id/etCopiesAvailable"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -89,10 +74,28 @@
 
             </LinearLayout>
 
+            <Spinner
+                android:id="@+id/spCategory"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:text="Category1">
+
+
+            </Spinner>
+
+
+            <EditText
+                android:id="@+id/etCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Name" />
+
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/ivCover"
             android:layout_width="139dp"
             android:layout_height="186dp"
             tools:srcCompat="@tools:sample/avatars" />
@@ -108,8 +111,9 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout_editor_absoluteX="22dp">
 
+
         <EditText
-            android:id="@+id/editTextText7"
+            android:id="@+id/etDescription"
             android:layout_width="348dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -118,8 +122,9 @@
             tools:layout_editor_absoluteX="34dp"
             tools:layout_editor_absoluteY="383dp" />
 
-    </LinearLayout>
 
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

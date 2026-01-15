@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/android:colorBackground"
     android:id="@+id/main"
-    tools:context=".screens.MainActivity">
+    tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -38,11 +38,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="Welcome to Food Cart"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:textColor="?attr/colorOnBackground"
-                android:layout_marginBottom="8dp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
         <activity
-            android:name=".ListUserActivity"
-            android:exported="false" />
+            android:name=".UsersListActivity"
+            android:exported="false"/>
         <activity
             android:name=".UserActivity"
             android:exported="false" />
@@ -27,20 +27,21 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Splash"
-            android:exported="false" />
-        <activity
-            android:name=".Thanks"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".SplashActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Thanks"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

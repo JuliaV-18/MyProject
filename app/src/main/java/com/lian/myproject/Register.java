@@ -147,4 +147,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         Intent go= new Intent( this, Login.class);
         startActivity(go);
     }
+    
+
 }

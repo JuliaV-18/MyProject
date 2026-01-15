@@ -358,6 +358,11 @@ public class DatabaseService {
 
     // region book section
 
+    public String generateBookId(){
+        return generateNewId(BOOKS_PATH);
+    }
+
+
     /// create a new food in the database
     /// @param //book the food object to create
     /// @param callback the callback to call when the operation is completed
@@ -366,7 +371,7 @@ public class DatabaseService {
     /// @see DatabaseCallback
     /// @see
     public void createNewBook(@NotNull final Book book, @Nullable final DatabaseCallback<Void> callback) {
-        writeData(BOOKS_PATH + "/" + book.toString(), book, callback);
+        writeData(BOOKS_PATH + "/" + book.getId(), book, callback);
     }
 
     /// get a food from the database

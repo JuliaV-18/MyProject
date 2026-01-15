@@ -1,4 +1,4 @@
-package com.example.testapp.screens;
+package com.lian.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,7 +44,7 @@ public class UsersListActivity extends com.example.testapp.screens.BaseActivity 
             public void onUserClick(User user) {
                 // Handle user click
                 Log.d(TAG, "User clicked: " + user);
-                Intent intent = new Intent(UsersListActivity.this, UserProfileActivity.class);
+                Intent intent = new Intent(UsersListActivity.this, com.example.testapp.screens.UserProfileActivity.class);
                 intent.putExtra("USER_UID", user.getUid());
                 startActivity(intent);
             }
