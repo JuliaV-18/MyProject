@@ -27,7 +27,7 @@ import com.lian.myproject.services.ImageUtil;
 
 public class AddBook extends AppCompatActivity {
 
-    private EditText etBookTitle, etBookAuthor, etBookCopies, etCategory, atDescription;
+    private EditText etBookTitle, etBookAuthor, etBookCopies, etCategory, etDescription;
     private Spinner spCategory;
     private Button btnGallery, btnTakePic, btnAddItem;
     private ImageView imageView;
@@ -105,17 +105,17 @@ public class AddBook extends AppCompatActivity {
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String bookTitle= etItemName.getText().toString();
-                String bookAuthor= etItemInfo.getText().toString();
-                String stCopiesAvailabale = etItemPrice.getText().toString();
-                String bookCategory = spType.getSelectedItem().toString();
-                String bookDescription = spCompany.getSelectedItem().toString();
+                String bookTitle= etBookTitle.getText().toString();
+                String bookAuthor= etBookAuthor.getText().toString();
+                String stCopiesAvailabale = etBookCopies.getText().toString();
+                String bookCategory = etCategory.getText().toString();
+                String bookDescription = etDescription.getText().toString();
 
                 String imageBase64 = ImageUtil.convertTo64Base(imageView);
                 double copiesAvailable = Integer.parseInt(stCopiesAvailabale);
 
-                if (itemName.isEmpty() || itemCompany.isEmpty() || itemInfo.isEmpty() ||
-                        itemPrice.isEmpty() || itemType.isEmpty() || itemColor.isEmpty()) {
+                if (bookTitle.isEmpty() || bookAuthor.isEmpty() || bookCategory.isEmpty() ||
+                        bookDescription.isEmpty()) {
                     Toast.makeText(AddBook.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(AddBook.this, "הספר נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
@@ -124,7 +124,7 @@ public class AddBook extends AppCompatActivity {
                 /// generate a new id for the item
                 String id = databaseService.generateBookId();
 
-                Book newBook = new Book(String id, String bookTitle, String bookAuthor, boolean isAvailable, int stcopiesAvailable, int copiesTotal, String bookCategory, String coverUrl, Date added, String bookDescription);
+                Book newBook = new Book(String id, String bookTitle, String bookAuthor, ;boolean isAvailable, int stcopiesAvailable, int copiesTotal, String bookCategory, ImageView coverUrl, Date added, String bookDescription);
                       /// save the item to the database and get the result in the callback
                 databaseService.createNewBook(newBook, new DatabaseService.DatabaseCallback<Void>() {
                     @Override
@@ -153,10 +153,11 @@ public class AddBook extends AppCompatActivity {
     }
 
     private void InitViews() {
-        etItemName = findViewById(R.id.etBookTitle);
-        etItemInfo = findViewById(R.id.etBookAuthor);
-        etItemPrice = findViewById(R.id.etCopiesAvailable);
-        spColor = findViewById(R.id.etDescription);
+        etBookTitle = findViewById(R.id.etBookTitle);
+        etBookAuthor = findViewById(R.id.etBookAuthor);
+        etBookCopies = findViewById(R.id.etCopiesAvailable);
+        etDescription = findViewById(R.id.etDescription);
+        spCategory = findViewById(R.id.spCategory);
         imageView = findViewById(R.id.ivCover);
     }
 
