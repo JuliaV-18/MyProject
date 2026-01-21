@@ -1,4 +1,4 @@
-package com.example.testapp.screens;
+package com.lian.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.lian.myproject.R;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 

@@ -20,8 +20,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.lian.myproject.model.Book;
-import com.lian.myproject.model.Date;
-import com.lian.myproject.R;
 import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.services.ImageUtil;
 
