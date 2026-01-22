@@ -13,9 +13,7 @@
         android:theme="@style/Theme.MyProject">
         <activity
             android:name=".UsersListActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
 
         <activity
             android:name=".UserActivity"
@@ -25,13 +23,12 @@
             android:exported="false" />
         <activity
             android:name=".Register"
-            android:exported="false" >
-
-        </activity>
+            android:exported="false" />
 
         <activity
             android:name=".Login"
             android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="true" >
@@ -41,6 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Thanks"
             android:exported="false" />

@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/android:colorBackground"
-    tools:context=".screens.LandingActivity">
+    tools:context=".LandingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:background="@color/background"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="32dp">
 
         <View
@@ -29,42 +30,48 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Cart"
+            android:layout_marginBottom="8dp"
+            android:text="My Library"
+            android:textColor="@color/txt3"
             android:textSize="40sp"
-            android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
-            android:layout_marginBottom="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your favorite food, delivered fast"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginBottom="48dp"
             android:gravity="center"
-            android:layout_marginBottom="48dp" />
+            android:text="We throw you the books - You hit them!"
+            android:textColor="@color/txt1"
+            android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_landing_login"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
             android:text="Sign In"
             android:textAllCaps="false"
+            android:textColorLink="@color/dark"
             android:textSize="16sp"
-            android:layout_marginBottom="16dp"
-            app:cornerRadius="30dp"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton" />
+            app:backgroundTint="@color/dark"
+            app:cornerRadius="30dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_landing_register"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:drawableTint="#50528F08"
             android:text="Create Account"
             android:textAllCaps="false"
+            android:textColor="@color/dark"
+            android:textColorLink="@color/dark"
             android:textSize="16sp"
+            app:backgroundTint="#00FFFFFF"
             app:cornerRadius="30dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeColor="?attr/colorPrimary"
+            app:strokeColor="@color/dark"
             app:strokeWidth="2dp" />
 
         <View
@@ -75,10 +82,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:text="By continuing, you agree to our"
-            android:textSize="12sp"
             android:textColor="?attr/colorOnSurfaceVariant"
-            android:layout_marginBottom="4dp" />
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -89,23 +96,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Terms of Service"
+                android:textColor="@color/txt1"
+                android:textColorLink="@color/dark1"
                 android:textSize="12sp"
-                android:textColor="?attr/colorPrimary"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" and "
-                android:textSize="12sp"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Privacy Policy"
+                android:textColor="@color/txt1"
                 android:textSize="12sp"
-                android:textColor="?attr/colorPrimary"
                 android:textStyle="bold" />
 
         </LinearLayout>
