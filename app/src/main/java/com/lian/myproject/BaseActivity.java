@@ -1,4 +1,4 @@
-package com.example.testapp.screens;
+package com.lian.myproject;
 
 import android.os.Bundle;
 import android.view.MenuItem;

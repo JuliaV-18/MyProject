@@ -29,4 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Intent go= new Intent( this, Login.class);
         startActivity(go);
     }
+
+    public void goAddBook(View view) {
+
+        Intent go= new Intent( this, AddBook.class);
+        startActivity(go);
+    }
 }

@@ -19,7 +19,7 @@ import com.lian.myproject.services.DatabaseService;
 
 import java.util.List;
 
-public class UsersListActivity extends com.example.testapp.screens.BaseActivity {
+public class UsersListActivity extends com.lian.myproject.BaseActivity {
 
     private static final String TAG = "UsersListActivity";
     private UserAdapter userAdapter;

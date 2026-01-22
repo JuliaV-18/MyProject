@@ -20,7 +20,7 @@ import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.utils.SharedPreferencesUtil;
 import com.lian.myproject.utils.Validator;
 
-public class UserProfileActivity extends com.example.testapp.screens.BaseActivity implements View.OnClickListener {
+public class UserProfileActivity extends com.lian.myproject.BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "UserProfileActivity";
 

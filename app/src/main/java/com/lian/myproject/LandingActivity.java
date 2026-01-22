@@ -18,7 +18,7 @@ import com.lian.myproject.Register;
 /// Landing activity for the app
 /// This activity is the first activity that is shown when the app is first opened (when the user is not signed in)
 /// It contains buttons to navigate to the login and register activities
-public class LandingActivity extends com.example.testapp.screens.BaseActivity implements View.OnClickListener {
+public class LandingActivity extends com.lian.myproject.BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "LandingActivity";
 

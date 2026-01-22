@@ -128,7 +128,7 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
         startActivity(go);
     }
     public void goUserActivity(View view) {
-        Intent go= new Intent( this, UserActivity.class);
+        Intent go= new Intent( this, UserProfileActivity.class);
         startActivity(go);
     }
 }

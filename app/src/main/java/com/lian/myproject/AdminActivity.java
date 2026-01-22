@@ -13,7 +13,7 @@ import com.lian.myproject.R;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 
-public class AdminActivity extends com.example.testapp.screens.BaseActivity {
+public class AdminActivity extends com.lian.myproject.BaseActivity {
 
     LinearLayout cardUsers, cardFoods, cardCarts;
 

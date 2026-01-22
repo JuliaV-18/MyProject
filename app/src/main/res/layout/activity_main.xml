@@ -67,6 +67,8 @@
                     android:backgroundTint="?attr/colorSurface"
                     android:text="🍔 Add Book"
                     android:textAllCaps="false"
+
+                    android:onClick="goAddBook"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp" />
 

@@ -28,12 +28,12 @@ import java.util.Date;
 
 public class AddBook extends AppCompatActivity {
 
-    private EditText etBookTitle, etBookAuthor, etBookCopies, etCategory, etDescription;
+    private EditText etBookTitle, etBookAuthor, etBookCopies, etDescription;
     private Spinner spCategory;
-    private Button btnGallery, btnTakePic, btnAddItem;
+    private Button btnGallery, btnTakePic, btnAddBook;
     private ImageView imageView;
 
-    private ImageButton btnBack;
+    private Button btnBack;
 
 
     private DatabaseService databaseService;
@@ -90,8 +90,6 @@ public class AddBook extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImageFromGallery();
-
-
             }
         });
 
@@ -99,11 +97,10 @@ public class AddBook extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 captureImageFromCamera();
-
             }
         });
 
-        btnAddItem.setOnClickListener(new View.OnClickListener() {
+        btnAddBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String bookTitle= etBookTitle.getText().toString();
@@ -173,6 +170,8 @@ public class AddBook extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         spCategory = findViewById(R.id.spCategory);
         imageView = findViewById(R.id.ivCover);
+        btnAddBook=findViewById(R.id.btn_add_book);
+        btnBack=findViewById(R.id.btn_cancel_add_book);
     }
 
 
