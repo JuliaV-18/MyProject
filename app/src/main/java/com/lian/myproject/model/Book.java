@@ -1,5 +1,7 @@
 package com.lian.myproject.model;
 
+import java.util.Date;
+
 public class Book {
     private String id;
     protected String title;

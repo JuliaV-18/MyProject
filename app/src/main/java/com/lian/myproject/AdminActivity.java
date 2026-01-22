@@ -33,7 +33,7 @@ public class AdminActivity extends com.example.testapp.screens.BaseActivity {
         cardCarts = findViewById(R.id.card_carts);
 
         cardUsers.setOnClickListener(v -> {
-            Intent intent = new Intent(this, com.example.testapp.screens.UsersListActivity.class);
+            Intent intent = new Intent(this, com.lian.myproject.UsersListActivity.class);
             startActivity(intent);
         });
 

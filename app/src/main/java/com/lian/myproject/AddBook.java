@@ -20,10 +20,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.lian.myproject.model.Book;
-import com.lian.myproject.model.Date;
-import com.lian.myproject.R;
 import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.services.ImageUtil;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class AddBook extends AppCompatActivity {
 
@@ -108,11 +109,21 @@ public class AddBook extends AppCompatActivity {
                 String bookTitle= etBookTitle.getText().toString();
                 String bookAuthor= etBookAuthor.getText().toString();
                 String stCopiesAvailabale = etBookCopies.getText().toString();
-                String bookCategory = etCategory.getText().toString();
+                String bookCategory = spCategory.getSelectedItem().toString();
                 String bookDescription = etDescription.getText().toString();
 
-                String imageBase64 = ImageUtil.convertTo64Base(imageView);
-                double copiesAvailable = Integer.parseInt(stCopiesAvailabale);
+
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH) + 1; // Month starts from 0
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                Date added=new Date(year,month,day);
+
+
+
+                String coverPic = ImageUtil.convertTo64Base(imageView);
+                int copiesAvailable = Integer.parseInt(stCopiesAvailabale);
 
                 if (bookTitle.isEmpty() || bookAuthor.isEmpty() || bookCategory.isEmpty() ||
                         bookDescription.isEmpty()) {
@@ -124,8 +135,11 @@ public class AddBook extends AppCompatActivity {
                 /// generate a new id for the item
                 String id = databaseService.generateBookId();
 
-                Book newBook = new Book(String id, String bookTitle, String bookAuthor, ;boolean isAvailable, int stcopiesAvailable, int copiesTotal, String bookCategory, ImageView coverUrl, Date added, String bookDescription);
-                      /// save the item to the database and get the result in the callback
+                Book newBook = new Book( id,  bookTitle,  bookAuthor,  true,  copiesAvailable,  copiesAvailable,  bookCategory,  coverPic, added,  bookDescription);
+
+
+
+                    /// save the item to the database and get the result in the callback
                 databaseService.createNewBook(newBook, new DatabaseService.DatabaseCallback<Void>() {
                     @Override
                     public void onCompleted(Void object) {

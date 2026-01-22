@@ -1,5 +1,7 @@
 package com.lian.myproject.model;
 
+import java.util.Date;
+
 public class Loan {
     private int id;
     private int bookId;
