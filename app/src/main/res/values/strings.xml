@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MyProject</string>
+    
+    <string-array name="spCategory">
+
+        <item>Horror</item>
+        <item>Comedy</item>
+        <item>Romance</item>
+        <item>Manga</item>
+
+    </string-array>
 </resources>

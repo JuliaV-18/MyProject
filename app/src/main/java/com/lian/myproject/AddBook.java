@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -30,10 +31,9 @@ public class AddBook extends AppCompatActivity {
 
     private EditText etBookTitle, etBookAuthor, etBookCopies, etDescription;
     private Spinner spCategory;
-    private Button btnGallery, btnTakePic, btnAddBook;
+    private Button btnImage, btnPicture, btnCancelBook, btnAddBook;
     private ImageView imageView;
 
-    private Button btnBack;
 
 
     private DatabaseService databaseService;
@@ -77,7 +77,7 @@ public class AddBook extends AppCompatActivity {
                     }
                 });
 
-        btnBack.setOnClickListener(v -> {
+        btnCancelBook.setOnClickListener(v -> {
             Intent intent = new Intent(AddBook.this, AdminActivity.class);
             startActivity(intent);
             finish();
@@ -86,14 +86,14 @@ public class AddBook extends AppCompatActivity {
 
 
 
-        btnGallery.setOnClickListener(new View.OnClickListener() {
+        btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImageFromGallery();
             }
         });
 
-        btnTakePic.setOnClickListener(new View.OnClickListener() {
+        btnPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 captureImageFromCamera();
@@ -106,7 +106,7 @@ public class AddBook extends AppCompatActivity {
                 String bookTitle= etBookTitle.getText().toString();
                 String bookAuthor= etBookAuthor.getText().toString();
                 String stCopiesAvailabale = etBookCopies.getText().toString();
-                String bookCategory = spCategory.getSelectedItem().toString();
+               String bookCategory = spCategory.getSelectedItem().toString();
                 String bookDescription = etDescription.getText().toString();
 
 
@@ -171,9 +171,10 @@ public class AddBook extends AppCompatActivity {
         spCategory = findViewById(R.id.spCategory);
         imageView = findViewById(R.id.ivCover);
         btnAddBook=findViewById(R.id.btn_add_book);
-        btnBack=findViewById(R.id.btn_cancel_add_book);
+        btnCancelBook=findViewById(R.id.btn_cancel_add_book);
+        btnImage=findViewById(R.id.btn_gallery_add_book);
+        btnPicture=findViewById(R.id.btn_pic_add_book);
     }
-
 
     /// select image from gallery
             private void selectImageFromGallery() {

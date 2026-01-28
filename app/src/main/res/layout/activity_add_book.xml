@@ -13,19 +13,26 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="42dp"
         android:text="ADD BOOK"
         android:textSize="50dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="85dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="334dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="-8dp"
-        tools:layout_editor_absoluteY="177dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
 
         <LinearLayout
@@ -77,39 +84,56 @@
             <Spinner
                 android:id="@+id/spCategory"
                 android:layout_width="136dp"
-                android:layout_height="wrap_content"
-                android:text="Category1">
 
+                android:entries="@array/spCategory"
+                android:layout_height="wrap_content">
 
             </Spinner>
 
 
-            <EditText
-                android:id="@+id/etCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ivCover"
-            android:layout_width="139dp"
-            android:layout_height="186dp"
-            tools:srcCompat="@tools:sample/avatars" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivCover"
+                android:layout_width="116dp"
+                android:layout_height="108dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+
+            <Button
+                android:id="@+id/btn_gallery_add_book"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="Gallery" />
+
+            <Button
+                android:id="@+id/btn_pic_add_book"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:text="Take pic" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="277dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:layout_editor_absoluteX="22dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
 
         <EditText
@@ -141,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/txt3"
                 android:text="Add Book" />
+
 
         </LinearLayout>
 
