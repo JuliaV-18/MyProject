@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/dark"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Food Cart App"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -27,6 +27,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -47,10 +48,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:text="What would you like to do today?"
-                android:textSize="16sp"
                 android:textColor="?attr/colorOnSurfaceVariant"
-                android:layout_marginBottom="24dp" />
+                android:textSize="16sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -64,12 +65,14 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    android:background="@color/background_2"
+                    android:backgroundTint="@color/background_2"
+                    android:onClick="goAddBook"
+
                     android:text="🍔 Add Book"
                     android:textAllCaps="false"
-
-                    android:onClick="goAddBook"
                     android:textColor="?attr/colorOnSurface"
+                    android:textColorHighlight="@color/background_2"
                     android:textSize="18sp" />
 
             </com.google.android.material.card.MaterialCardView>
@@ -83,14 +86,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_main_add_cart"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
                     android:text="🛒 Create New Cart"
-                    android:textSize="18sp"
                     android:textAllCaps="false"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="?attr/colorOnSurface"
-                    android:backgroundTint="?attr/colorSurface" />
+                    android:textSize="18sp" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -103,14 +106,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_main_my_carts"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
                     android:text="📋 My Carts"
-                    android:textSize="18sp"
                     android:textAllCaps="false"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="?attr/colorOnSurface"
-                    android:backgroundTint="?attr/colorSurface" />
+                    android:textSize="18sp" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -123,14 +126,15 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_main_edit_profile"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:onClick="goProfile"
                     android:text="👤 Edit Profile"
-                    android:textSize="18sp"
                     android:textAllCaps="false"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:textColor="?attr/colorOnSurface"
-                    android:backgroundTint="?attr/colorSurface" />
+                    android:textSize="18sp" />
 
             </com.google.android.material.card.MaterialCardView>
 

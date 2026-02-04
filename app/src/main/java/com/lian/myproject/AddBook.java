@@ -106,7 +106,7 @@ public class AddBook extends AppCompatActivity {
                 String bookTitle= etBookTitle.getText().toString();
                 String bookAuthor= etBookAuthor.getText().toString();
                 String stCopiesAvailabale = etBookCopies.getText().toString();
-               String bookCategory = spCategory.getSelectedItem().toString();
+                String bookCategory = spCategory.getSelectedItem().toString();
                 String bookDescription = etDescription.getText().toString();
 
 

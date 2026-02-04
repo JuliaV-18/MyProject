@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         Intent go= new Intent( this, AddBook.class);
         startActivity(go);
     }
+    public void goProfile(View view){
+        Intent go= new Intent( this, UserProfileActivity.class);
+        startActivity(go);
+    }
 
 }
 

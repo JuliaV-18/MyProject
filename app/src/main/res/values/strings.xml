@@ -1,12 +1,22 @@
 <resources>
     <string name="app_name">MyProject</string>
-    
+    <string name="spPrompt">Select Genre…</string>
+
     <string-array name="spCategory">
 
-        <item>Horror</item>
-        <item>Comedy</item>
+        <item>Mystery</item>
         <item>Romance</item>
-        <item>Manga</item>
+        <item>Thriller</item>
+        <item>Adventure</item>
+        <item>Comedy</item>
+        <item>Fantasy</item>
+        <item>Science fiction</item>
+        <item>Young Adult</item>
+        <item>Poetry</item>
+        <item>True Crime</item>
+        <item>Biography</item>
 
     </string-array>
+
+
 </resources>
