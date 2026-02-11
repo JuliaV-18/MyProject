@@ -224,7 +224,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone Number"
-                            android:inputType="phone" />
+                            android:inputType="phone"
+                            android:textColorLink="@color/white" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -272,7 +273,9 @@
                         android:layout_height="60dp"
                         android:text="Save Changes"
                         android:textAllCaps="false"
+                        android:textColorLink="@color/highlight"
                         android:textSize="16sp"
+                        app:backgroundTint="@color/highlight"
                         app:cornerRadius="30dp"
                         app:icon="@android:drawable/ic_menu_save"
                         app:iconGravity="textStart" />
@@ -292,9 +295,9 @@
                 android:layout_height="56dp"
                 android:text="Sign Out"
                 android:textAllCaps="false"
-                android:textColor="?attr/colorError"
+                android:textColor="@color/black"
                 app:cornerRadius="28dp"
-                app:strokeColor="?attr/colorError" />
+                app:strokeColor="@color/highlight" />
 
         </LinearLayout>
 

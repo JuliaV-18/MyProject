@@ -11,58 +11,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
-
-
+        <activity
+            android:name=".BookProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".AddBook"
             android:exported="false" />
-
         <activity
             android:name=".AdminActivity"
             android:exported="false" />
-
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
-
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
-
         <activity
             android:name=".Login"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="false" />
-
         <activity
             android:name=".LandingActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Thanks"
             android:exported="false" />
-
         <activity
             android:name=".UsersListActivity"
             android:exported="false" />
-
         <activity
             android:name=".UserProfileActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
