@@ -96,7 +96,8 @@
                     android:text="🛒 Take New Book"
                     android:textAllCaps="false"
                     android:textColor="?attr/colorOnSurface"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:onClick="goBookList"/>
 
             </com.google.android.material.card.MaterialCardView>
 

@@ -381,7 +381,7 @@ public class DatabaseService {
     ///              if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
     /// @see
-    public void getFood(@NotNull final String foodId, @NotNull final DatabaseCallback<Book> callback) {
+    public void getBook(@NotNull final String foodId, @NotNull final DatabaseCallback<Book> callback) {
         getData(BOOKS_PATH + "/" + foodId, Book.class, callback);
     }
 
@@ -391,23 +391,23 @@ public class DatabaseService {
     ///            if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
     /// @see List
-    /// @see Food
-//    public void getFoodList(@NotNull final DatabaseCallback<List<Book>> callback) {
-//        getDataList(BOOKS_PATH, Book.class, callback);
-//    }
+    /// @see Book
+    public void getBookList(@NotNull final DatabaseCallback<List<Book>> callback) {
+        getDataList(BOOKS_PATH, Book.class, callback);
+    }
 
     /// generate a new id for a new food in the database
     /// @return a new id for the food
     /// @see #generateNewId(String)
-    /// @see Food
-//    public String generateFoodId() {
+    /// @see Book
+//    public String generateBookId() {
 //        return generateNewId(BOOKS_PATH);
 //    }
 
     /// delete a food from the database
     /// @param foodId the id of the food to delete
     /// @param callback the callback to call when the operation is completed
-//    public void deleteFood(@NotNull final String bookId, @Nullable final DatabaseCallback<Void> callback) {
+//    public void deleteBook(@NotNull final String bookId, @Nullable final DatabaseCallback<Void> callback) {
 //        deleteData(BOOKS_PATH + "/" + bookId, callback);
 //    }
 

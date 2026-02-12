@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(go);
     }
     public void goBookList(View view){
-        Intent go=new Intent(this, UserProfileActivity.class);
+        Intent go=new Intent(this, BooksListActivity.class);
         startActivity(go);
     }
 
