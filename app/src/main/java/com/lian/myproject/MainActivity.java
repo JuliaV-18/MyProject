@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -37,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goProfile(View view){
         Intent go= new Intent( this, UserProfileActivity.class);
+        startActivity(go);
+    }
+    public void goAdmin(View view){
+        Intent go=new Intent(this, UserProfileActivity.class);
+        startActivity(go);
+    }
+    public void goBookList(View view){
+        Intent go=new Intent(this, UserProfileActivity.class);
         startActivity(go);
     }
 
