@@ -4,11 +4,12 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#fbfee8</color>
-    <color name="background_2">#edfb9a</color>
+    <color name="background2">#edfb9a</color>
     <color name="dark">#9eae50</color>
-    <color name="dark1">#528F08</color>
+    <color name="dark2">#528F08</color>
+    <color name="light">#F0F4C3</color>
 
-    <color name="txt1">#e0714c</color>
+    <color name="txt1">#eb9373</color>
     <color name="txt2">#8F2918</color>
     <color name="txt3">#D45125</color>
     <color name="highlight">#e75018</color>

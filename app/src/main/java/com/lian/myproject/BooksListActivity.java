@@ -17,6 +17,7 @@ import com.lian.myproject.adapters.BookAdapter;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.services.DatabaseService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BooksListActivity extends AppCompatActivity {
@@ -27,6 +28,8 @@ public class BooksListActivity extends AppCompatActivity {
 
 
     DatabaseService databaseService;
+
+    ArrayList<Book>books=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +43,13 @@ public class BooksListActivity extends AppCompatActivity {
         });
 
         RecyclerView rvBooks = findViewById(R.id.rv_books_list);
-        rvBooks.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        );
+        rvBooks.setLayoutManager(new LinearLayoutManager(this));
+
 
         databaseService = DatabaseService.getInstance();
 
 
-        bookAdapter = new BookAdapter(new BookAdapter.OnBookClickListener() {
+        bookAdapter = new BookAdapter(books,new BookAdapter.OnBookClickListener() {
             @Override
             public void onBookClick(Book book) {
                 // Handle book click
@@ -73,7 +75,9 @@ public class BooksListActivity extends AppCompatActivity {
         databaseService.getBookList(new DatabaseService.DatabaseCallback<List<Book>>() {
             @Override
             public void onCompleted(List<Book> bookList) {
-                bookAdapter.setBookList(bookList);
+
+                books.addAll(bookList);
+
                 bookAdapter.notifyDataSetChanged();
                 //   tvBookCount.setText("Total books: " + bookList.size());
             }

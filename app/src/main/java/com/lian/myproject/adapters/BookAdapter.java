@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.chip.Chip;
 import com.lian.myproject.R;
 import com.lian.myproject.model.Book;
+import com.lian.myproject.utils.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     private final List<Book> bookList;
     private final BookAdapter.OnBookClickListener onBookClickListener;
+
+    public BookAdapter(List<Book> bookList, OnBookClickListener onBookClickListener) {
+        this.bookList = bookList;
+        this.onBookClickListener = onBookClickListener;
+    }
 
     public BookAdapter(@Nullable final BookAdapter.OnBookClickListener onBookClickListener) {
         bookList = new ArrayList<>();
@@ -49,6 +55,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.tvTitle.setText(book.getTitle());
         holder.tvAuthor.setText(book.getAuthor());
         holder.tvCategory.setText(book.getCategory());
+        holder.ivBookCover.setImageBitmap(ImageUtil.convertFrom64base(book.getCoverUrl()));
 
 
         /*
@@ -65,12 +72,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
 
         // Show admin chip if book is admin
-        if (book.isAvailable()) {
-            holder.chipRole.setVisibility(View.VISIBLE);
-            holder.chipRole.setText("Admin");
-        } else {
-            holder.chipRole.setVisibility(View.GONE);
-        }
+//        if (book.isAvailable()) {
+//            holder.chipRole.setVisibility(View.VISIBLE);
+//            holder.chipRole.setText("Admin");
+//        } else {
+//            holder.chipRole.setVisibility(View.GONE);
+//        }
 
         holder.itemView.setOnClickListener(v -> {
             if (onBookClickListener != null) {
@@ -121,7 +128,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         TextView tvCategory, tvTitle, tvAuthor, tvCopies;
 
         ImageView ivBookCover;
-        Chip chipRole;
+       // Chip chipRole;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
