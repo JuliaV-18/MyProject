@@ -163,6 +163,7 @@
                     android:textAllCaps="false"
                     android:textColor="?attr/colorOnSecondary"
                     android:textSize="18sp"
+                    android:onClick="goAdmin"
                     tools:visibility="visible" />
 
             </com.google.android.material.card.MaterialCardView>

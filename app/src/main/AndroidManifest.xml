@@ -27,7 +27,7 @@
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".BooksListActivity"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -39,7 +39,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".BooksListActivity"
+            android:name=".UserProfileActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +54,7 @@
             android:name=".UsersListActivity"
             android:exported="false" />
         <activity
-            android:name=".UserProfileActivity"
+            android:name=".SplashActivity"
             android:exported="false" />
     </application>
 

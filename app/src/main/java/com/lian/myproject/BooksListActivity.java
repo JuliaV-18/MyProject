@@ -67,7 +67,6 @@ public class BooksListActivity extends AppCompatActivity {
         });
         rvBooks.setAdapter(bookAdapter);
     }
-    ;
 
 
     @Override
