@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goAddBook(View view) {
-
         Intent go= new Intent( this, AddBook.class);
         startActivity(go);
     }

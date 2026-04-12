@@ -2,6 +2,7 @@ package com.lian.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -22,29 +23,20 @@ public class AdminActivity extends com.lian.myproject.BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        }
 
-        cardUsers = findViewById(R.id.card_users);
-        cardFoods = findViewById(R.id.card_foods);
-        cardCarts = findViewById(R.id.card_carts);
+        public void goEditUsers(View view){
+            Intent go= new Intent( this, UserProfileActivity.class);
+            startActivity(go);
+        }
+        public void goEditBooks(View view){
+            Intent go=new Intent(this, BooksListActivity.class);
+            startActivity(go);
+        }
+        public void goAddBook(View view){
+            Intent go=new Intent(this, AddBook.class);
+            startActivity(go);
+        }
 
-        cardUsers.setOnClickListener(v -> {
-            Intent intent = new Intent(this, com.lian.myproject.UsersListActivity.class);
-            startActivity(intent);
-        });
 
-        cardFoods.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Book.class);
-            startActivity(intent);
-        });
-
-        cardCarts.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Loan.class);
-            startActivity(intent);
-        });
     }
-}

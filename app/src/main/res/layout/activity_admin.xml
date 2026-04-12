@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/dark"
-            app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Admin Dashboard" />
+            app:title="Food Cart App"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,155 +53,89 @@
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:textSize="14sp" />
 
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:useDefaultMargins="true">
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Welcome to your Library! :)"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:text="What would you like to do today?"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="16sp" />
+
+
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
-                    <LinearLayout
-                        android:id="@+id/card_users"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_main_add_loan"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/background2"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="12dp"
-                            android:src="@android:drawable/ic_menu_my_calendar"
-                            app:tint="?attr/colorPrimary" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Manage Users"
-                            android:textAlignment="center"
-                            android:textColor="?attr/colorOnBackground"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="View all users"
-                            android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
+                        android:layout_height="80dp"
+                        android:backgroundTint="?attr/colorSurface"
+                        android:text="💳 Loan A Book"
+                        android:textSize="18sp"
+                        android:onClick="goEditUsers"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
-                    <LinearLayout
-                        android:id="@+id/card_foods"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_main_my_carts"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/background2"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="12dp"
-                            android:src="@android:drawable/ic_menu_agenda"
-                            app:tint="?attr/colorPrimary" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Food Books"
-                            android:textAlignment="center"
-                            android:textColor="?attr/colorOnBackground"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Manage menu"
-                            android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
+                        android:layout_height="80dp"
+                        android:backgroundTint="?attr/colorSurface"
+                        android:text="📋 My Books"
+                        android:textAllCaps="true"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:onClick="goEditBooks" />
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="12dp"
                     app:cardElevation="4dp">
 
-                    <LinearLayout
-                        android:id="@+id/card_carts"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_main_edit_profile"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/background2"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginBottom="12dp"
-                            android:src="@android:drawable/ic_menu_manage"
-                            app:tint="?attr/colorPrimary" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="All Carts"
-                            android:textAlignment="center"
-                            android:textColor="?attr/colorOnBackground"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="View all orders"
-                            android:textColor="?attr/colorOnSurfaceVariant"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
+                        android:layout_height="80dp"
+                        android:backgroundTint="?attr/colorSurface"
+                        android:text="👤 Edit Profile"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="18sp"
+                        android:onClick="goAddBook" />
 
                 </com.google.android.material.card.MaterialCardView>
-
-
-            </GridLayout>
 
         </LinearLayout>
 
