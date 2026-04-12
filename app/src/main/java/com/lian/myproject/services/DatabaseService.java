@@ -336,21 +336,7 @@ public class DatabaseService {
     }
 
     public void updateUser(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
-        runTransaction(USERS_PATH + "/" + user.getUid(), User.class, currentUser -> user, new DatabaseCallback<User>() {
-            @Override
-            public void onCompleted(User object) {
-                if (callback != null) {
-                    callback.onCompleted(null);
-                }
-            }
-
-            @Override
-            public void onFailed(Exception e) {
-                if (callback != null) {
-                    callback.onFailed(e);
-                }
-            }
-        });
+        writeData(USERS_PATH + "/" + user.getUid(), user, callback) ;
     }
 
 

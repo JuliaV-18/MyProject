@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.lian.myproject.R;
 import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
@@ -31,6 +32,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
     String selectedUid;
     User selectedUser;
     boolean isCurrentUser = false;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,25 +46,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         });
 
 
-        selectedUid = getIntent().getStringExtra("USER_UID");
-        User currentUser = SharedPreferencesUtil.getUser(this);
-        assert currentUser != null;
 
-        if (selectedUid == null) {
-            selectedUid = currentUser.getUid();
-        }
-        isCurrentUser = selectedUid.equals(currentUser.getUid());
-        if (!currentUser.isAdmin()) {
-            // If the user is not an admin and the selected user is not the current user
-            // then finish the activity
-            Toast.makeText(this, "You are not authorized to view this profile", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
-        Log.d(TAG, "Selected user: " + selectedUid);
-
-        // Initialize the EditText fields
         etUserFirstName = findViewById(R.id.et_user_first_name);
         etUserLastName = findViewById(R.id.et_user_last_name);
         etUserEmail = findViewById(R.id.et_user_email);
@@ -77,19 +61,28 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         btnUpdateProfile.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
 
-        // if the user is not the current user, hide the sign out button
-        if (!isCurrentUser) {
-            btnSignOut.setVisibility(View.GONE);
-        }
+         mAuth = FirebaseAuth.getInstance();
+         selectedUid=mAuth.getUid();
 
         showUserProfile();
+
+
+
+        Log.d(TAG, "Selected user: " + selectedUid);
+
+        // Initialize the EditText fields
+
+
     }
 
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btn_edit_profile) {
             updateUserProfile();
-            return;
+            Intent go = new Intent(UserProfileActivity.this, MainActivity.class);
+
+            startActivity(go);
+
         }
         if(v.getId() == R.id.btn_sign_out) {
             signOut();
@@ -102,6 +95,8 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
             @Override
             public void onCompleted(User user) {
                 selectedUser = user;
+
+
                 // Set the user data to the EditText fields
                 etUserFirstName.setText(user.getFirstName());
                 etUserLastName.setText(user.getLastName());
@@ -142,11 +137,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
     }
 
     private void updateUserProfile() {
-        if (selectedUser == null) {
-            Log.e(TAG, "User not found");
-            Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         // Get the updated user data from the EditText fields
         String firstName = etUserFirstName.getText().toString();
         String lastName = etUserLastName.getText().toString();
@@ -154,17 +145,17 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         String email = etUserEmail.getText().toString();
         String password = etUserPassword.getText().toString();
 
-        if (!isValid(firstName, lastName, phone, email, password)) {
-            Log.e(TAG, "Invalid input");
-            return;
-        }
+//        if (!isValid(firstName, lastName, phone, email, password)) {
+//            Log.e(TAG, "Invalid input");
+//            return;
+//        }
 
         // Update the user object
+        selectedUser.setId(selectedUid);
         selectedUser.setFirstName(firstName);
         selectedUser.setLastName(lastName);
         selectedUser.setPhone(phone);
-        selectedUser.setEmail(email);
-        selectedUser.setPassword(password);
+
 
         // Update the user data in the authentication
         Log.d(TAG, "Updating user profile");
@@ -173,20 +164,16 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         Log.d(TAG, "User email: " + selectedUser.getEmail());
         Log.d(TAG, "User password: " + selectedUser.getPassword());
 
+//if (!isCurrentUser && !selectedUser.isAdmin()) {
+//            Log.e(TAG, "Only the current user can update their profile");
+//            Toast.makeText(this, "You can only update your own profile", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        else
 
 
-        if (!isCurrentUser && !selectedUser.isAdmin()) {
-            Log.e(TAG, "Only the current user can update their profile");
-            Toast.makeText(this, "You can only update your own profile", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else if (isCurrentUser) {
             updateUserInDatabase(selectedUser);
-        }
-        else if (selectedUser.isAdmin()) {
-            // update the user in the database
-            updateUserInDatabase(selectedUser);
-        }
+
     }
 
     private void updateUserInDatabase(User user) {
@@ -195,8 +182,8 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
             @Override
             public void onCompleted(Void result) {
                 Log.d(TAG, "User profile updated successfully");
-                Toast.makeText(UserProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
-                showUserProfile(); // Refresh the profile view
+                Toast.makeText(UserProfileActivity.this, "Profile updated successfully  "+ selectedUser.toString(), Toast.LENGTH_SHORT).show();
+                //showUserProfile(); // Refresh the profile view
             }
 
             @Override

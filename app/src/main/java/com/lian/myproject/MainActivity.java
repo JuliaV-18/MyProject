@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void goRegister(View view) {
+    public void goGetEm(View view) {
         Intent go= new Intent( this, Register.class);
         startActivity(go);
     }
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(go);
     }
     public void goAdmin(View view){
-        Intent go=new Intent(this, UserProfileActivity.class);
+        Intent go=new Intent(this, AdminActivity.class);
         startActivity(go);
     }
     public void goBookList(View view){
