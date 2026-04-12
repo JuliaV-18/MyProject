@@ -18,5 +18,14 @@
 
     </string-array>
 
+    <string name="go_admin"></string>
+
+    <string name="edit_users">👥Mess with Users</string>
+    <string name="edit_books"></string>
+    <string name="add_book"></string>
+
+
+    <string name="log_out"></string>
+
 
 </resources>

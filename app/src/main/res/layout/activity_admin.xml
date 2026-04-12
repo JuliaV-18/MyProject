@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/dark"
+            android:background="@color/txt3"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Food Cart App"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -27,20 +27,20 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/txt1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"/>
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Admin Control Panel"
+                android:text="Well hello there, dear Library!"
                 android:textColor="?attr/colorOnBackground"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -49,93 +49,69 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="Manage your application from here"
+                android:text="What would you like to change today?"
                 android:textColor="?attr/colorOnSurfaceVariant"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="Welcome to your Library! :)"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:text="What would you like to do today?"
-                    android:textColor="?attr/colorOnSurfaceVariant"
-                    android:textSize="16sp" />
-
-
-
-                <com.google.android.material.card.MaterialCardView
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_main_add_loan"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:text="@string/edit_users"
+                    android:textSize="18sp"
+                    android:onClick="goEditUsers"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_main_add_loan"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:backgroundTint="?attr/colorSurface"
-                        android:text="💳 Loan A Book"
-                        android:textSize="18sp"
-                        android:onClick="goEditUsers"/>
+            </com.google.android.material.card.MaterialCardView>
 
-                </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <com.google.android.material.card.MaterialCardView
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_main_my_carts"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:text="📝Edit Books"
+                    android:textAllCaps="true"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="18sp"
+                    android:onClick="goEditBooks" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_main_my_carts"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:backgroundTint="?attr/colorSurface"
-                        android:text="📋 My Books"
-                        android:textAllCaps="true"
-                        android:textColor="?attr/colorOnSurface"
-                        android:textSize="18sp"
-                        android:onClick="goEditBooks" />
+            </com.google.android.material.card.MaterialCardView>
 
-                </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <com.google.android.material.card.MaterialCardView
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_main_edit_profile"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:text="✍️Add A Book"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="18sp"
+                    android:onClick="goAddBook" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_main_edit_profile"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:backgroundTint="?attr/colorSurface"
-                        android:text="👤 Edit Profile"
-                        android:textColor="?attr/colorOnSurface"
-                        android:textSize="18sp"
-                        android:onClick="goAddBook" />
+            </com.google.android.material.card.MaterialCardView>
 
-                </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
