@@ -26,7 +26,7 @@ public class AdminActivity extends com.lian.myproject.BaseActivity {
         }
 
         public void goEditUsers(View view){
-            Intent go= new Intent( this, UserProfileActivity.class);
+            Intent go= new Intent( this, UsersListActivity.class);
             startActivity(go);
         }
         public void goEditBooks(View view){

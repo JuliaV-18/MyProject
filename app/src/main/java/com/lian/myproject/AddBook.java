@@ -176,6 +176,11 @@ public class AddBook extends AppCompatActivity {
         btnPicture=findViewById(R.id.btn_pic_add_book);
     }
 
+//    public void goAdmin(View view){
+//        Intent go = new Intent(this, AdminActivity.class);
+//        startActivity(go);
+//    }
+
     /// select image from gallery
             private void selectImageFromGallery() {
                 //   Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

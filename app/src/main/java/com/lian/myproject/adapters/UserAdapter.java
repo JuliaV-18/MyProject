@@ -31,6 +31,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         this.onUserClickListener = onUserClickListener;
     }
 
+    public UserAdapter(List<User> userList, OnUserClickListener onUserClickListener) {
+        this.userList = userList;
+        this.onUserClickListener = onUserClickListener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,7 +48,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         User user = userList.get(position);
         if (user == null) return;
 
-        holder.tvName.setText(user.getFullName());
+        holder.tvName.setText(user.getFirstName()+" ");
         holder.tvEmail.setText(user.getEmail());
         holder.tvPhone.setText(user.getPhone());
         

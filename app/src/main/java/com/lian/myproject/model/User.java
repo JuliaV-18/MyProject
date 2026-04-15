@@ -24,6 +24,11 @@ public class User {
     public User() {
     }
 
+    public String  getFullName(){
+
+        return this.fname+" "+this.lname;
+    }
+
     public String getUid() {
         return id;
     }
@@ -48,9 +53,7 @@ public class User {
         this.lname = lname;
     }
 
-    public String getFullName() {
-        return fname + lname;
-    }
+
 
     public String getPhone() {
         return phone;

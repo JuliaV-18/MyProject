@@ -13,5 +13,6 @@
     <color name="txt2">#8F2918</color>
     <color name="txt3">#D45125</color>
     <color name="highlight">#e75018</color>
+    <color name="bgAdmin">#f6b884</color>
 
 </resources>

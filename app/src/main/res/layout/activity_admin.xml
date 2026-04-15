@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/txt3"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Food Cart App"
+            app:title="Admin Panel | Library"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -27,7 +27,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/txt1"
+        android:background="@color/bgAdmin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout

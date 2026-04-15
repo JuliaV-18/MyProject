@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/bgAdmin"
     tools:context=".AddBook">
 
 
@@ -130,14 +130,14 @@
                 android:layout_width="110dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/txt1"
+                android:backgroundTint="@color/txt3"
                 android:text="Gallery" />
 
             <Button
                 android:id="@+id/btn_pic_add_book"
                 android:layout_width="110dp"
                 android:layout_height="50dp"
-                android:backgroundTint="@color/txt1"
+                android:backgroundTint="@color/txt3"
                 android:text="Take pic" />
 
         </LinearLayout>
@@ -177,7 +177,8 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/txt2"
-                android:text="Cancel" />
+                android:text="Cancel"
+                android:onClick="goAdmin"/>
 
             <Button
                 android:id="@+id/btn_add_book"

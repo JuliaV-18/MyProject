@@ -17,6 +17,7 @@ import com.lian.myproject.adapters.UserAdapter;
 import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersListActivity extends com.lian.myproject.BaseActivity {
@@ -25,24 +26,22 @@ public class UsersListActivity extends com.lian.myproject.BaseActivity {
     private UserAdapter userAdapter;
     private TextView tvUserCount;
 
+    ArrayList <User> users=new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_users_list);
-        ViewCompat.setOnApplyWindowInsetsListener(tvUserCount.findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        RecyclerView usersList = findViewById(R.id.rv_users_list);
+
+        RecyclerView rcUsers = findViewById(R.id.rv_users_list);
         tvUserCount = findViewById(R.id.tv_user_count);
-        usersList.setLayoutManager(new LinearLayoutManager(this));
-        userAdapter = new UserAdapter(new UserAdapter.OnUserClickListener() {
+        rcUsers.setLayoutManager(new LinearLayoutManager(this));
+        userAdapter = new UserAdapter( users, new UserAdapter.OnUserClickListener() {
             @Override
             public void onUserClick(User user) {
-                // Handle user click
+//                 Handle user click
                 Log.d(TAG, "User clicked: " + user);
                 Intent intent = new Intent(UsersListActivity.this, com.lian.myproject.UserProfileActivity.class);
                 intent.putExtra("USER_UID", user.getUid());
@@ -51,22 +50,24 @@ public class UsersListActivity extends com.lian.myproject.BaseActivity {
 
             @Override
             public void onLongUserClick(User user) {
-                // Handle long user click
-                Log.d(TAG, "User long clicked: " + user);
+//                 Handle long user click
+               Log.d(TAG, "User long clicked: " + user);
             }
         });
-        usersList.setAdapter(userAdapter);
+      rcUsers.setAdapter(userAdapter);
+      getUsers();
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+
+    protected void getUsers() {
+
         databaseService.getUserList(new DatabaseService.DatabaseCallback<>() {
             @Override
             public void onCompleted(List<User> users) {
                 userAdapter.setUserList(users);
                 tvUserCount.setText("Total users: " + users.size());
+                userAdapter.notifyDataSetChanged();
             }
 
             @Override

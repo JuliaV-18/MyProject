@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/android:colorBackground"
-    tools:context=".screens.UsersListActivity">
+    tools:context=".UsersListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/dark"
+            android:background="@color/txt3"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="All Users" />
@@ -27,7 +27,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/bgAdmin"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -74,7 +74,7 @@
                     android:id="@+id/rv_users_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#F0F4C3"
+                    android:background="@color/white"
                     android:clipToPadding="false"
                     android:padding="8dp"
                     tools:listitem="@layout/item_user" />

@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.lian.myproject.model.Book;
+import com.lian.myproject.model.Loan;
 import com.lian.myproject.model.User;
 
 import com.google.firebase.database.DataSnapshot;
@@ -41,8 +42,8 @@ public class DatabaseService {
     /// @see DatabaseService#readData(String)
     private static final String USERS_PATH = "users",
                                 BOOKS_PATH = "books",
-                                FINES_PATH = "fines",
-                                CARTS_PATH = "carts";
+                                BOOK_LOAN = "BookLoans",
+                                USER_LOAN = "UserLoans";
 
     /// callback interface for database operations
     /// @param <T> the type of the object to return
@@ -454,9 +455,30 @@ public class DatabaseService {
     /// @return a new id for the cart
     /// @see #generateNewId(String)
     /// @see
-//    public String generateCartId() {
-//        return generateNewId(CARTS_PATH);
-//    }
+    public String generateLoanId() {
+        return generateNewId(BOOK_LOAN);
+    }
+
+
+
+
+
+    /// create a new cart in the database
+    /// @param cart the cart object to create
+    /// @param callback the callback to call when the operation is completed
+    ///               the callback will receive void
+    ///              if the operation fails, the callback will receive an exception
+    /// @see DatabaseCallback
+    /// @see Cart
+       public void createNewLoan(@NotNull final Loan loan, @Nullable final DatabaseCallback<Void> callback) {
+            writeData(BOOK_LOAN + "/" + loan.getId(), loan, callback);
+
+            writeData(USER_LOAN + "/" + loan.getUserId()+"/"+loan.getId(), loan, callback);
+
+
+      }
+
+
 
     /// delete a cart from the database
     /// @param cartId the id of the cart to delete
