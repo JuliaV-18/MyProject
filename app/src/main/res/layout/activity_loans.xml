@@ -8,6 +8,22 @@
     tools:context=".LoansActivity">
 
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="All Loans Made | Admin"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books_for_loans"
         android:layout_width="match_parent"

@@ -5,19 +5,13 @@ import java.util.Date;
 
 public class Loan {
 
-        private String id;
-        private String bookId;
-
-
-        private String bookName;
-
-        private String userId;
-        private Date borrowDate;
-        private Date returnDate;
-        private boolean returned;
-
-        // בנאי
-
+    private String id;
+    private String bookId;
+    private String bookName;
+    private String userId;
+    private Date borrowDate;
+    private Date returnDate;
+    private boolean returned;
 
     public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned) {
         this.id = id;
