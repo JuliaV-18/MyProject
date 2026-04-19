@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/dark"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Food Cart App"
+            app:title="Main Screen - User"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </com.google.android.material.appbar.AppBarLayout>

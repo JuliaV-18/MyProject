@@ -7,12 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".LoansActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout5"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/txt3"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="All Loans - Admin"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books_for_loans"
         android:layout_width="match_parent"
         android:layout_height="667dp"
-        android:background="#F0F4C3"
+        android:background="@color/bgAdmin"
         android:clipToPadding="false"
         android:paddingStart="12dp"
         android:paddingTop="8dp"
