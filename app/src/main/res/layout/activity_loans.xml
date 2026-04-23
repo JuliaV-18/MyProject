@@ -27,7 +27,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books_for_loans"
-        android:layout_width="match_parent"
+        android:layout_width="match_parents"
         android:layout_height="667dp"
         android:background="@color/bgAdmin"
         android:clipToPadding="false"
