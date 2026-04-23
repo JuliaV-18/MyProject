@@ -480,14 +480,40 @@ public class DatabaseService {
 
 
 
-    /// delete a cart from the database
-    /// @param cartId the id of the cart to delete
+    /// create a new cart in the database
+    /// @param cart the cart object to create
     /// @param callback the callback to call when the operation is completed
-//    public void deleteCart(@NotNull final String cartId, @Nullable final DatabaseCallback<Void> callback) {
-//        deleteData(CARTS_PATH + "/" + cartId, callback);
-//    }
+    ///               the callback will receive void
+    ///              if the operation fails, the callback will receive an exception
+    /// @see DatabaseCallback
+    /// @see Cart
+    public void updateLoan(@NotNull final Loan loan, @Nullable final DatabaseCallback<Void> callback) {
+        writeData(BOOK_LOAN + "/" + loan.getId(), loan, callback);
 
-    // endregion cart section
+        writeData(USER_LOAN + "/" + loan.getUserId()+"/"+loan.getId(), loan, callback);
+
+
+    }
+
+
+
+
+
+    public void getUserBookLoan( String userId,  @NotNull final DatabaseCallback<List<Loan>> callback) {
+        getDataList(USER_LOAN+"/"+userId, Loan.class, callback);
+    }
+
+
+    public void getBookLoan(   @NotNull final DatabaseCallback<List<Loan>> callback) {
+        getDataList(BOOK_LOAN+"/", Loan.class, callback);
+    }
+
+
+
+
+
+
+
 
 }
 

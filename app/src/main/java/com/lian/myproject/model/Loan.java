@@ -128,6 +128,8 @@ public class Loan {
         Calendar cal = Calendar.getInstance();
         cal.setTime(borrowDate);
         cal.add(Calendar.DAY_OF_MONTH, 14);
+
+
         this.returnDate = cal.getTime();
     }
 

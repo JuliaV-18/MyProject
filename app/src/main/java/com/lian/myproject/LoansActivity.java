@@ -26,7 +26,7 @@ public class LoansActivity extends AppCompatActivity {
     private BookAdapter bookAdapter;
     private TextView tvBookCount;
 
-
+    RecyclerView rvBooks;
     DatabaseService databaseService;
 
     ArrayList<Book> books=new ArrayList<>();
@@ -45,7 +45,7 @@ public class LoansActivity extends AppCompatActivity {
 
 
 
-    RecyclerView rvBooks = findViewById(R.id.rv_books_for_loans);
+     rvBooks = findViewById(R.id.rv_Loaned_books);
         rvBooks.setLayoutManager(new LinearLayoutManager(this));
 
 
