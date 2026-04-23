@@ -88,7 +88,7 @@
                     android:backgroundTint="?attr/colorSurface"
                     android:text="💳 Loan A Book"
                     android:textSize="18sp"
-                    android:onClick="goBookList"/>
+                    android:onClick="goLoanBook"/>
 
             </com.google.android.material.card.MaterialCardView>
 

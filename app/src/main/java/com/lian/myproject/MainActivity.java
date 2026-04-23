@@ -21,30 +21,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void goGetEm(View view) {
-        Intent go= new Intent( this, Register.class);
+    public void goBookList(View view){
+        Intent go=new Intent(this, BooksListActivity.class);
         startActivity(go);
     }
 
-    public void goLogin(View view) {
-        Intent go= new Intent( this, Login.class);
-        startActivity(go);
-    }
+
 
     public void goAddBook(View view) {
         Intent go= new Intent( this, AddBook.class);
         startActivity(go);
     }
+    public void goLoanBook(View view) {
+        Intent go= new Intent( this, LoansActivity.class);
+        startActivity(go);
+    }
+
     public void goProfile(View view){
         Intent go= new Intent( this, UserProfileActivity.class);
         startActivity(go);
     }
     public void goAdmin(View view){
         Intent go=new Intent(this, AdminActivity.class);
-        startActivity(go);
-    }
-    public void goBookList(View view){
-        Intent go=new Intent(this, BooksListActivity.class);
         startActivity(go);
     }
 
