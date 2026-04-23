@@ -34,15 +34,13 @@ public class Loan {
         this.bookId = bookId;
         this.bookName = bookName;
         this.userId = userId;
-        Calendar cal = Calendar.getInstance();;
 
+        Calendar cal = Calendar.getInstance();
         this.borrowDate = cal.getTime();
 
-
-        setReturnDate(borrowDate);
+        setReturnDateAutomatically();
         this.returned = false;
     }
-
 
     public Loan() {
     }

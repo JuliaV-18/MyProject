@@ -105,7 +105,12 @@ public class BookProfileActivity extends AppCompatActivity {
                         @Override
                         public void onCompleted(Void object) {
 
-                            Intent go= new Intent( BookProfileActivity.this, LoansActivity.class);
+
+
+
+
+
+                            Intent go= new Intent( BookProfileActivity.this, BooksListActivity.class);
                             startActivity(go);
                         }
 
