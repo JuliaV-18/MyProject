@@ -26,8 +26,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_books_for_loans"
-        android:layout_width="match_parents"
+        android:id="@+id/rv_Loaned_books"
+        android:layout_width="match_parent"
         android:layout_height="667dp"
         android:background="@color/bgAdmin"
         android:clipToPadding="false"

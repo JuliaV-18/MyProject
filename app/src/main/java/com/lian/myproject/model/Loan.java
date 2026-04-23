@@ -1,7 +1,9 @@
 package com.lian.myproject.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Loan {
 
@@ -142,6 +144,18 @@ public class Loan {
                 ", returned=" + returned +
                 '}';
     }
+
+    public String getBorrowDateString() {
+        if (returnDate == null) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return sdf.format(borrowDate);
+    }
+    public String getReturnDateString() {
+        if (returnDate == null) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return sdf.format(returnDate);
+    }
+
 }
 
 
