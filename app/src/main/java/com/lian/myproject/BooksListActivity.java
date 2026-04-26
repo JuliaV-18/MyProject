@@ -3,6 +3,7 @@ package com.lian.myproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class BooksListActivity extends AppCompatActivity {
     DatabaseService databaseService;
 
     ArrayList<Book>books=new ArrayList<>();
+    private SearchView searchView;
+    private RecyclerView rvBooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,9 @@ public class BooksListActivity extends AppCompatActivity {
             return insets;
         });
 
-        RecyclerView rvBooks = findViewById(R.id.rv_books_list);
+         rvBooks = findViewById(R.id.rv_books_list);
+
+         searchView = findViewById(R.id.searchView);
         rvBooks.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -67,6 +72,24 @@ public class BooksListActivity extends AppCompatActivity {
             }
         });
         rvBooks.setAdapter(bookAdapter);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterBooks(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               filterBooks(newText);
+                return false;
+            }
+
+
+
+        });
     }
 
 
@@ -92,21 +115,29 @@ public class BooksListActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    SearchView searchView = findViewById(R.id.searchView);
-
-searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-        @Override
-        public boolean onQueryTextSubmit(String query) {
-            adapter.getFilter().filter(query);
-            return false;
+    public void filterBooks(String query) {
+        if (query == null || query.isEmpty()) {
+            bookAdapter.setBookList(books);
+            bookAdapter.notifyDataSetChanged();
+            return;
         }
 
-        @Override
-        public boolean onQueryTextChange(String newText) {
-            adapter.getFilter().filter(newText);
-            return false;
+        String lowerQuery = query.toLowerCase();
+        List<Book> filteredList = new ArrayList<>();
+
+        for (Book book : books) {
+            if (book.getTitle().toLowerCase().contains(lowerQuery) ||
+                    book.getAuthor().toLowerCase().contains(lowerQuery)) {
+
+                filteredList.add(book);
+            }
         }
-    });
+
+
+        bookAdapter.setBookList(filteredList);
+        bookAdapter.notifyDataSetChanged();
+    }
+
+
 
 }

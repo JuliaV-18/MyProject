@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lian.myproject.R;
 import com.lian.myproject.model.Loan;
+import com.lian.myproject.model.User;
+import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.utils.ImageUtil;
 
 import java.util.ArrayList;
@@ -51,10 +53,23 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         Loan loan = loanList.get(position);
         if (loan == null) return;
 
+
+        DatabaseService.getInstance().getUser(loan.getUserId(), new DatabaseService.DatabaseCallback<User>() {
+            @Override
+            public void onCompleted(User user) {
+                holder.tvUser.setText(user.getFullName());
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+        });
+
         holder.tvTitle.setText(loan.getBookName());
         holder.tvBorrowDate.setText(loan.getBorrowDateString());
         holder.tvReturnDate.setText(loan.getReturnDateString());
-        holder.tvUser.setText(loan.getUserId());
+
 
 
 

@@ -474,6 +474,7 @@ public class DatabaseService {
             writeData(BOOK_LOAN + "/" + loan.getId(), loan, callback);
 
             writeData(USER_LOAN + "/" + loan.getUserId()+"/"+loan.getId(), loan, callback);
+           writeData(BOOKS_PATH + "/" +loan.getBookId() +"/available", false, callback);
 
 
       }

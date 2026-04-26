@@ -29,6 +29,11 @@ public class User {
         return this.fname+" "+this.lname;
     }
 
+    public String  getFullName(String id){
+
+        return this.fname+" "+this.lname;
+    }
+
     public String getUid() {
         return id;
     }
@@ -52,6 +57,8 @@ public class User {
     public void setLastName(String lname) {
         this.lname = lname;
     }
+
+
 
 
 

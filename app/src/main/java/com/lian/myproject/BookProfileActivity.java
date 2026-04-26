@@ -105,6 +105,9 @@ public class BookProfileActivity extends AppCompatActivity {
                         @Override
                         public void onCompleted(Void object) {
 
+                            book.setAvailable(false);
+
+
 
 
 

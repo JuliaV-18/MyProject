@@ -29,12 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void goAddBook(View view) {
-        Intent go= new Intent( this, AddBook.class);
+        Intent go= new Intent( this, UserLoanActivity.class);
         startActivity(go);
     }
     public void goLoanBook(View view) {
-        Intent go= new Intent( this, LoansActivity.class);
-        startActivity(go);
+
     }
 
     public void goProfile(View view){
@@ -46,5 +45,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(go);
     }
 
+    public void goUserLoansBook(View view) {
+
+        Intent go= new Intent( this, UserLoanActivity.class);
+        startActivity(go);
+    }
 }
 

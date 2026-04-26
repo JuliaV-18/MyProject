@@ -66,7 +66,7 @@
                     android:layout_height="80dp"
                     android:background="@color/dark"
                     android:backgroundTint="@color/background2"
-                    android:text="📚 View New Books"
+                    android:text="📚 View Books"
                     android:textSize="18sp"
                     app:iconTint="@color/background"
                     android:onClick="goBookList"/>
@@ -107,7 +107,7 @@
                     android:textAllCaps="true"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp"
-                    android:onClick="goBookList" />
+                    android:onClick="goUserLoansBook" />
 
             </com.google.android.material.card.MaterialCardView>
 
