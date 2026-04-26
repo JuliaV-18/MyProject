@@ -3,6 +3,7 @@ package com.lian.myproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -91,5 +92,21 @@ public class BooksListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    SearchView searchView = findViewById(R.id.searchView);
+
+searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            adapter.getFilter().filter(query);
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            adapter.getFilter().filter(newText);
+            return false;
+        }
+    });
 
 }
