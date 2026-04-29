@@ -5,17 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoansActivity">
+    tools:context=".UserLoanActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout5"
+        android:id="@+id/appBarLayout5User"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar1"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/txt3"
@@ -25,24 +25,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/dark"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="All Loans Made | Admin"
-            app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_Loaned_books"
+        android:id="@+id/rv_UserLoaned_books"
         android:layout_width="match_parent"
         android:layout_height="667dp"
         android:background="@color/bgAdmin"

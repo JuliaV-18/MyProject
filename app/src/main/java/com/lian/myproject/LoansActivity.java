@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,7 +58,7 @@ public class LoansActivity extends AppCompatActivity {
         public void onBookClick(Book book) {
             // Handle book click
             Log.d(TAG, "Book clicked: " + book);
-            Intent intent = new Intent(LoansActivity.this, com.lian.myproject.BookProfileActivity.class);
+            Intent intent = new Intent(LoansActivity.this, LoanABookActivity.class);
             intent.putExtra("BOOK_UID", book.getId());
             startActivity(intent);
         }

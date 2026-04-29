@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +20,7 @@ import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
 
-public class BookProfileActivity extends AppCompatActivity {
+public class LoanABookActivity extends AppCompatActivity {
 
     private ImageView imgBookCover;
     private EditText etTitle, etAuthor, etCopies, etGenre, etDesc;
@@ -37,7 +39,7 @@ public class BookProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_book_profile);
+        setContentView(R.layout.activity_loan_a_book);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -60,9 +62,9 @@ public class BookProfileActivity extends AppCompatActivity {
 
                 etTitle.setText(book.getTitle());
                 etAuthor.setText(book.getAuthor());
-               etCopies.setText(book.getCopiesAvailable()+"");
-                 etGenre.setText(book.getCategory());
-                 etDesc.setText(book.getDescription());
+                etCopies.setText(book.getCopiesAvailable()+"");
+                etGenre.setText(book.getCategory());
+                etDesc.setText(book.getDescription());
 
             }
 
@@ -93,13 +95,12 @@ public class BookProfileActivity extends AppCompatActivity {
 
 
                 mAuth = FirebaseAuth.getInstance();
-                java.lang.String uid= mAuth.getUid();
+                String uid= mAuth.getUid();
 
+                if (book.isAvailable()) {
 
-
-
-                  String loanId= databaseService.generateLoanId();
-                    Loan newLoan=new Loan(loanId,bookId,book.getTitle(),uid);
+                    String loanId = databaseService.generateLoanId();
+                    Loan newLoan = new Loan(loanId, bookId, book.getTitle(), uid);
 
                     databaseService.createNewLoan(newLoan, new DatabaseService.DatabaseCallback<Void>() {
                         @Override
@@ -107,13 +108,8 @@ public class BookProfileActivity extends AppCompatActivity {
 
                             book.setAvailable(false);
 
-
-
-
-
-
-
-                            Intent go= new Intent( BookProfileActivity.this, BooksListActivity.class);
+                            Toast.makeText(LoanABookActivity.this, "Book transaction is complete!", Toast.LENGTH_SHORT).show();
+                            Intent go = new Intent(LoanABookActivity.this, LoansActivity.class);
                             startActivity(go);
                         }
 
@@ -122,6 +118,8 @@ public class BookProfileActivity extends AppCompatActivity {
 
                         }
                     });
+                }
+                else Toast.makeText(LoanABookActivity.this, "This book is taken :(", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -134,7 +132,6 @@ public class BookProfileActivity extends AppCompatActivity {
                 finish(); // סוגר את המסך
             }
         });
-
 
     }
 }

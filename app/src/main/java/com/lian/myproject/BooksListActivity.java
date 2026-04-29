@@ -3,7 +3,6 @@ package com.lian.myproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -60,7 +59,7 @@ public class BooksListActivity extends AppCompatActivity {
             public void onBookClick(Book book) {
                 // Handle book click
                 Log.d(TAG, "Book clicked: " + book);
-                Intent intent = new Intent(BooksListActivity.this, com.lian.myproject.BookProfileActivity.class);
+                Intent intent = new Intent(BooksListActivity.this, EditBookProfileActivity.class);
                 intent.putExtra("BOOK_UID", book.getId());
                 startActivity(intent);
             }

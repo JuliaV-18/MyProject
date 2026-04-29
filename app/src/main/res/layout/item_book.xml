@@ -7,6 +7,7 @@
     android:background="@color/light"
     android:paddingVertical="5dp"
     android:dividerPadding="5dp"
+    android:onClick="OnBookClick"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 

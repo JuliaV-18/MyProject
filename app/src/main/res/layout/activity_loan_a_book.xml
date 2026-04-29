@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgAdmin"
+    tools:context=".EditBookProfileActivity">
+
+
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout5"
+            android:layout_width="411dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/txt3"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Loan This Book - User"
+                app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/img_profile_book_cover"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:background="@color/background2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title: "
+                android:textSize="30dp"
+                android:textColor="@color/txt2"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="46dp" />
+
+            <EditText
+                android:id="@+id/tv_profile_book_title"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="163dp"
+                tools:layout_editor_absoluteY="47dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Author - "
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="93dp" />
+
+            <EditText
+                android:id="@+id/tv_profile_book_author"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount of copies: "
+                android:textSize="20dp"
+                android:textColor="@color/txt1"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="93dp" />
+
+            <EditText
+                android:id="@+id/tv_profile_book_copies"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="@color/txt3"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre - "
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="93dp" />
+
+            <EditText
+                android:id="@+id/tv_profile_book_genre"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="93dp" />
+
+            <EditText
+                android:id="@+id/tv_profile_book_desc"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_loan_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.822" />
+
+    <Button
+        android:id="@+id/btn_cancel_loan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.822" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

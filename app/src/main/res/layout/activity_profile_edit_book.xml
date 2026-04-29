@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".BookProfileActivity">
+    tools:context=".EditBookProfileActivity">
 
 
 
@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/dark"
+                app:navigationIcon="?attr/homeAsUpIndicator"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="Search Books - User"
                 app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />

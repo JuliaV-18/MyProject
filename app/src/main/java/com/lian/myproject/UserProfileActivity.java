@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -15,7 +16,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.lian.myproject.R;
 import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.utils.SharedPreferencesUtil;
@@ -38,7 +38,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_profile_user);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

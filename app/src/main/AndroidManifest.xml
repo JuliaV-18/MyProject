@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
         <activity
-            android:name=".adapters.RecyclerViewAdapter"
+            android:name=".UsersOverdue"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileLoan"
             android:exported="false" />
         <activity
             android:name=".UserLoanActivity"
@@ -21,13 +24,16 @@
             android:name=".CreateNewLoan"
             android:exported="false" />
         <activity
+            android:name=".LoanABookActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoansActivity"
             android:exported="false" />
         <activity
             android:name=".LandingActivity"
             android:exported="false" />
         <activity
-            android:name=".BookProfileActivity"
+            android:name=".EditBookProfileActivity"
             android:exported="false" />
         <activity
             android:name=".AddBook"
