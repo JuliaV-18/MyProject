@@ -34,9 +34,6 @@ public class User {
         return this.fname+" "+this.lname;
     }
 
-    public String getUid() {
-        return id;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -84,6 +81,26 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getJoined() {

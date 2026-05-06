@@ -7,13 +7,15 @@ import java.util.Locale;
 
 public class Loan {
 
-    private String id;
-    private String bookId;
-    private String bookName;
-    private String userId;
-    private Date borrowDate;
-    private Date returnDate;
-    private boolean returned;
+    protected String id;
+    protected String bookId;
+    protected String bookName;
+    protected String userId;
+    protected Date borrowDate;
+    protected Date returnDate;
+    protected boolean returned;
+
+    protected  String message;
 
     public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned) {
         this.id = id;
@@ -23,6 +25,17 @@ public class Loan {
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.returned = returned;
+    }
+
+    public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned, String message) {
+        this.id = id;
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.userId = userId;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.returned = returned;
+        this.message = message;
     }
 
     public Loan(String id, String bookId, String bookName, String userId) {
@@ -128,18 +141,6 @@ public class Loan {
     }
 
 
-    @Override
-    public String toString() {
-        return "Loan{" +
-                "id=" + id +
-                ", bookId='" + bookId + '\'' +
-                ", bookName='" + bookName + '\'' +
-                ", userId='" + userId + '\'' +
-                ", borrowDate=" + borrowDate +
-                ", returnDate=" + returnDate +
-                ", returned=" + returned +
-                '}';
-    }
 
     public String getBorrowDateString() {
         if (returnDate == null) return "";
@@ -152,6 +153,27 @@ public class Loan {
         return sdf.format(returnDate);
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id='" + id + '\'' +
+                ", bookId='" + bookId + '\'' +
+                ", bookName='" + bookName + '\'' +
+                ", userId='" + userId + '\'' +
+                ", borrowDate=" + borrowDate +
+                ", returnDate=" + returnDate +
+                ", returned=" + returned +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }
 
 

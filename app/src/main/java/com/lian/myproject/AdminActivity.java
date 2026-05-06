@@ -34,7 +34,11 @@ public class AdminActivity extends com.lian.myproject.BaseActivity {
             startActivity(go);
         }
         public void goEditLoans(View view){
-            Intent go=new Intent(this, UserLoanActivity.class);
+            Intent go=new Intent(this, LoansActivity.class);
+            startActivity(go);
+        }
+        public void goLateLoans(View view){
+            Intent go=new Intent(this, LateLoansActivity.class);
             startActivity(go);
         }
         public void goAddBook(View view){

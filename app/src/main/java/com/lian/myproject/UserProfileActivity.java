@@ -1,5 +1,7 @@
 package com.lian.myproject;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +31,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
     private TextView tvUserDisplayName, tvUserDisplayEmail;
     private Button btnUpdateProfile, btnSignOut;
     private View adminBadge;
-    String selectedUid;
+    String selectedUid=null;
     User selectedUser;
     boolean isCurrentUser = false;
     private FirebaseAuth mAuth;
@@ -61,10 +63,23 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         btnUpdateProfile.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
 
-         mAuth = FirebaseAuth.getInstance();
-         selectedUid=mAuth.getUid();
 
-        showUserProfile();
+       selectedUid=getIntent().getStringExtra("USER_UID");
+
+       if(selectedUid!=null){
+
+           Toast.makeText(UserProfileActivity.this,selectedUid,LENGTH_LONG).show();
+
+           showUserProfile();
+       }
+
+//       if(selectedUid==null) {
+//
+//           mAuth = FirebaseAuth.getInstance();
+//           selectedUid = mAuth.getUid();
+//       }
+
+
 
 
 
@@ -159,7 +174,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
 
         // Update the user data in the authentication
         Log.d(TAG, "Updating user profile");
-        Log.d(TAG, "Selected user UID: " + selectedUser.getUid());
+        Log.d(TAG, "Selected user UID: " + selectedUser.getId());
         Log.d(TAG, "Is current user: " + isCurrentUser);
         Log.d(TAG, "User email: " + selectedUser.getEmail());
         Log.d(TAG, "User password: " + selectedUser.getPassword());
@@ -177,7 +192,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
     }
 
     private void updateUserInDatabase(User user) {
-        Log.d(TAG, "Updating user in database: " + user.getUid());
+        Log.d(TAG, "Updating user in database: " + user.getId());
         databaseService.updateUser(user, new DatabaseService.DatabaseCallback<Void>() {
             @Override
             public void onCompleted(Void result) {

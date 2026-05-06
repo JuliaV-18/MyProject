@@ -11,9 +11,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+
 import com.lian.myproject.Login;
 import com.lian.myproject.R;
 import com.lian.myproject.Register;
+import com.lian.myproject.services.LateLoanWorker;
+
+import androidx.work.ExistingPeriodicWorkPolicy;
+
+
+import java.util.concurrent.TimeUnit;
 
 /// Landing activity for the app
 /// This activity is the first activity that is shown when the app is first opened (when the user is not signed in)
@@ -57,4 +66,14 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
             startActivity(registerIntent);
         }
     }
+
+    PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(LateLoanWorker.class, 6, TimeUnit.HOURS)
+                    .build();
+    WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                "LateLoanCheck",
+                ExistingPeriodicWorkPolicy.KEEP,
+                workRequest
+                );
 }
+
+

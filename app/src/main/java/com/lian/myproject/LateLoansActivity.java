@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,27 +14,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lian.myproject.adapters.BookAdapter;
+import com.lian.myproject.adapters.LoanAdapter;
 import com.lian.myproject.model.Book;
+import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class LoansActivity extends AppCompatActivity {
+public class LateLoansActivity extends AppCompatActivity {
 
     private static final String TAG = "BooksListActivity";
-    private BookAdapter bookAdapter;
-    private TextView tvBookCount;
+    private LoanAdapter loanAdapter ;
 
-    RecyclerView rvBooks;
+
+    RecyclerView rvLoans;
     DatabaseService databaseService;
 
-    ArrayList<Book> books=new ArrayList<>();
+    ArrayList<Loan> loanArrayList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+
         setContentView(R.layout.activity_loans);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -46,45 +48,52 @@ public class LoansActivity extends AppCompatActivity {
 
 
 
-     rvBooks = findViewById(R.id.rv_Loaned_books);
-        rvBooks.setLayoutManager(new LinearLayoutManager(this));
+     rvLoans = findViewById(R.id.rv_Loaned_books);
+        rvLoans.setLayoutManager(new LinearLayoutManager(this));
 
 
     databaseService = DatabaseService.getInstance();
 
 
-    bookAdapter = new BookAdapter(books,new BookAdapter.OnBookClickListener() {
+    loanAdapter = new LoanAdapter(loanArrayList,new LoanAdapter.OnLoanClickListener() {
         @Override
-        public void onBookClick(Book book) {
-            // Handle book click
-            Log.d(TAG, "Book clicked: " + book);
-            Intent intent = new Intent(LoansActivity.this, LoanABookActivity.class);
-            intent.putExtra("BOOK_UID", book.getId());
+        public void onLoanClick(Loan loan) {
+            Log.d(TAG, "Book clicked: " + loan);
+            Intent intent = new Intent(LateLoansActivity.this, LoanABookActivity.class);
+            intent.putExtra("BOOK_UID", loan.getId());
             startActivity(intent);
-
         }
 
         @Override
-        public void onLongBookClick(Book book) {
-            // Handle long book click
-            Log.d(TAG, "Book long clicked: " + book);
+        public void onLongLoanClick(Loan loan) {
+            Log.d(TAG, "Book long clicked: " + loan);
         }
+
+
     });
-        rvBooks.setAdapter(bookAdapter);
+        rvLoans.setAdapter(loanAdapter);
 }
 
+    Date currentDate = new Date();
 
 @Override
 protected void onResume() {
     super.onResume();
-    databaseService.getBookList(new DatabaseService.DatabaseCallback<List<Book>>() {
+    databaseService.getBookLoan(new DatabaseService.DatabaseCallback<List<Loan>>() {
         @Override
-        public void onCompleted(List<Book> bookList) {
+        public void onCompleted(List<Loan> loanList) {
 
-            books.addAll(bookList);
+            loanArrayList.clear();
 
-            bookAdapter.notifyDataSetChanged();
-            //   tvBookCount.setText("Total books: " + bookList.size());
+
+            Date currentDate = new Date();
+            for (Loan loan : loanList) {
+                if (loan.getReturnDate().before(currentDate)) { // late books
+                    loanArrayList.add(loan);
+                }
+            }
+
+            loanAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -95,5 +104,7 @@ protected void onResume() {
 
     });
 }
+
+
 
 }

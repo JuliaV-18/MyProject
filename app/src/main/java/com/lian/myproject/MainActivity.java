@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void goAddBook(View view) {
-        Intent go= new Intent( this, UserLoanActivity.class);
+        Intent go= new Intent( this, LoansActivity.class);
         startActivity(go);
     }
     public void goBookList(View view){
@@ -48,8 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goUserLoansBook(View view) {
 
-        Intent go= new Intent( this, UserLoanActivity.class);
+        Intent go= new Intent( this, LoansActivity.class);
         startActivity(go);
     }
+
+
+
 }
 

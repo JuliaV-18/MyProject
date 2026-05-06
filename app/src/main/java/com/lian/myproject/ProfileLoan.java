@@ -1,6 +1,7 @@
 package com.lian.myproject;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +21,9 @@ public class ProfileLoan extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        TextView borrowDate = findViewById(R.id.tv_borrow_date);
+        TextView returnDate = findViewById(R.id.tv_return_date);
     }
 }

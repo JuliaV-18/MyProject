@@ -61,7 +61,7 @@
                 app:cardElevation="4dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_main_my_users"
+                    android:id="@+id/btn_admin_users"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
@@ -80,7 +80,7 @@
                 app:cardElevation="4dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_main_my_books"
+                    android:id="@+id/btn_admin_books"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:backgroundTint="?attr/colorSurface"
@@ -100,11 +100,11 @@
                 app:cardElevation="4dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_main_my_loans"
+                    android:id="@+id/btn_admin_loans"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:backgroundTint="?attr/colorSurface"
-                    android:text="📝View Loans"
+                    android:text="📝Edit Loans"
                     android:textAllCaps="true"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp"
@@ -120,7 +120,27 @@
                 app:cardElevation="4dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_main_add_loan"
+                    android:id="@+id/btn_admin_late_loans"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:backgroundTint="?attr/colorSurface"
+                    android:text="📝Late Loans"
+                    android:textAllCaps="true"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="18sp"
+                    android:onClick="goLateLoans" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_admin_add_book"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"

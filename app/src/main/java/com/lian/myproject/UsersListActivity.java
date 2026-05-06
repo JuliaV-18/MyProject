@@ -44,7 +44,7 @@ public class UsersListActivity extends com.lian.myproject.BaseActivity {
 //                 Handle user click
                 Log.d(TAG, "User clicked: " + user);
                 Intent intent = new Intent(UsersListActivity.this, com.lian.myproject.UserProfileActivity.class);
-                intent.putExtra("USER_UID", user.getUid());
+                intent.putExtra("USER_UID", user.getId());
                 startActivity(intent);
             }
 
