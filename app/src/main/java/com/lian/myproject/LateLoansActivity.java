@@ -1,9 +1,12 @@
 package com.lian.myproject;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -87,7 +90,10 @@ protected void onResume() {
 
 
             Date currentDate = new Date();
+
             for (Loan loan : loanList) {
+
+                Toast.makeText(LateLoansActivity.this,loan.getReturnDate().toString(),LENGTH_LONG).show();
                 if (loan.getReturnDate().before(currentDate)) { // late books
                     loanArrayList.add(loan);
                 }

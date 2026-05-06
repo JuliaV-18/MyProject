@@ -38,7 +38,7 @@ public class LateLoanWorker extends Worker {
 
         databaseService.getBookLoan(new DatabaseService.DatabaseCallback<List<Loan>>() {
             @Override
-            public void onCompleted(<List<Loan> loanList) {
+            public void onCompleted(List<Loan> loanList) {
 
                 ArrayList<Loan>loans=new ArrayList<>();
                 Date currentDate = new Date();

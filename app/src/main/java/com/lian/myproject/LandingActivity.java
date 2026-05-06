@@ -1,5 +1,6 @@
 package com.lian.myproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,15 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
             return insets;
         });
 
+        PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(LateLoanWorker.class, 24, TimeUnit.HOURS).build();
+
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                "LateLoanCheck",
+                ExistingPeriodicWorkPolicy.KEEP,
+                workRequest
+        );
+
         /// get the views
         btnLogin = findViewById(R.id.btn_landing_login);
         btnRegister = findViewById(R.id.btn_landing_register);
@@ -67,13 +77,9 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(LateLoanWorker.class, 6, TimeUnit.HOURS)
-                    .build();
-    WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-                "LateLoanCheck",
-                ExistingPeriodicWorkPolicy.KEEP,
-                workRequest
-                );
+
+
+
 }
 
 
