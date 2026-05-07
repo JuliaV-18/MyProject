@@ -1,5 +1,6 @@
 package com.lian.myproject.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull LoanAdapter.ViewHolder holder, int position) {
         Loan loan = loanList.get(position);
+
+        Log.d("Loan", loan.toString());
         if (loan == null) return;
 
 
@@ -67,8 +70,8 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         });
 
         holder.tvTitle.setText(loan.getBookName());
-        holder.tvBorrowDate.setText(loan.getBorrowDateString());
-        holder.tvReturnDate.setText(loan.getReturnDateString());
+        holder.tvBorrowDate.setText(loan.convertDateToString(loan.getBorrowDate()));
+        holder.tvReturnDate.setText(loan.convertDateToString(loan.getReturnDate()));
 
 
 
@@ -100,24 +103,9 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void addLoan(Loan loan) {
-        loanList.add(loan);
-        notifyItemInserted(loanList.size() - 1);
-    }
 
-    public void updateLoan(Loan loan) {
-        int index = loanList.indexOf(loan);
-        if (index == -1) return;
-        loanList.set(index, loan);
-        notifyItemChanged(index);
-    }
 
-    public void removeLoan(Loan loan) {
-        int index = loanList.indexOf(loan);
-        if (index == -1) return;
-        loanList.remove(index);
-        notifyItemRemoved(index);
-    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvUser, tvTitle, tvBorrowDate, tvReturnDate;

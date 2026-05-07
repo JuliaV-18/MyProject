@@ -14,8 +14,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lian.myproject.adapters.BookAdapter;
-import com.lian.myproject.model.Book;
+import com.lian.myproject.adapters.LoanAdapter;
+import com.lian.myproject.adapters.LoanAdapter;
+import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
 
 import java.util.ArrayList;
@@ -23,14 +24,14 @@ import java.util.List;
 
 public class LoansActivity extends AppCompatActivity {
 
-    private static final String TAG = "BooksListActivity";
-    private BookAdapter bookAdapter;
-    private TextView tvBookCount;
+    private static final String TAG = "LoansListActivity";
+    private LoanAdapter loanAdapter;
+    private TextView tvLoanCount;
 
-    RecyclerView rvBooks;
+    RecyclerView rvLoans;
     DatabaseService databaseService;
 
-    ArrayList<Book> books=new ArrayList<>();
+    ArrayList<Loan> loans=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,50 +47,50 @@ public class LoansActivity extends AppCompatActivity {
 
 
 
-     rvBooks = findViewById(R.id.rv_Loaned_books);
-        rvBooks.setLayoutManager(new LinearLayoutManager(this));
+     rvLoans = findViewById(R.id.rv_Loaned_books);
+        rvLoans.setLayoutManager(new LinearLayoutManager(this));
 
 
     databaseService = DatabaseService.getInstance();
 
 
-    bookAdapter = new BookAdapter(books,new BookAdapter.OnBookClickListener() {
+    loanAdapter = new LoanAdapter(loans,new LoanAdapter.OnLoanClickListener() {
         @Override
-        public void onBookClick(Book book) {
-            // Handle book click
-            Log.d(TAG, "Book clicked: " + book);
-            Intent intent = new Intent(LoansActivity.this, LoanABookActivity.class);
-            intent.putExtra("BOOK_UID", book.getId());
+        public void onLoanClick(Loan loan) {
+            // Handle loan click
+            Log.d(TAG, "Loan clicked: " + loan);
+            Intent intent = new Intent(LoansActivity.this, ProfileLoan.class);
+            intent.putExtra("LOAN_UID", loan.getId());
             startActivity(intent);
 
         }
 
         @Override
-        public void onLongBookClick(Book book) {
-            // Handle long book click
-            Log.d(TAG, "Book long clicked: " + book);
+        public void onLongLoanClick(Loan loan) {
+            // Handle long loan click
+            Log.d(TAG, "Loan long clicked: " + loan);
         }
     });
-        rvBooks.setAdapter(bookAdapter);
+        rvLoans.setAdapter(loanAdapter);
 }
 
 
 @Override
 protected void onResume() {
     super.onResume();
-    databaseService.getBookList(new DatabaseService.DatabaseCallback<List<Book>>() {
+    databaseService.getBookLoan(new DatabaseService.DatabaseCallback<List<Loan>>() {
         @Override
-        public void onCompleted(List<Book> bookList) {
+        public void onCompleted(List<Loan> loanList) {
 
-            books.addAll(bookList);
+            loans.addAll(loanList);
 
-            bookAdapter.notifyDataSetChanged();
-            //   tvBookCount.setText("Total books: " + bookList.size());
+            loanAdapter.notifyDataSetChanged();
+            //   tvLoanCount.setText("Total loans: " + loanList.size());
         }
 
         @Override
         public void onFailed(Exception e) {
-            Log.e(TAG, "Failed to get books list", e);
+            Log.e(TAG, "Failed to get loans list", e);
         }
 
 

@@ -72,12 +72,14 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
 
            showUserProfile();
        }
+else
+       if(selectedUid==null) {
 
-//       if(selectedUid==null) {
-//
-//           mAuth = FirebaseAuth.getInstance();
-//           selectedUid = mAuth.getUid();
-//       }
+           mAuth = FirebaseAuth.getInstance();
+           selectedUid = mAuth.getUid();
+
+           showUserProfile();
+       }
 
 
 

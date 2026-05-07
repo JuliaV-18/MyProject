@@ -77,7 +77,7 @@ public class LateLoansActivity extends AppCompatActivity {
         rvLoans.setAdapter(loanAdapter);
 }
 
-    Date currentDate = new Date();
+
 
 @Override
 protected void onResume() {
@@ -93,9 +93,15 @@ protected void onResume() {
 
             for (Loan loan : loanList) {
 
-                Toast.makeText(LateLoansActivity.this,loan.getReturnDate().toString(),LENGTH_LONG).show();
-                if (loan.getReturnDate().before(currentDate)) { // late books
+              //  if (loan.getReturnDate().before(currentDate)) { // late books
+              //      loanArrayList.add(loan);
+              //  }
+
+                if (loan.isOverdue()) {
                     loanArrayList.add(loan);
+
+                    Toast.makeText(LateLoansActivity.this,loan.getBorrowDate().toString()+"  "+loan.getReturnDate().toString(),LENGTH_LONG).show();
+
                 }
             }
 

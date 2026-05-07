@@ -45,14 +45,11 @@ public class MainActivity extends AppCompatActivity {
         Intent go=new Intent(this, AdminActivity.class);
         startActivity(go);
     }
-
     public void goUserLoansBook(View view) {
 
-        Intent go= new Intent( this, LoansActivity.class);
+        Intent go= new Intent( this, UserLoansActivity.class);
         startActivity(go);
     }
-
-
 
 }
 

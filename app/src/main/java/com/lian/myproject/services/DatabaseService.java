@@ -471,6 +471,8 @@ public class DatabaseService {
     /// @see DatabaseCallback
     /// @see Cart
        public void createNewLoan(@NotNull final Loan loan, @Nullable final DatabaseCallback<Void> callback) {
+
+        loan.setReturnDateAutomatically();
             writeData(BOOK_LOAN + "/" + loan.getId(), loan, callback);
 
             writeData(USER_LOAN + "/" + loan.getUserId()+"/"+loan.getId(), loan, callback);

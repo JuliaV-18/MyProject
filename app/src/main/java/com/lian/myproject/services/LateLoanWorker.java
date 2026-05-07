@@ -41,14 +41,15 @@ public class LateLoanWorker extends Worker {
             public void onCompleted(List<Loan> loanList) {
 
                 ArrayList<Loan>loans=new ArrayList<>();
-                Date currentDate = new Date();
+//                Date currentDate = new Date();
                 for (Loan loan : loanList) {
-                    if (loan.getReturnDate().before(currentDate)) { // late books
-                        loans.add(loan);
+//                    if (loan.getReturnDate().before(currentDate)) { // late books
+                    if(loan.isOverdue())
+                              loans.add(loan);
 
                         sendNotification(loan);
                     }
-                }
+
 
             }
 

@@ -14,8 +14,21 @@ public class Loan {
     protected Date borrowDate;
     protected Date returnDate;
     protected boolean returned;
+    protected boolean isOverdue=false;
 
     protected  String message;
+
+    public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned, boolean isOverdue, String message) {
+        this.id = id;
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.userId = userId;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.returned = returned;
+        this.isOverdue = isOverdue;
+        this.message = message;
+    }
 
     public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned) {
         this.id = id;
@@ -25,6 +38,7 @@ public class Loan {
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.returned = returned;
+
     }
 
     public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned, String message) {
@@ -46,19 +60,23 @@ public class Loan {
 
         Calendar cal = Calendar.getInstance();
         this.borrowDate = cal.getTime();
+        this.isOverdue=false;
 
-        setReturnDateAutomatically();
+       // setReturnDateAutomatically();
         this.returned = false;
     }
+
+
 
     public Loan() {
     }
 
     // Getters
-        public String getId() {
-            return id;
-        }
 
+
+    public String getId() {
+        return id;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -88,8 +106,16 @@ public class Loan {
         this.userId = userId;
     }
 
+    public Date getBorrowDate() {
+        return borrowDate;
+    }
+
     public void setBorrowDate(Date borrowDate) {
         this.borrowDate = borrowDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
     }
 
     public void setReturnDate(Date returnDate) {
@@ -100,36 +126,42 @@ public class Loan {
         this.returned = returned;
     }
 
-    public Date getBorrowDate() {
-            return borrowDate;
-        }
-
-        public Date getReturnDate() {
-            return returnDate;
-        }
-
-        public boolean isReturned() {
+    public boolean isReturned() {
             return returned;
         }
 
         // החזרת ספר
-        public void returnBook(Date returnDate) {
-            this.returnDate = returnDate;
+        public void returnBook() {
+
             this.returned = true;
         }
 
         // בדיקה אם מאוחר
-        public boolean isOverdue() {
+        public boolean isOverdue2() {
+
+            Date currentDate = new Date();
             if (returned) return false;
+            if (this.getReturnDate().before(currentDate)) { // late books
+                return true;
+            }
+            else return false;
 
-            Date today = new Date();
-            long diff = today.getTime() - borrowDate.getTime();
+//                Date today = new Date();
+//                long diff = today.getTime() - borrowDate.getTime();
+//
+//                long days = diff / (1000 * 60 * 60 * 24);
+//
+//                return days > 14; // לדוגמה: השאלה ל-14 ימים}
 
-            long days = diff / (1000 * 60 * 60 * 24);
-
-            return days > 14; // לדוגמה: השאלה ל-14 ימים
         }
 
+    public boolean isOverdue() {
+        return isOverdue;
+    }
+
+    public void setOverdue(boolean overdue) {
+        isOverdue = overdue;
+    }
 
     public void setReturnDateAutomatically() {
         Calendar cal = Calendar.getInstance();
@@ -142,15 +174,24 @@ public class Loan {
 
 
 
-    public String getBorrowDateString() {
-        if (returnDate == null) return "";
+//    public String getBorrowDateString() {
+//        if (this.borrowDate == null) return "";
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+//        return sdf.format(borrowDate);
+//    }
+//    public String getReturnDateString() {
+//        if (this.returnDate == null) return "";
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+//        return sdf.format(returnDate);
+//    }
+//
+
+
+    public String convertDateToString(Date date){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        return sdf.format(borrowDate);
-    }
-    public String getReturnDateString() {
-        if (returnDate == null) return "";
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        return sdf.format(returnDate);
+        return sdf.format(date);
+
+
     }
 
     public String getMessage() {
