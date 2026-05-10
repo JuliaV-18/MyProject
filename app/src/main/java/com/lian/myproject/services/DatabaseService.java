@@ -257,7 +257,7 @@ public class DatabaseService {
     }
 
 
-    /// Login with email and password
+    /// LoginActivity with email and password
     /// @param email , password
     /// @param callback the callback to call when the operation is completed
     ///              the callback will receive String (user id)

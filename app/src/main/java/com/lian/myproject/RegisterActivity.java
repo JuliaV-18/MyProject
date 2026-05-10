@@ -13,12 +13,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 
-import com.lian.myproject.R;
 import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
 
@@ -27,7 +23,7 @@ import com.lian.myproject.services.DatabaseService;
 /// It contains fields for the user to enter their information
 /// It also contains a button to register the user
 /// When the user is registered, they are redirected to the main activity
-public class Register extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "RegisterActivity";
 
@@ -65,7 +61,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if (v.getId() == btnRegister.getId()) {
-            Log.d(TAG, "onClick: Register button clicked");
+            Log.d(TAG, "onClick: RegisterActivity button clicked");
 
             /// get the input from the user
             String email = etEmail.getText().toString();
@@ -84,14 +80,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             Log.d(TAG, "onClick: Registering user...");
 
-            /// Register user
+            /// RegisterActivity user
             registerUser(fName, lName, phone, email, password);
 
         }
     }
 
 
-    /// Register the user
+    /// RegisterActivity the user
     private void registerUser(String fname, String lname, String phone, String email, String password) {
         Log.d(TAG, "registerUser: Registering user...");
 
@@ -125,7 +121,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 editor.commit();
 
                 /// Redirect to MainActivity and clear back stack to prevent user from going back to register screen
-                Intent mainIntent = new Intent(Register.this, MainActivity.class);
+                Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                 /// clear the back stack (clear history) and start the MainActivity
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
@@ -135,7 +131,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             public void onFailed(Exception e) {
                 Log.e(TAG, "createUserInDatabase: Failed to create user", e);
                 /// show error message to user
-                Toast.makeText(Register.this, "Failed to register user", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Failed to register user", Toast.LENGTH_SHORT).show();
                 /// sign out the user if failed to register
                
             }
@@ -144,7 +140,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     public void goLogin2(View view) {
 
-        Intent go= new Intent( this, Login.class);
+        Intent go= new Intent( this, LoginActivity.class);
         startActivity(go);
     }
     

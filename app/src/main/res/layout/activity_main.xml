@@ -19,8 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/dark"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Main Screen - User"
-            app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
+            app:title="Main Screen" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -40,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Welcome to your Library! :)"
+                android:text="Welcome to our Library! :)"
                 android:textColor="?attr/colorOnBackground"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -56,6 +55,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/dark"
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
@@ -64,11 +64,11 @@
                     android:id="@+id/btn_main_add_food"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="@color/dark"
-                    android:backgroundTint="@color/background2"
                     android:text="📚 View Books"
                     android:textSize="18sp"
-                    app:iconTint="@color/background"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@color/dark"
+                    app:cornerRadius="12dp"
                     android:onClick="goBookList"/>
 
             </com.google.android.material.card.MaterialCardView>
@@ -76,24 +76,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_main_add_loan"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:onClick="goLoanBook"
-                    android:text="💳 Loan A Book"
-                    android:textSize="18sp" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/dark"
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
@@ -102,10 +85,9 @@
                     android:id="@+id/btn_main_my_carts"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
-                    android:text="📋 My Books"
-                    android:textAllCaps="true"
-                    android:textColor="?attr/colorOnSurface"
+                    app:backgroundTint="@color/dark"
+                    android:text="📋 My Loaned Books"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:onClick="goUserLoansBook" />
 
@@ -114,6 +96,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/dark"
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
@@ -123,14 +106,13 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    app:backgroundTint="@color/dark"
                     android:text="👤 Edit Profile"
-                    android:textColor="?attr/colorOnSurface"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:onClick="goProfile" />
 
             </com.google.android.material.card.MaterialCardView>
-
 
 
             <com.google.android.material.card.MaterialCardView
@@ -138,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="?attr/colorSecondary"
+                app:cardBackgroundColor="@color/txt3"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
                 tools:visibility="visible">
@@ -149,7 +131,6 @@
                     android:layout_height="80dp"
                     android:backgroundTint="#00000000"
                     android:text="⚙️ Admin Panel"
-                    android:textAllCaps="true"
                     android:textColor="?attr/colorOnSecondary"
                     android:textSize="18sp"
                     tools:visibility="visible"

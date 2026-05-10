@@ -18,7 +18,7 @@ import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
 
-public class EditBookProfileActivity extends AppCompatActivity {
+public class BookProfileActivity extends AppCompatActivity {
 
     private ImageView imgBookCover;
     private EditText etTitle, etAuthor, etCopies, etGenre, etDesc;
@@ -37,7 +37,7 @@ public class EditBookProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_profile_edit_book);
+        setContentView(R.layout.activity_profile_book);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -113,7 +113,7 @@ public class EditBookProfileActivity extends AppCompatActivity {
 
 
 
-                            Intent go= new Intent( EditBookProfileActivity.this, BooksListActivity.class);
+                            Intent go= new Intent( BookProfileActivity.this, BooksListActivity.class);
                             startActivity(go);
                         }
 

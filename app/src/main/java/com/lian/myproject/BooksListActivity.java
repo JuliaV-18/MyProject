@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,7 +27,6 @@ public class BooksListActivity extends AppCompatActivity {
     private static final String TAG = "BooksListActivity";
     private BookAdapter bookAdapter;
     private TextView tvBookCount;
-
 
     DatabaseService databaseService;
 
@@ -59,7 +59,7 @@ public class BooksListActivity extends AppCompatActivity {
             public void onBookClick(Book book) {
                 // Handle book click
                 Log.d(TAG, "Book clicked: " + book);
-                Intent intent = new Intent(BooksListActivity.this, EditBookProfileActivity.class);
+                Intent intent = new Intent(BooksListActivity.this, BookProfileActivity.class);
                 intent.putExtra("BOOK_UID", book.getId());
                 startActivity(intent);
             }
@@ -86,9 +86,18 @@ public class BooksListActivity extends AppCompatActivity {
                 return false;
             }
 
-
-
         });
+
+        Toolbar toolbar = findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        toolbar.setNavigationOnClickListener(v ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
     }
 
 

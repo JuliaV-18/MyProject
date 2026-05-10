@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +13,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lian.myproject.adapters.LoanAdapter;
 import com.lian.myproject.adapters.LoanAdapter;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
@@ -59,7 +57,7 @@ public class LoansActivity extends AppCompatActivity {
         public void onLoanClick(Loan loan) {
             // Handle loan click
             Log.d(TAG, "Loan clicked: " + loan);
-            Intent intent = new Intent(LoansActivity.this, ProfileLoan.class);
+            Intent intent = new Intent(LoansActivity.this, LoanProfileActivity.class);
             intent.putExtra("LOAN_UID", loan.getId());
             startActivity(intent);
 

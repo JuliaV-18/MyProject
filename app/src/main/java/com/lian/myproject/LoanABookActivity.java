@@ -25,13 +25,9 @@ public class LoanABookActivity extends AppCompatActivity {
     private ImageView imgBookCover;
     private EditText etTitle, etAuthor, etCopies, etGenre, etDesc;
     private Button btnLoan, btnCancel;
-
     Intent takeit;
-
     String bookId;
-
     Book book;
-
     DatabaseService databaseService;
     private FirebaseAuth mAuth;
 

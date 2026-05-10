@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -22,6 +22,8 @@ import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.utils.SharedPreferencesUtil;
 import com.lian.myproject.utils.Validator;
+
+import java.util.Objects;
 
 public class UserProfileActivity extends com.lian.myproject.BaseActivity implements View.OnClickListener {
 
@@ -41,12 +43,6 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile_user);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
 
 
         etUserFirstName = findViewById(R.id.et_user_first_name);
@@ -72,7 +68,6 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
 
            showUserProfile();
        }
-else
        if(selectedUid==null) {
 
            mAuth = FirebaseAuth.getInstance();
@@ -81,15 +76,23 @@ else
            showUserProfile();
        }
 
-
-
-
-
         Log.d(TAG, "Selected user: " + selectedUid);
 
         // Initialize the EditText fields
 
 
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        toolbar.setNavigationOnClickListener(v ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
     }
 
     @Override

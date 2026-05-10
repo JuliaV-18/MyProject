@@ -1,6 +1,5 @@
 package com.lian.myproject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import com.lian.myproject.Login;
-import com.lian.myproject.R;
-import com.lian.myproject.Register;
 import com.lian.myproject.services.LateLoanWorker;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
@@ -67,12 +63,12 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         if (v.getId() == btnLogin.getId()) {
-            Log.d(TAG, "onClick: Login button clicked");
-            Intent loginIntent = new Intent(LandingActivity.this, Login.class);
+            Log.d(TAG, "onClick: LoginActivity button clicked");
+            Intent loginIntent = new Intent(LandingActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else if (v.getId() == btnRegister.getId()) {
-            Log.d(TAG, "onClick: Register button clicked");
-            Intent registerIntent = new Intent(LandingActivity.this, Register.class);
+            Log.d(TAG, "onClick: RegisterActivity button clicked");
+            Intent registerIntent = new Intent(LandingActivity.this, RegisterActivity.class);
             startActivity(registerIntent);
         }
     }

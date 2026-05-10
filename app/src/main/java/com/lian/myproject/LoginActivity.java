@@ -12,13 +12,10 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.lian.myproject.services.DatabaseService;
 
-public class Login extends AppCompatActivity implements android.view.View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements android.view.View.OnClickListener {
 
     private static final String TAG = "LoginActivity";
 
@@ -66,7 +63,7 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
             public void onCompleted(String  uid) {
                 Log.d(TAG, "onCompleted: User logged in: " + uid.toString());
                 /// save the user data to shared preferences
-                // SharedPreferencesUtil.saveUser(Login.this, user);
+                // SharedPreferencesUtil.saveUser(LoginActivity.this, user);
 
 
                 SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -77,7 +74,7 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
                 editor.commit();
 
                 /// Redirect to main activity and clear back stack to prevent user from going back to login screen
-                Intent mainIntent = new Intent(Login.this, MainActivity.class);
+                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                 /// Clear the back stack (clear history) and start the MainActivity
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
@@ -91,7 +88,7 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
                 etPassword.requestFocus();
                 /// Sign out the user if failed to retrieve user data
                 /// This is to prevent the user from being logged in again
-            //    SharedPreferencesUtil.signOutUser(Login.this);
+            //    SharedPreferencesUtil.signOutUser(LoginActivity.this);
             }
         });
     }
@@ -99,7 +96,7 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
     @Override
     public void onClick(android.view.View v) {
         if (v== btnLogin) {
-            Log.d(TAG, "onClick: Login button clicked");
+            Log.d(TAG, "onClick: LoginActivity button clicked");
 
             /// get the email and password entered by the user
             String email = etEmail.getText().toString();
@@ -115,16 +112,16 @@ public class Login extends AppCompatActivity implements android.view.View.OnClic
 
             Log.d(TAG, "onClick: Logging in user...");
 
-            /// Login user
+            /// LoginActivity user
             loginUser(email, password);
         }
-        //  Intent registerIntent = new Intent(Login.this, Login.class);
+        //  Intent registerIntent = new Intent(LoginActivity.this, LoginActivity.class);
         //startActivity(registerIntent);
     }
 
 
     public void goRegister2(View view) {
-        Intent go= new Intent( this, Register.class);
+        Intent go= new Intent( this, RegisterActivity.class);
         startActivity(go);
     }
     public void goUserActivity(View view) {
