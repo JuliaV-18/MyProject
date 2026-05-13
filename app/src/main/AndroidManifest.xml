@@ -23,7 +23,7 @@
             android:name=".LoanProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateLoan"
+            android:name=".AddLoan"
             android:exported="false" />
         <activity
             android:name=".LoanABookActivity"

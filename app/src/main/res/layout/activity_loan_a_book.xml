@@ -5,11 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgAdmin"
+    android:background="@color/background"
     tools:context=".BookProfileActivity">
 
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar3"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/dark"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Main Screen" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -18,26 +36,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout5"
-            android:layout_width="411dp"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/txt3"
-                app:navigationIcon="?attr/homeAsUpIndicator"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="Loan This Book - User"
-                app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
             android:id="@+id/img_profile_book_cover"
@@ -56,8 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title: "
-                android:textSize="30dp"
                 android:textColor="@color/txt2"
+                android:textSize="30dp"
                 tools:layout_editor_absoluteX="65dp"
                 tools:layout_editor_absoluteY="46dp" />
 
@@ -90,31 +90,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView33"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amount of copies: "
-                android:textSize="20dp"
-                android:textColor="@color/txt1"
-                tools:layout_editor_absoluteX="65dp"
-                tools:layout_editor_absoluteY="93dp" />
-
-            <EditText
-                android:id="@+id/tv_profile_book_copies"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="00"
-                android:textColor="@color/txt3"
-                android:textAlignment="center"/>
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -183,7 +159,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.822" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

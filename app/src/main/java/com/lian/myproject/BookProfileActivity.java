@@ -60,7 +60,6 @@ public class BookProfileActivity extends AppCompatActivity {
 
                 etTitle.setText(book.getTitle());
                 etAuthor.setText(book.getAuthor());
-               etCopies.setText(book.getCopiesAvailable()+"");
                  etGenre.setText(book.getCategory());
                  etDesc.setText(book.getDescription());
 
@@ -79,12 +78,11 @@ public class BookProfileActivity extends AppCompatActivity {
 
         etTitle = findViewById(R.id.tv_profile_book_title);
         etAuthor = findViewById(R.id.tv_profile_book_author);
-        etCopies = findViewById(R.id.tv_profile_book_copies);
         etGenre = findViewById(R.id.tv_profile_book_genre);
         etDesc = findViewById(R.id.tv_profile_book_desc);
 
-        btnEdit = findViewById(R.id.btn_loan_book);
-        btnCancel = findViewById(R.id.btn_cancel_loan);
+        btnEdit = findViewById(R.id.btn_edit_book);
+        btnCancel = findViewById(R.id.btn_cancel_edit_book);
 
         // כפתור השאלה
         btnEdit.setOnClickListener(new View.OnClickListener() {

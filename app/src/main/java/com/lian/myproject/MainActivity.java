@@ -6,17 +6,26 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lian.myproject.model.User;
 
 public class MainActivity extends AppCompatActivity {
+    public CardView btnAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +33,38 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Find the admin card
-        adminCard = findViewById(R.id.admin_card);
+        btnAdmin = findViewById(R.id.admin_card);
+        btnAdmin.setVisibility(View.GONE);
 
-        // Hide it by default
-        adminCard.setVisibility(View.GONE);
-
-        // Get current Firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (currentUser.isAdmin()) {
-            adminCard.setVisibility(View.VISIBLE);
+        if (firebaseUser != null) {
+
+            DatabaseReference ref = FirebaseDatabase.getInstance()
+                    .getReference("users")
+                    .child(firebaseUser.getUid());
+
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    User currentUser = snapshot.getValue(User.class);
+
+                    if (currentUser != null && currentUser.isAdmin()) {
+                        btnAdmin.setVisibility(View.VISIBLE);
+                    } else {
+                        btnAdmin.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

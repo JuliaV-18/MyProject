@@ -58,7 +58,6 @@ public class LoanABookActivity extends AppCompatActivity {
 
                 etTitle.setText(book.getTitle());
                 etAuthor.setText(book.getAuthor());
-                etCopies.setText(book.getCopiesAvailable()+"");
                 etGenre.setText(book.getCategory());
                 etDesc.setText(book.getDescription());
 
@@ -77,7 +76,6 @@ public class LoanABookActivity extends AppCompatActivity {
 
         etTitle = findViewById(R.id.tv_profile_book_title);
         etAuthor = findViewById(R.id.tv_profile_book_author);
-        etCopies = findViewById(R.id.tv_profile_book_copies);
         etGenre = findViewById(R.id.tv_profile_book_genre);
         etDesc = findViewById(R.id.tv_profile_book_desc);
 

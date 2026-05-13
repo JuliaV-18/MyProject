@@ -7,20 +7,20 @@ public class Book {
     protected String title;
     protected String author;
     protected boolean isAvailable;
-    protected int copiesAvailable;
-    protected int copiesTotal;
+//    protected int copiesAvailable;
+//    protected int copiesTotal;
     protected String category;
     protected String coverUrl;
     protected Date added;
     protected String description;
 
-    public Book(String id, String title, String author, boolean isAvailable, int copiesAvailable, int copiesTotal, String category, String coverUrl, Date added, String description) {
+    public Book(String id, String title, String author, boolean isAvailable, String category, String coverUrl, Date added, String description) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.isAvailable = isAvailable;
-        this.copiesAvailable = copiesAvailable;
-        this.copiesTotal = copiesTotal;
+//        this.copiesAvailable = copiesAvailable;
+//        this.copiesTotal = copiesTotal;
         this.category = category;
         this.coverUrl = coverUrl;
         this.added = added;
@@ -62,21 +62,21 @@ public class Book {
         isAvailable = available;
     }
 
-    public int getCopiesAvailable() {
-        return copiesAvailable;
-    }
-
-    public void setCopiesAvailable(int copiesAvailable) {
-        this.copiesAvailable = copiesAvailable;
-    }
-
-    public int getCopiesTotal() {
-        return copiesTotal;
-    }
-
-    public void setCopiesTotal(int copiesTotal) {
-        this.copiesTotal = copiesTotal;
-    }
+//    public int getCopiesAvailable() {
+//        return copiesAvailable;
+//    }
+//
+//    public void setCopiesAvailable(int copiesAvailable) {
+//        this.copiesAvailable = copiesAvailable;
+//    }
+//
+//    public int getCopiesTotal() {
+//        return copiesTotal;
+//    }
+//
+//    public void setCopiesTotal(int copiesTotal) {
+//        this.copiesTotal = copiesTotal;
+//    }
 
     public String getCategory() {
         return category;
@@ -117,8 +117,8 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", isAvailable=" + isAvailable +
-                ", copiesAvailable=" + copiesAvailable +
-                ", copiesTotal=" + copiesTotal +
+//                ", copiesAvailable=" + copiesAvailable +
+//                ", copiesTotal=" + copiesTotal +
                 ", category='" + category + '\'' +
                 ", coverUrl='" + coverUrl + '\'' +
                 ", added=" + added +

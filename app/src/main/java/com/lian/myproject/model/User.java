@@ -56,9 +56,6 @@ public class User {
     }
 
 
-
-
-
     public String getPhone() {
         return phone;
     }
@@ -87,22 +84,22 @@ public class User {
         return id;
     }
 
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
+//    public String getFname() {
+//        return fname;
+//    }
+//
+//    public void setFname(String fname) {
+//        this.fname = fname;
+//    }
+//
+//    public String getLname() {
+//        return lname;
+//    }
+//
+//    public void setLname(String lname) {
+//        this.lname = lname;
+//    }
+//
     public String getJoined() {
         return joined;
     }

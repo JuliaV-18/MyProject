@@ -29,7 +29,7 @@ import java.util.Date;
 
 public class AddBook extends AppCompatActivity {
 
-    private EditText etBookTitle, etBookAuthor, etBookCopies, etDescription;
+    private EditText etBookTitle, etBookAuthor, etDescription;
     private Spinner spCategory;
     private Button btnImage, btnPicture, btnCancelBook, btnAddBook;
     private ImageView imageView;
@@ -105,7 +105,6 @@ public class AddBook extends AppCompatActivity {
             public void onClick(View v) {
                 String bookTitle= etBookTitle.getText().toString();
                 String bookAuthor= etBookAuthor.getText().toString();
-                String stCopiesAvailabale = etBookCopies.getText().toString();
                 String bookCategory = spCategory.getSelectedItem().toString();
                 String bookDescription = etDescription.getText().toString();
 
@@ -120,7 +119,6 @@ public class AddBook extends AppCompatActivity {
 
 
                 String coverPic = ImageUtil.convertTo64Base(imageView);
-                int copiesAvailable = Integer.parseInt(stCopiesAvailabale);
 
                 if (bookTitle.isEmpty() || bookAuthor.isEmpty() || bookCategory.isEmpty() ||
                         bookDescription.isEmpty()) {
@@ -132,7 +130,7 @@ public class AddBook extends AppCompatActivity {
                 /// generate a new id for the item
                 String id = databaseService.generateBookId();
 
-                Book newBook = new Book( id,  bookTitle,  bookAuthor,  true,  copiesAvailable,  copiesAvailable,  bookCategory,  coverPic, added,  bookDescription);
+                Book newBook = new Book( id,  bookTitle,  bookAuthor,  true,  bookCategory,  coverPic, added,  bookDescription);
 
 
 
@@ -166,7 +164,6 @@ public class AddBook extends AppCompatActivity {
     private void InitViews() {
         etBookTitle = findViewById(R.id.etBookTitle);
         etBookAuthor = findViewById(R.id.etBookAuthor);
-        etBookCopies = findViewById(R.id.etCopiesAvailable);
         etDescription = findViewById(R.id.etDescription);
         spCategory = findViewById(R.id.spCategory);
         imageView = findViewById(R.id.ivCover);
