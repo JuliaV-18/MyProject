@@ -18,17 +18,17 @@ import com.lian.myproject.model.Loan;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.concurrent.CountDownLatch;
 
 
 
 public class LateLoanWorker extends Worker {
 
+
+
     public LateLoanWorker(@NonNull Context context, @NonNull WorkerParameters params) {
         super(context, params);
     }
-
-
 
     @NonNull
     @Override
@@ -36,44 +36,59 @@ public class LateLoanWorker extends Worker {
 
         DatabaseService databaseService = DatabaseService.getInstance();
 
-        databaseService.getBookLoan(new DatabaseService.DatabaseCallback<List<Loan>>() {
-            @Override
-            public void onCompleted(List<Loan> loanList) {
-
-                ArrayList<Loan>loans=new ArrayList<>();
-//                Date currentDate = new Date();
-                for (Loan loan : loanList) {
-//                    if (loan.getReturnDate().before(currentDate)) { // late books
-                    if(loan.isOverdue())
-                        loans.add(loan);
-                        sendNotification(loan);
-                    }
+        CountDownLatch latch = new CountDownLatch(1);
 
 
+
+
+
+
+            List<Loan> loans = new ArrayList<>();
+
+
+            databaseService.getLateLoan(new DatabaseService.DatabaseCallback<List<Loan>>() {
+
+                @Override
+                public void onCompleted(List<Loan> loanList) {
+
+                    loans.addAll(loanList);
+
+
+
+
+                    for (Loan loan : loans) {
+
+                            sendNotification(loan);
+                        }
+
+
+                    latch.countDown();
+
+                }
+
+                @Override
+                public void onFailed(Exception e) {
+
+                    latch.countDown();
+                }
+            });
+
+            try {
+                latch.await();
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
-            @Override
-            public void onFailed(Exception e) {
 
-            }
-        });
-
-
-        List<Loan> loans = databaseService.getLoansSync(); // must be synchronous!
-
-        Date now = new Date();
-
-        for (Loan loan : loans) {
-            if (!loan.isReturned() &&
-                    loan.getReturnDate() != null &&
-                    loan.getReturnDate().before(now)) {
-
-                sendNotification(loan);
-            }
-        }
-
-        return Result.success();
+        return null;
     }
+
+
+
+
+
+
 
     private void sendNotification(Loan loan) {
 

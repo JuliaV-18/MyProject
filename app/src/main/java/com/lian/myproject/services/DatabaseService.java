@@ -1,15 +1,22 @@
 package com.lian.myproject.services;
 
 import static android.util.Log.d;
+import static android.widget.Toast.LENGTH_LONG;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ValueEventListener;
+import com.lian.myproject.LateLoansActivity;
+import com.lian.myproject.R;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.model.User;
@@ -29,6 +36,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.UnaryOperator;
+import java.util.concurrent.CountDownLatch;
 
 
 /// a service to interact with the Firebase Realtime Database.
@@ -467,12 +475,12 @@ public class DatabaseService {
 
 
     /// create a new cart in the database
-    /// @param cart the cart object to create
+    /// @param loan the cart object to create
     /// @param callback the callback to call when the operation is completed
     ///               the callback will receive void
     ///              if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
-    /// @see Cart
+    /// @see Loan
        public void createNewLoan(@NotNull final Loan loan, @Nullable final DatabaseCallback<Void> callback) {
 
         loan.setReturnDateAutomatically();
@@ -487,12 +495,12 @@ public class DatabaseService {
 
 
     /// create a new cart in the database
-    /// @param cart the cart object to create
+    /// @param loan the cart object to create
     /// @param callback the callback to call when the operation is completed
     ///               the callback will receive void
     ///              if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
-    /// @see Cart
+    /// @see Loan
     public void updateLoan(@NotNull final Loan loan, @Nullable final DatabaseCallback<Void> callback) {
         writeData(BOOK_LOAN + "/" + loan.getId(), loan, callback);
 
@@ -514,10 +522,44 @@ public class DatabaseService {
         getDataList(BOOK_LOAN+"/", Loan.class, callback);
     }
 
+    public void getLateLoan(   @NotNull final DatabaseCallback<List<Loan>> callback) {
+        getDataList(BOOK_LOAN + "/", Loan.class, new DatabaseCallback<List<Loan>>() {
+            @Override
+            public void onCompleted(List<Loan> loans) {
+                ArrayList<Loan>lateL=new ArrayList<>();
+
+                for (Loan loan : loans) {
+
+                    //  if (loan.getReturnDate().before(currentDate)) { // late books
+                    //      loanArrayList.add(loan);
+                    //  }
+
+                    if (loan.isOverdue()) {
+                        lateL.add(loan);
+
+                    }
+                }
+                callback.onCompleted(lateL);
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+                callback.onFailed(e);
+            }
+        });
+    }
+
+
+
+
+
 
     public void updateBook(@NotNull final Book book, @Nullable final DatabaseCallback<Void> callback) {
         writeData(BOOKS_PATH + "/" + book.getId(), book, callback) ;
     }
+
+
+
 
 
 //    public List<Loan> getLoansSync() {
