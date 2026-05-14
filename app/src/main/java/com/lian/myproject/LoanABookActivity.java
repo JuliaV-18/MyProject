@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -103,7 +102,7 @@ public class LoanABookActivity extends AppCompatActivity {
                             book.setAvailable(false);
 
                             Toast.makeText(LoanABookActivity.this, "Book transaction is complete!", Toast.LENGTH_SHORT).show();
-                            Intent go = new Intent(LoanABookActivity.this, LoansActivity.class);
+                            Intent go = new Intent(LoanABookActivity.this, AllLoansActivity.class);
                             startActivity(go);
                         }
 

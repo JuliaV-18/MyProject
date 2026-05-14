@@ -42,16 +42,9 @@ public class LateLoansActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_loans);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
 
-
-
-     rvLoans = findViewById(R.id.rv_Loaned_books);
+        rvLoans = findViewById(R.id.rv_Loaned_books);
         rvLoans.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -62,7 +55,7 @@ public class LateLoansActivity extends AppCompatActivity {
         @Override
         public void onLoanClick(Loan loan) {
             Log.d(TAG, "Book clicked: " + loan);
-            Intent intent = new Intent(LateLoansActivity.this, LoanABookActivity.class);
+            Intent intent = new Intent(LateLoansActivity.this, LoanProfileActivity.class);
             intent.putExtra("BOOK_UID", loan.getId());
             startActivity(intent);
         }
@@ -101,7 +94,6 @@ protected void onResume() {
                     loanArrayList.add(loan);
 
                     Toast.makeText(LateLoansActivity.this,loan.getBorrowDate().toString()+"  "+loan.getReturnDate().toString(),LENGTH_LONG).show();
-
                 }
             }
 

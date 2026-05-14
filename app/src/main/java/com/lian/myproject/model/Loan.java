@@ -15,8 +15,7 @@ public class Loan {
     protected Date returnDate;
     protected boolean returned;
     protected boolean isOverdue=false;
-
-    protected  String message;
+    protected String message;
 
     public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned, boolean isOverdue, String message) {
         this.id = id;
@@ -38,7 +37,6 @@ public class Loan {
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.returned = returned;
-
     }
 
     public Loan(String id, String bookId, String bookName, String userId, Date borrowDate, Date returnDate, boolean returned, String message) {
@@ -131,32 +129,19 @@ public class Loan {
         }
 
         // החזרת ספר
-        public void returnBook() {
+    public void returnBook() {
+        this.returned = true;
+    }
 
-            this.returned = true;
-        }
-
-        // בדיקה אם מאוחר
-        public boolean isOverdue2() {
-
-            Date currentDate = new Date();
-            if (returned) return false;
-            if (this.getReturnDate().before(currentDate)) { // late books
-                return true;
-            }
-            else return false;
-
-//                Date today = new Date();
-//                long diff = today.getTime() - borrowDate.getTime();
-//
-//                long days = diff / (1000 * 60 * 60 * 24);
-//
-//                return days > 14; // לדוגמה: השאלה ל-14 ימים}
-
-        }
+    // בדיקה אם מאוחר
 
     public boolean isOverdue() {
-        return isOverdue;
+        Date currentDate = new Date();
+        if (returned) return false;
+        else if (this.getReturnDate().before(currentDate)) { // late books
+            return true;
+        }
+        else return false;
     }
 
     public void setOverdue(boolean overdue) {

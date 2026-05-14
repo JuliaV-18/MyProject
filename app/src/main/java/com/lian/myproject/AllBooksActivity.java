@@ -22,7 +22,7 @@ import com.lian.myproject.services.DatabaseService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BooksListActivity extends AppCompatActivity {
+public class AllBooksActivity extends AppCompatActivity {
 
     private static final String TAG = "BooksListActivity";
     private BookAdapter bookAdapter;
@@ -59,7 +59,7 @@ public class BooksListActivity extends AppCompatActivity {
             public void onBookClick(Book book) {
                 // Handle book click
                 Log.d(TAG, "Book clicked: " + book);
-                Intent intent = new Intent(BooksListActivity.this, LoanABookActivity.class);
+                Intent intent = new Intent(AllBooksActivity.this, BookProfileActivity.class);
                 intent.putExtra("BOOK_UID", book.getId());
                 startActivity(intent);
             }

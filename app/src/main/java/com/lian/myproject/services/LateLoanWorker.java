@@ -45,8 +45,7 @@ public class LateLoanWorker extends Worker {
                 for (Loan loan : loanList) {
 //                    if (loan.getReturnDate().before(currentDate)) { // late books
                     if(loan.isOverdue())
-                              loans.add(loan);
-
+                        loans.add(loan);
                         sendNotification(loan);
                     }
 

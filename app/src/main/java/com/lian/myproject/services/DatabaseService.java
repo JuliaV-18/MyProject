@@ -512,7 +512,9 @@ public class DatabaseService {
     }
 
 
-
+    public void updateBook(@NotNull final Book book, @Nullable final DatabaseCallback<Void> callback) {
+        writeData(BOOKS_PATH + "/" + book.getId(), book, callback) ;
+    }
 
 
 

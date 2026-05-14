@@ -29,7 +29,7 @@
             android:name=".LoanABookActivity"
             android:exported="false" />
         <activity
-            android:name=".LoansActivity"
+            android:name=".AllLoansActivity"
             android:exported="false" />
         <activity
             android:name=".LandingActivity"

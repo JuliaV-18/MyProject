@@ -20,7 +20,7 @@ import com.lian.myproject.services.DatabaseService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoansActivity extends AppCompatActivity {
+public class AllLoansActivity extends AppCompatActivity {
 
     private static final String TAG = "LoansListActivity";
     private LoanAdapter loanAdapter;
@@ -57,7 +57,7 @@ public class LoansActivity extends AppCompatActivity {
         public void onLoanClick(Loan loan) {
             // Handle loan click
             Log.d(TAG, "Loan clicked: " + loan);
-            Intent intent = new Intent(LoansActivity.this, LoanProfileActivity.class);
+            Intent intent = new Intent(AllLoansActivity.this, LoanProfileActivity.class);
             intent.putExtra("LOAN_UID", loan.getId());
             startActivity(intent);
 

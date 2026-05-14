@@ -6,13 +6,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.lian.myproject.R;
-import com.lian.myproject.model.Book;
-import com.lian.myproject.model.Loan;
 
 public class AdminActivity extends com.lian.myproject.BaseActivity {
 
@@ -30,11 +23,11 @@ public class AdminActivity extends com.lian.myproject.BaseActivity {
             startActivity(go);
         }
         public void goEditBooks(View view){
-            Intent go=new Intent(this, BooksListActivity.class);
+            Intent go=new Intent(this, AllBooksActivity.class);
             startActivity(go);
         }
         public void goEditLoans(View view){
-            Intent go=new Intent(this, LoansActivity.class);
+            Intent go=new Intent(this, AllLoansActivity.class);
             startActivity(go);
         }
         public void goLateLoans(View view){
