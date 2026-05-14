@@ -6,10 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -27,7 +25,7 @@ import com.lian.myproject.services.ImageUtil;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddBook extends AppCompatActivity {
+public class AddBookActivity extends AppCompatActivity {
 
     private EditText etBookTitle, etBookAuthor, etDescription;
     private Spinner spCategory;
@@ -78,7 +76,7 @@ public class AddBook extends AppCompatActivity {
                 });
 
         btnCancelBook.setOnClickListener(v -> {
-            Intent intent = new Intent(AddBook.this, AdminActivity.class);
+            Intent intent = new Intent(AddBookActivity.this, AdminActivity.class);
             startActivity(intent);
             finish();
         });
@@ -122,9 +120,9 @@ public class AddBook extends AppCompatActivity {
 
                 if (bookTitle.isEmpty() || bookAuthor.isEmpty() || bookCategory.isEmpty() ||
                         bookDescription.isEmpty()) {
-                    Toast.makeText(AddBook.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddBookActivity.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(AddBook.this, "הספר נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddBookActivity.this, "הספר נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
                 }
 
                 /// generate a new id for the item
@@ -139,11 +137,11 @@ public class AddBook extends AppCompatActivity {
                     @Override
                     public void onCompleted(Void object) {
                         Log.d("TAG", "Item added successfully");
-                        Toast.makeText(AddBook.this, "Item added successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddBookActivity.this, "Item added successfully", Toast.LENGTH_SHORT).show();
                         /// clear the input fields after adding the item for the next item
                         Log.d("TAG", "Clearing input fields");
 
-                        Intent intent = new Intent(AddBook.this, AdminActivity.class);
+                        Intent intent = new Intent(AddBookActivity.this, AdminActivity.class);
                         startActivity(intent);
 
 
@@ -152,7 +150,7 @@ public class AddBook extends AppCompatActivity {
                     @Override
                     public void onFailed(Exception e) {
                         Log.e("TAG", "Failed to add item", e);
-                        Toast.makeText(AddBook.this, "Failed to add food", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddBookActivity.this, "Failed to add food", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

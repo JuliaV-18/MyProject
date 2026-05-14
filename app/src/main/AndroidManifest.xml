@@ -23,9 +23,6 @@
             android:name=".LoanProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".AddLoan"
-            android:exported="false" />
-        <activity
             android:name=".LoanABookActivity"
             android:exported="false" />
         <activity
@@ -38,7 +35,7 @@
             android:name=".BookProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".AddBook"
+            android:name=".AddBookActivity"
             android:exported="false" />
         <activity
             android:name=".AdminActivity"

@@ -24,7 +24,7 @@
             android:background="@color/dark"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Main Screen" />
+            app:title="Find Your Book" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

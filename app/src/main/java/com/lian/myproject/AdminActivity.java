@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.widget.Toolbar;
 
 public class AdminActivity extends com.lian.myproject.BaseActivity {
 
@@ -16,6 +17,19 @@ public class AdminActivity extends com.lian.myproject.BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        toolbar.setNavigationOnClickListener(v ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
+
         }
 
         public void goEditUsers(View view){
@@ -35,7 +49,7 @@ public class AdminActivity extends com.lian.myproject.BaseActivity {
             startActivity(go);
         }
         public void goAddBook(View view){
-            Intent go=new Intent(this, AddBook.class);
+            Intent go=new Intent(this, AddBookActivity.class);
             startActivity(go);
         }
 

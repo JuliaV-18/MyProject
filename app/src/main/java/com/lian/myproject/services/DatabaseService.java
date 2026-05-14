@@ -2,6 +2,8 @@ package com.lian.myproject.services;
 
 import static android.util.Log.d;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ import com.lian.myproject.model.Book;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.UnaryOperator;
@@ -517,7 +520,34 @@ public class DatabaseService {
     }
 
 
-
+//    public List<Loan> getLoansSync() {
+//
+//        List<Loan> loans = new ArrayList<>();
+//
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//
+//        Cursor cursor = db.rawQuery("SELECT * FROM loans", null);
+//
+//        while (cursor.moveToNext()) {
+//
+//            Loan loan = new Loan();
+//
+//            loan.setReturned(
+//                    cursor.getInt(cursor.getColumnIndexOrThrow("returned")) == 1
+//            );
+//
+//            long returnDateMillis =
+//                    cursor.getLong(cursor.getColumnIndexOrThrow("return_date"));
+//
+//            loan.setReturnDate(new Date(returnDateMillis));
+//
+//            loans.add(loan);
+//        }
+//
+//        cursor.close();
+//
+//        return loans;
+//    }
 
 
 

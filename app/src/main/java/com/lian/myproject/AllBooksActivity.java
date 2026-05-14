@@ -45,9 +45,9 @@ public class AllBooksActivity extends AppCompatActivity {
             return insets;
         });
 
-         rvBooks = findViewById(R.id.rv_books_list);
+        rvBooks = findViewById(R.id.rv_books_list);
 
-         searchView = findViewById(R.id.searchView);
+        searchView = findViewById(R.id.searchView);
         rvBooks.setLayoutManager(new LinearLayoutManager(this));
 
 

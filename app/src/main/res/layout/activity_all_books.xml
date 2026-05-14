@@ -24,7 +24,7 @@
             android:background="@color/txt3"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Book List - ADMIN" />
+            app:title="Find Your Book - ADMIN" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -59,18 +59,18 @@ public class LateLoanWorker extends Worker {
         });
 
 
-//        List<Loan> loans = databaseService.getLoansSync(); // must be synchronous!
-//
-//        Date now = new Date();
-//
-//        for (Loan loan : loans) {
-//            if (!loan.isReturned() &&
-//                    loan.getReturnDate() != null &&
-//                    loan.getReturnDate().before(now)) {
-//
-//                sendNotification(loan);
-//            }
-//        }
+        List<Loan> loans = databaseService.getLoansSync(); // must be synchronous!
+
+        Date now = new Date();
+
+        for (Loan loan : loans) {
+            if (!loan.isReturned() &&
+                    loan.getReturnDate() != null &&
+                    loan.getReturnDate().before(now)) {
+
+                sendNotification(loan);
+            }
+        }
 
         return Result.success();
     }

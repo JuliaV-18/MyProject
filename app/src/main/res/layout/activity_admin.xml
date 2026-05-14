@@ -19,7 +19,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/txt3"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Admin Panel | Library"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:title="Main - ADMIN"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -57,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/txt3"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -65,7 +67,8 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    app:backgroundTint="@color/txt3"
+                    android:textColor="@color/white"
                     android:text="@string/edit_users"
                     android:textSize="18sp"
                     android:onClick="goEditUsers"/>
@@ -76,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/txt3"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -83,10 +87,10 @@
                     android:id="@+id/btn_admin_books"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    app:backgroundTint="@color/txt3"
+                    android:textColor="@color/white"
                     android:text="📝Edit Books"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp"
                     android:onClick="goEditBooks" />
 
@@ -96,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/txt3"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -103,10 +108,10 @@
                     android:id="@+id/btn_admin_loans"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    app:backgroundTint="@color/txt3"
+                    android:textColor="@color/white"
                     android:text="📝Edit Loans"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp"
                     android:onClick="goEditLoans" />
 
@@ -116,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/txt3"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -123,10 +129,10 @@
                     android:id="@+id/btn_admin_late_loans"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    app:backgroundTint="@color/txt3"
+                    android:textColor="@color/white"
                     android:text="📝Late Loans"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp"
                     android:onClick="goLateLoans" />
 
@@ -136,6 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/txt3"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -144,9 +151,9 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:backgroundTint="?attr/colorSurface"
+                    app:backgroundTint="@color/txt3"
+                    android:textColor="@color/white"
                     android:text="✍️Add A Book"
-                    android:textColor="?attr/colorOnSurface"
                     android:textSize="18sp"
                     android:onClick="goAddBook" />
 
