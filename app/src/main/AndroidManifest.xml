@@ -14,37 +14,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
         <activity
-            android:name=".UserLoansActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LateLoansActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoanProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoanABookActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AllLoansActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LandingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".BookProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddBookActivity"
             android:exported="false" />
         <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
+            android:name=".AllBooksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllLoansActivity"
+            android:exported="false" />
+        <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
+            android:name=".BookProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".BooksListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LateLoansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoanABookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoanProfileActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -68,11 +68,15 @@
             android:name=".Thanks"
             android:exported="false" />
         <activity
-            android:name=".UsersListActivity"
+            android:name=".UserLoansActivity"
             android:exported="false" />
         <activity
             android:name=".UserProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".UsersListActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

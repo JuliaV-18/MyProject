@@ -54,15 +54,15 @@ public class LateLoansActivity extends AppCompatActivity {
     loanAdapter = new LoanAdapter(loanArrayList,new LoanAdapter.OnLoanClickListener() {
         @Override
         public void onLoanClick(Loan loan) {
-            Log.d(TAG, "Book clicked: " + loan);
+            Log.d(TAG, "Loan clicked: " + loan);
             Intent intent = new Intent(LateLoansActivity.this, LoanProfileActivity.class);
-            intent.putExtra("BOOK_UID", loan.getId());
+            intent.putExtra("LOAN_UID", loan.getId());
             startActivity(intent);
         }
 
         @Override
         public void onLongLoanClick(Loan loan) {
-            Log.d(TAG, "Book long clicked: " + loan);
+            Log.d(TAG, "Loan long clicked: " + loan);
         }
 
 
