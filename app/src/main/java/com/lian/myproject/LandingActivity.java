@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import com.lian.myproject.services.LateLoanWorker;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
 
@@ -42,14 +41,7 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
             return insets;
         });
 
-        PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(LateLoanWorker.class, 24, TimeUnit.HOURS).build();
 
-
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-                "LateLoanCheck",
-                ExistingPeriodicWorkPolicy.KEEP,
-                workRequest
-        );
 
         /// get the views
         btnLogin = findViewById(R.id.btn_landing_login);

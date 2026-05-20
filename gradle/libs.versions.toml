@@ -14,8 +14,11 @@ firebaseAi = "17.6.0"
 constraintlayoutVersion = "2.2.1"
 recyclerview = "1.4.0"
 workRuntime = "2.11.2"
+workRuntimeVersion = "2.9.0"
+firebaseMessaging = "25.0.2"
 
 [libraries]
+androidx-work-runtime-v290 = { module = "androidx.work:work-runtime", version.ref = "workRuntimeVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -29,6 +32,7 @@ firebase-ai = { group = "com.google.firebase", name = "firebase-ai", version.ref
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayoutVersion" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-work-runtime = { group = "androidx.work", name = "work-runtime", version.ref = "workRuntime" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

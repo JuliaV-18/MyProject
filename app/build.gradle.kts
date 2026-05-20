@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -51,7 +53,13 @@ dependencies {
     implementation(libs.androidx.work.runtime);
 
     implementation("com.google.code.gson:gson:2.14.0")
-    implementation("androidx.work:work-runtime:2.9.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:34.0.0"))
+    implementation("com.google.firebase:firebase-messaging")
+
+
+
+
 }
 
 
