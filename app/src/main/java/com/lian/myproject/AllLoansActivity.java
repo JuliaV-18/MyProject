@@ -57,6 +57,11 @@ public class AllLoansActivity extends AppCompatActivity {
 
             @Override
             public void onLongLoanClick(Loan loan) {
+
+                Log.d(TAG, "Loan clicked: " + loan);
+                Intent intent = new Intent(AllLoansActivity.this, LoanProfileActivity.class);
+                intent.putExtra("LOAN_UID", loan.getId());
+                startActivity(intent);
                 // Handle long loan click
                 Log.d(TAG, "Loan long clicked: " + loan);
             }

@@ -141,7 +141,7 @@ public class Loan {
         else if (this.getReturnDate().before(currentDate)) { // late books
             return true;
         }
-        else return false;
+        else return true;
     }
 
     public void setOverdue(boolean overdue) {

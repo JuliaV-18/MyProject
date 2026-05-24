@@ -50,7 +50,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation(libs.androidx.work.runtime);
 
     implementation("com.google.code.gson:gson:2.14.0")
 

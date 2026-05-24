@@ -331,21 +331,6 @@ public class DatabaseService {
 
 
 
-    /// check if an email already exists in the database
-    /// @param email the email to check
-    /// @param callback the callback to call when the operation is completed
-    public void checkIfEmailExists(@NotNull final String email, @NotNull final DatabaseCallback<Boolean> callback) {
-        readData(USERS_PATH).orderByChild("email").equalTo(email).get()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.e(TAG, "Error getting data", task.getException());
-                        callback.onFailed(task.getException());
-                        return;
-                    }
-                    boolean exists = task.getResult().getChildrenCount() > 0;
-                    callback.onCompleted(exists);
-                });
-    }
 
     public void updateUser(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
         writeData(USERS_PATH + "/" + user.getId(), user, callback) ;
@@ -483,7 +468,7 @@ public class DatabaseService {
     /// @see Loan
        public void createNewLoan(@NotNull final Loan loan, @Nullable final DatabaseCallback<Void> callback) {
 
-        loan.setReturnDateAutomatically();
+         loan.setReturnDateAutomatically();
             writeData(BOOK_LOAN + "/" + loan.getId(), loan, callback);
 
             writeData(USER_LOAN + "/" + loan.getUserId()+"/"+loan.getId(), loan, callback);
@@ -509,6 +494,11 @@ public class DatabaseService {
 
     }
 
+
+
+    public void getLoan( String loanId,  @NotNull final DatabaseCallback<Loan> callback) {
+        getData(BOOK_LOAN+"/"+loanId, Loan.class, callback);
+    }
 
 
 
