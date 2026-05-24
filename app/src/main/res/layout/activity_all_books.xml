@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgAdmin"
-    tools:context=".BooksListActivity">
+    tools:context=".AllBooksActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -24,7 +24,7 @@
             android:background="@color/txt3"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Find Your Book - ADMIN" />
+            app:title="All Books - ADMIN" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

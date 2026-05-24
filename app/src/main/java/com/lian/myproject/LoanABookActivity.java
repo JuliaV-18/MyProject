@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -22,7 +24,7 @@ import com.lian.myproject.services.DatabaseService;
 public class LoanABookActivity extends AppCompatActivity {
 
     private ImageView imgBookCover;
-    private EditText etTitle, etAuthor, etCopies, etGenre, etDesc;
+    private TextView tTitle, tAuthor, tGenre, tDesc;
     private Button btnLoan, btnCancel;
     Intent takeit;
     String bookId;
@@ -35,12 +37,6 @@ public class LoanABookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_loan_a_book);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
 
 
         databaseService=DatabaseService.getInstance();
@@ -54,12 +50,10 @@ public class LoanABookActivity extends AppCompatActivity {
 
                 book=thebook;
 
-
-                etTitle.setText(book.getTitle());
-                etAuthor.setText(book.getAuthor());
-                etGenre.setText(book.getCategory());
-                etDesc.setText(book.getDescription());
-
+                tTitle.setText(book.getTitle());
+                tAuthor.setText(book.getAuthor());
+                tGenre.setText(book.getCategory());
+                tDesc.setText(book.getDescription());
             }
 
             @Override
@@ -69,17 +63,30 @@ public class LoanABookActivity extends AppCompatActivity {
         });
 
 
+        Toolbar toolbar = findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        toolbar.setNavigationOnClickListener(v ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
+
 
         // קישור ל־XML
         imgBookCover = findViewById(R.id.img_profile_book_cover);
 
-        etTitle = findViewById(R.id.tv_profile_book_title);
-        etAuthor = findViewById(R.id.tv_profile_book_author);
-        etGenre = findViewById(R.id.tv_profile_book_genre);
-        etDesc = findViewById(R.id.tv_profile_book_desc);
+        tTitle = findViewById(R.id.tv_profile_book_title);
+        tAuthor = findViewById(R.id.tv_profile_book_author);
+        tGenre = findViewById(R.id.tv_profile_book_genre);
+        tDesc = findViewById(R.id.tv_profile_book_desc);
 
         btnLoan = findViewById(R.id.btn_loan_book);
         btnCancel = findViewById(R.id.btn_cancel_loan);
+
+
 
         // כפתור השאלה
         btnLoan.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +109,7 @@ public class LoanABookActivity extends AppCompatActivity {
                             book.setAvailable(false);
 
                             Toast.makeText(LoanABookActivity.this, "Book transaction is complete!", Toast.LENGTH_SHORT).show();
-                            Intent go = new Intent(LoanABookActivity.this, AllLoansActivity.class);
+                            Intent go = new Intent(LoanABookActivity.this, BooksListActivity.class);
                             startActivity(go);
                         }
 

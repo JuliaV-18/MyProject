@@ -5,20 +5,13 @@ import static android.widget.Toast.LENGTH_LONG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lian.myproject.adapters.BookAdapter;
 import com.lian.myproject.adapters.LoanAdapter;
-import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
 
@@ -41,34 +34,34 @@ public class LateLoansActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_loans);
+        setContentView(R.layout.activity_late_loans);
 
 
         rvLoans = findViewById(R.id.rv_Loaned_books);
         rvLoans.setLayoutManager(new LinearLayoutManager(this));
 
 
-    databaseService = DatabaseService.getInstance();
+        databaseService = DatabaseService.getInstance();
 
 
-    loanAdapter = new LoanAdapter(loanArrayList,new LoanAdapter.OnLoanClickListener() {
-        @Override
-        public void onLoanClick(Loan loan) {
-            Log.d(TAG, "Loan clicked: " + loan);
-            Intent intent = new Intent(LateLoansActivity.this, LoanProfileActivity.class);
-            intent.putExtra("LOAN_UID", loan.getId());
-            startActivity(intent);
-        }
+        loanAdapter = new LoanAdapter(loanArrayList,new LoanAdapter.OnLoanClickListener() {
+            @Override
+            public void onLoanClick(Loan loan) {
+                Log.d(TAG, "Loan clicked: " + loan);
+                Intent intent = new Intent(LateLoansActivity.this, LoanProfileActivity.class);
+                intent.putExtra("LOAN_UID", loan.getId());
+                startActivity(intent);
+            }
 
-        @Override
-        public void onLongLoanClick(Loan loan) {
-            Log.d(TAG, "Loan long clicked: " + loan);
-        }
+            @Override
+            public void onLongLoanClick(Loan loan) {
+                Log.d(TAG, "Loan long clicked: " + loan);
+            }
 
 
-    });
-        rvLoans.setAdapter(loanAdapter);
-}
+        });
+            rvLoans.setAdapter(loanAdapter);
+    }
 
 
 

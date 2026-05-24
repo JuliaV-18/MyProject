@@ -25,7 +25,7 @@
             android:background="@color/dark"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Main Screen" />
+            app:title="Loan This Book" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -61,7 +61,7 @@
                 tools:layout_editor_absoluteX="65dp"
                 tools:layout_editor_absoluteY="46dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_profile_book_title"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 tools:layout_editor_absoluteX="65dp"
                 tools:layout_editor_absoluteY="93dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_profile_book_author"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
@@ -106,7 +106,7 @@
                 tools:layout_editor_absoluteX="65dp"
                 tools:layout_editor_absoluteY="93dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_profile_book_genre"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
@@ -128,7 +128,7 @@
                 tools:layout_editor_absoluteX="65dp"
                 tools:layout_editor_absoluteY="93dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_profile_book_desc"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />

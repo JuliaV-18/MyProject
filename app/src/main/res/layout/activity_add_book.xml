@@ -21,7 +21,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/txt3"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Search Books - User"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:title="Add A Book - ADMIN"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </com.google.android.material.appbar.AppBarLayout>

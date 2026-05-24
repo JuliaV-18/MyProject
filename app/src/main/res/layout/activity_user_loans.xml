@@ -2,48 +2,45 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".AllLoansActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout5"
+        android:id="@+id/appBarLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/bgAdmin"
+        android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_Loaned_books"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar3"
             android:layout_width="match_parent"
-            android:layout_height="681dp"
-            android:layout_marginTop="52dp"
-            android:background="@color/bgAdmin"
-            android:clipToPadding="false"
-            android:paddingStart="12dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="8dp"
-            android:scrollbars="horizontal" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/dark"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Your Loans" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_Loaned_books"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/txt3"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="All Loans - Admin"
-        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

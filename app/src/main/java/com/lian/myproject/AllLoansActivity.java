@@ -35,42 +35,34 @@ public class AllLoansActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_loans);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        setContentView(R.layout.activity_all_loans);
 
-
-
-
-     rvLoans = findViewById(R.id.rv_Loaned_books);
+        rvLoans = findViewById(R.id.rv_Loaned_books);
         rvLoans.setLayoutManager(new LinearLayoutManager(this));
 
 
-    databaseService = DatabaseService.getInstance();
+        databaseService = DatabaseService.getInstance();
 
 
-    loanAdapter = new LoanAdapter(loans,new LoanAdapter.OnLoanClickListener() {
-        @Override
-        public void onLoanClick(Loan loan) {
-            // Handle loan click
-            Log.d(TAG, "Loan clicked: " + loan);
-            Intent intent = new Intent(AllLoansActivity.this, LoanProfileActivity.class);
-            intent.putExtra("LOAN_UID", loan.getId());
-            startActivity(intent);
+        loanAdapter = new LoanAdapter(loans,new LoanAdapter.OnLoanClickListener() {
+            @Override
+            public void onLoanClick(Loan loan) {
+                // Handle loan click
+                Log.d(TAG, "Loan clicked: " + loan);
+                Intent intent = new Intent(AllLoansActivity.this, LoanProfileActivity.class);
+                intent.putExtra("LOAN_UID", loan.getId());
+                startActivity(intent);
 
-        }
+            }
 
-        @Override
-        public void onLongLoanClick(Loan loan) {
-            // Handle long loan click
-            Log.d(TAG, "Loan long clicked: " + loan);
-        }
-    });
-        rvLoans.setAdapter(loanAdapter);
-}
+            @Override
+            public void onLongLoanClick(Loan loan) {
+                // Handle long loan click
+                Log.d(TAG, "Loan long clicked: " + loan);
+            }
+        });
+            rvLoans.setAdapter(loanAdapter);
+    }
 
 
 @Override

@@ -20,7 +20,7 @@
             android:background="@color/txt3"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:navigationIcon="?attr/homeAsUpIndicator"
-            app:title="Main - ADMIN"
+            app:title="Main Screen - ADMIN"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </com.google.android.material.appbar.AppBarLayout>

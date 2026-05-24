@@ -1,14 +1,9 @@
 package com.lian.myproject;
 
-import static android.widget.Toast.LENGTH_LONG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,15 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.lian.myproject.adapters.BookAdapter;
 import com.lian.myproject.adapters.LoanAdapter;
-import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
-import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UserLoansActivity extends AppCompatActivity {
@@ -45,12 +36,8 @@ public class UserLoansActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_loans);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        setContentView(R.layout.activity_user_loans);
+
 
         mAuth = FirebaseAuth.getInstance();
         selectedUid = mAuth.getUid();
