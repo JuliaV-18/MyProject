@@ -1,8 +1,10 @@
 package com.lian.myproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,8 +64,115 @@ public class LoginActivity extends AppCompatActivity implements android.view.Vie
         );
     }
 
-    @Override
-    public void onClick(View v) {
+    private void loginUser(String email, String password) {
+        databaseService.LoginUser(email, password, new DatabaseService.DatabaseCallback<String>() {
+            /// Callback method called when the operation is completed
+            // /// @param email  & password is logged in
+            @Override
+            public void onCompleted(String  uid) {
+                Log.d(TAG, "onCompleted: User logged in: " + uid.toString());
+                /// save the user data to shared preferences
+                // SharedPreferencesUtil.saveUser(LoginActivity.this, user);
 
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                editor.putString("email", email);
+                editor.putString("password",password);
+
+                editor.commit();
+
+                /// Redirect to main activity and clear back stack to prevent user from going back to login screen
+                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                /// Clear the back stack (clear history) and start the MainActivity
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(mainIntent);
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+                Log.e(TAG, "onFailed: Failed to retrieve user data", e);
+                /// Show error message to user
+                etPassword.setError("Invalid email or password");
+                etPassword.requestFocus();
+                /// Sign out the user if failed to retrieve user data
+                /// This is to prevent the user from being logged in again
+                //    SharedPreferencesUtil.signOutUser(LoginActivity.this);
+            }
+        });
+    }
+
+
+    @Override
+    public void onClick(android.view.View v) {
+        if (v== btnLogin) {
+            Log.d(TAG, "onClick: LoginActivity button clicked");
+
+            /// get the email and password entered by the user
+            String email = etEmail.getText().toString();
+            String password = etPassword.getText().toString();
+
+            /// log the email and password
+            Log.d(TAG, "onClick: Email: " + email);
+            Log.d(TAG, "onClick: Password: " + password);
+
+            Log.d(TAG, "onClick: Validating input...");
+            /// Validate input
+
+
+            Log.d(TAG, "onClick: Logging in user...");
+
+            /// LoginActivity user
+            loginUser(email, password);
+        }
+        //  Intent registerIntent = new Intent(LoginActivity.this, LoginActivity.class);
+        //startActivity(registerIntent);
+    }
+
+
+    public void goRegister2(View view) {
+        Intent go= new Intent( this, RegisterActivity.class);
+        startActivity(go);
+    }
+    public void goUserActivity(View view) {
+        Intent go= new Intent( this, UserProfileActivity.class);
+        startActivity(go);
     }
 }
+// email2=sharedpreferences.getString("email","");
+// pass2=sharedpreferences.getString("password","");
+// etEmail2.setText(email2);
+// etPass2.setText(pass2);
+
+
+// /// Method to check if the input is valid
+//    /// It checks if the email and password are valid
+//    /// @see Validator#isEmailValid(String)
+//    /// @see Validator#isPasswordValid(String)
+//    private boolean checkInput(String email, String password) {
+//        if (!Validator.isEmailValid(email)) {
+//            Log.e(TAG, "checkInput: Invalid email address");
+//            /// show error message to user
+//            etEmail.setError("Invalid email address");
+//            /// set focus to email field
+//            etEmail.requestFocus();
+//            return false;
+//        }
+//
+//        if (!Validator.isPasswordValid(password)) {
+//            Log.e(TAG, "checkInput: Invalid password");
+//            /// show error message to user
+//            etPassword.setError("Password must be at least 6 characters long");
+//            /// set focus to password field
+//            etPassword.requestFocus();
+//            return false;
+//        }
+//
+//        return true;
+//    }
+
+// if (!checkInput(email, password)) {
+//                /// stop if input is invalid
+//                return;
+//            }
+
