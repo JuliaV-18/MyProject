@@ -103,7 +103,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_main_edit_profile"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     app:backgroundTint="@color/dark"
@@ -111,6 +110,26 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:onClick="goProfile" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/dark"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_main_thanks"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:backgroundTint="@color/dark"
+                    android:text="❤️ Credits"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:onClick="goThanks" />
 
             </com.google.android.material.card.MaterialCardView>
 

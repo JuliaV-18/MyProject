@@ -29,13 +29,6 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
         EdgeToEdge.enable(this);
         /// set the layout for the activity
         setContentView(R.layout.activity_landing);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-
 
         /// get the views
         btnLogin = findViewById(R.id.btn_landing_login);

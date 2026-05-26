@@ -118,7 +118,11 @@ public class MainActivity extends AppCompatActivity {
         Intent go= new Intent( this, UserProfileActivity.class);
         startActivity(go);
     }
-    public void goAdmin(View view){
+    public void goThanks(View view) {
+        Intent go = new Intent(this, ThanksActivity.class);
+        startActivity(go);
+    }
+        public void goAdmin(View view){
         Intent go=new Intent(this, AdminActivity.class);
         startActivity(go);
     }
@@ -127,16 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.POST_NOTIFICATIONS)
-                    != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
 
-                ActivityCompat.requestPermissions(
-                        this,
-                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
-                        100
-                );
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 100);
             }
         }
     }

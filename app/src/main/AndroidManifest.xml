@@ -74,7 +74,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Thanks"
+            android:name=".ThanksActivity"
             android:exported="false" />
         <activity
             android:name=".UserLoansActivity"

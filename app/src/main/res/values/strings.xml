@@ -30,4 +30,11 @@
     <string name="TotalUsers">"Total users: " + users.size()</string>
 
 
+    <string name ="thanks">
+        Thank you for Miri, Gil and Suzie for guiding me through this project.
+        \n(Shoutout to my mom, dad, grandma and little brother for being my beta-testers)
+        \n\nMy Contacts -
+        \nPhone number - +972-54-674-5200
+        \nEmail - juliav.school.08@gmail.com
+    </string>
 </resources>
