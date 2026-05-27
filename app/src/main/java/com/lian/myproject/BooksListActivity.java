@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,10 +54,14 @@ public class BooksListActivity extends AppCompatActivity {
             @Override
             public void onBookClick(Book book) {
                 // Handle book click
+                if(book.isAvailable()){
                 Log.d(TAG, "Book clicked: " + book);
                 Intent intent = new Intent(BooksListActivity.this, LoanABookActivity.class);
                 intent.putExtra("BOOK_UID", book.getId());
                 startActivity(intent);
+
+                }
+                else Toast.makeText(BooksListActivity.this, "This book is taken :(", Toast.LENGTH_SHORT).show();
             }
 
             @Override

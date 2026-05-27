@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.services.DatabaseService;
+import com.lian.myproject.utils.ImageUtil;
 
 public class LoanABookActivity extends AppCompatActivity {
 
@@ -50,10 +51,11 @@ public class LoanABookActivity extends AppCompatActivity {
 
                 book=thebook;
 
-                tTitle.setText(book.getTitle());
+                tTitle.setText(book.getTitle()+"        "+book.isAvailable());
                 tAuthor.setText(book.getAuthor());
                 tGenre.setText(book.getCategory());
                 tDesc.setText(book.getDescription());
+                imgBookCover.setImageBitmap(ImageUtil.convertFrom64base(book.getCoverUrl()));
             }
 
             @Override
