@@ -64,7 +64,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_admin_users"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     app:backgroundTint="@color/txt3"
@@ -90,7 +89,6 @@
                     app:backgroundTint="@color/txt3"
                     android:textColor="@color/white"
                     android:text="📝Edit Books"
-                    android:textAllCaps="true"
                     android:textSize="18sp"
                     android:onClick="goEditBooks" />
 
@@ -111,7 +109,6 @@
                     app:backgroundTint="@color/txt3"
                     android:textColor="@color/white"
                     android:text="📝Edit Loans"
-                    android:textAllCaps="true"
                     android:textSize="18sp"
                     android:onClick="goEditLoans" />
 
@@ -132,7 +129,6 @@
                     app:backgroundTint="@color/txt3"
                     android:textColor="@color/white"
                     android:text="📝Late Loans"
-                    android:textAllCaps="true"
                     android:textSize="18sp"
                     android:onClick="goLateLoans" />
 
@@ -148,7 +144,6 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_admin_add_book"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     app:backgroundTint="@color/txt3"
