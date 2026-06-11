@@ -3,7 +3,6 @@
     <string name="spPrompt">Select Genre…</string>
 
     <string-array name="spCategory">
-
         <item>Mystery</item>
         <item>Romance</item>
         <item>Thriller</item>
@@ -15,7 +14,12 @@
         <item>Poetry</item>
         <item>True Crime</item>
         <item>Biography</item>
+    </string-array>
 
+    <string-array name="search_filters">
+        <item>All</item>
+        <item>Title</item>
+        <item>Author</item>
     </string-array>
 
     <string name="go_admin"></string>

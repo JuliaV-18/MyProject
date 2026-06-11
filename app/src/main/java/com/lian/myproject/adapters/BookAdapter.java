@@ -58,6 +58,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.ivBookCover.setImageBitmap(ImageUtil.convertFrom64base(book.getCoverUrl()));
 
 
+        holder.tvTitle.setText(book.getTitle());
+        holder.tvAuthor.setText(book.getAuthor());
+
+        if (book.isAvailable()) {
+            holder.itemView.setAlpha(1.0f);
+        } else {
+            holder.itemView.setAlpha(0.4f); // greyed out effect
+        }
+
+        holder.tvUnavailable.setVisibility(
+                book.isAvailable() ? View.GONE : View.VISIBLE);
+
+
         /*
         // Set initials
         String initials = "";
@@ -92,6 +105,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             return true;
         });
 
+
+
     }
 
     @Override
@@ -125,7 +140,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCategory, tvTitle, tvAuthor, tvCopies;
+        TextView tvCategory, tvTitle, tvAuthor, tvCopies, tvUnavailable;
 
         ImageView ivBookCover;
        // Chip chipRole;
@@ -137,6 +152,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             tvCopies = itemView.findViewById(R.id.tv_item_book_copies);
             tvCategory = itemView.findViewById(R.id.tv_item_book_genre);
             ivBookCover = itemView.findViewById(R.id.img_book_cover);
+            tvUnavailable = itemView.findViewById(R.id.tv_unavailable);
         }
     }
 }

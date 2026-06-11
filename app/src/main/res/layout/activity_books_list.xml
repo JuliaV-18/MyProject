@@ -28,17 +28,33 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/searchViewLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:queryHint="Search books..."
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:queryHint="Search books..."
+            app:layout_constraintEnd_toStartOf="@id/spFilter"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@id/searchView"
+            app:layout_constraintEnd_toEndOf="@id/searchViewLayout" />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books_list"
@@ -53,7 +69,7 @@
         android:scrollbars="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchViewLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
