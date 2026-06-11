@@ -9,8 +9,9 @@ public class User {
     protected  String password;
     protected String joined;
     protected  boolean isAdmin;
+    protected boolean isBanned;
 
-    public User(String id, String fname, String lname, String phone, String email, String password, String joined, boolean isAdmin) {
+    public User(String id, String fname, String lname, String phone, String email, String password, String joined, boolean isAdmin, boolean isBanned) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -19,6 +20,7 @@ public class User {
         this.password = password;
         this.joined =joined;
         this.isAdmin = isAdmin;
+        this.isBanned = isBanned;
     }
 
     public User() {
@@ -116,6 +118,9 @@ public class User {
         isAdmin = admin;
     }
 
+    public boolean isBanned() { return isBanned; };
+    public void setBanned(boolean banned) { isBanned = banned; }
+
     @Override
     public String toString() {
         return "User{" +
@@ -126,7 +131,8 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", joined='" + joined + '\'' +
-                ", isAdmin=" + isAdmin +
+                ", isAdmin=" + isAdmin + '\'' +
+                ", isBanned=" + isBanned +
                 '}';
     }
 }

@@ -44,7 +44,7 @@ public class UsersListActivity extends com.lian.myproject.BaseActivity {
             public void onUserClick(User user) {
 //                 Handle user click
                 Log.d(TAG, "User clicked: " + user);
-                Intent intent = new Intent(UsersListActivity.this, com.lian.myproject.UserProfileActivity.class);
+                Intent intent = new Intent(UsersListActivity.this, UserProfileActivity.class);
                 intent.putExtra("USER_UID", user.getId());
                 startActivity(intent);
             }
@@ -55,6 +55,8 @@ public class UsersListActivity extends com.lian.myproject.BaseActivity {
                Log.d(TAG, "User long clicked: " + user);
             }
         });
+
+
       rcUsers.setAdapter(userAdapter);
       getUsers();
 

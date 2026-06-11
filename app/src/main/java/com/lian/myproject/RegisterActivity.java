@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
         /// create a new user object
-        User user = new User("uid", fname, lname, phone,email, password,"hhh",false);
+        User user = new User("uid", fname, lname, phone,email, password,"hhh",false, false);
 
 
         Log.d(TAG, user.toString());

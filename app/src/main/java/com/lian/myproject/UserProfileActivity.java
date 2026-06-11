@@ -31,7 +31,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
 
     private EditText etUserFirstName, etUserLastName, etUserEmail, etUserPhone, etUserPassword;
     private TextView tvUserDisplayName, tvUserDisplayEmail;
-    private Button btnUpdateProfile, btnSignOut;
+    private Button btnUpdateProfile, btnSignOut, btnDelete, btnBan;
     private View adminBadge;
     String selectedUid=null;
     User selectedUser;
@@ -52,12 +52,16 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         etUserPassword = findViewById(R.id.et_user_password);
         tvUserDisplayName = findViewById(R.id.tv_user_display_name);
         tvUserDisplayEmail = findViewById(R.id.tv_user_display_email);
+        adminBadge = findViewById(R.id.admin_badge);
         btnUpdateProfile = findViewById(R.id.btn_edit_profile);
         btnSignOut = findViewById(R.id.btn_sign_out);
-        adminBadge = findViewById(R.id.admin_badge);
+        btnDelete = findViewById(R.id.btn_delete_user);
+        btnBan = findViewById(R.id.btn_ban_user);
 
         btnUpdateProfile.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
+        btnBan.setOnClickListener(this);
 
 
        selectedUid=getIntent().getStringExtra("USER_UID");
@@ -81,8 +85,6 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         // Initialize the EditText fields
 
 
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -100,12 +102,19 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         if(v.getId() == R.id.btn_edit_profile) {
             updateUserProfile();
             Intent go = new Intent(UserProfileActivity.this, MainActivity.class);
-
             startActivity(go);
 
         }
         if(v.getId() == R.id.btn_sign_out) {
             signOut();
+        }
+
+        if(v.getId() == R.id.btn_delete_user) {
+            deleteUser();
+        }
+
+        if(v.getId() == R.id.btn_ban_user) {
+            banUser();
         }
     }
 
@@ -149,11 +158,22 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         if (!isCurrentUser) {
             etUserEmail.setEnabled(false);
             etUserPassword.setEnabled(false);
+
         } else {
             etUserEmail.setEnabled(true);
             etUserPassword.setEnabled(true);
             btnUpdateProfile.setVisibility(View.VISIBLE);
         }
+
+
+//        // display or hide delete and ban buttons
+//        if(!isCurrentUser && selectedUser.isAdmin()){
+//            btnDelete.setVisibility(View.GONE);
+//            btnBan.setVisibility(View.VISIBLE);
+//        } else if (isCurrentUser){
+//            btnDelete.setVisibility(View.VISIBLE);
+//            btnBan.setVisibility(View.GONE);
+//        }
     }
 
     private void updateUserProfile() {
@@ -253,6 +273,81 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         startActivity(landingIntent);
     }
 
-    private void deleteUser(){
+    private void deleteUser() {
+
+            String uid = FirebaseAuth.getInstance().getUid();
+
+            databaseService.deleteUser(uid,
+                    new DatabaseService.DatabaseCallback<Void>() {
+
+                        @Override
+                        public void onCompleted(Void result) {
+
+                            FirebaseAuth.getInstance()
+                                    .getCurrentUser()
+                                    .delete()
+                                    .addOnSuccessListener(unused -> {
+
+                                        Toast.makeText(
+                                                UserProfileActivity.this,
+                                                "Account deleted",
+                                                Toast.LENGTH_SHORT
+                                        ).show();
+
+                                        Intent intent =
+                                                new Intent(UserProfileActivity.this,
+                                                        LandingActivity.class);
+
+                                        intent.addFlags(
+                                                Intent.FLAG_ACTIVITY_NEW_TASK |
+                                                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        );
+
+                                        startActivity(intent);
+                                    });
+
+                        }
+
+                        @Override
+                        public void onFailed(Exception e) {
+
+                            Toast.makeText(
+                                    UserProfileActivity.this,
+                                    "Delete failed",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    });
+    }
+
+    private void banUser() {
+        selectedUser.setBanned(true);
+
+        databaseService.updateUser(
+                selectedUser,
+                new DatabaseService.DatabaseCallback<Void>() {
+
+                    @Override
+                    public void onCompleted(Void result) {
+
+                        Toast.makeText(
+                                UserProfileActivity.this,
+                                "User banned",
+                                Toast.LENGTH_SHORT
+                        ).show();
+
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+
+                        Toast.makeText(
+                                UserProfileActivity.this,
+                                "Ban failed",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                });
     }
 }
