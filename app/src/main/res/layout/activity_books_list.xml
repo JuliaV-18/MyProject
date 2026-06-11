@@ -58,7 +58,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books_list"
-        android:layout_width="408dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:clipToPadding="false"
