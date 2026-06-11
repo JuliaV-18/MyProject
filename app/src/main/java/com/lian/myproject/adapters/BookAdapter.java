@@ -107,6 +107,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
 
 
+        if (book.isAvailable()) {
+            holder.itemView.setAlpha(1f);
+        } else {
+            holder.itemView.setAlpha(0.5f);
+        }
+
     }
 
     @Override

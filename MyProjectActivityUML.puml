@@ -1,0 +1,288 @@
+@startuml
+class com.lian.myproject.adapters.UserAdapter {
+- List<User> userList
+- OnUserClickListener onUserClickListener
++ <<Create>> UserAdapter(OnUserClickListener)
++ <<Create>> UserAdapter(List<User>,OnUserClickListener)
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
++ void setUserList(List<User>)
++ void addUser(User)
++ void updateUser(User)
++ void removeUser(User)
+}
+
+
+interface com.lian.myproject.adapters.UserAdapter$OnUserClickListener {
+~ void onUserClick(User)
+~ void onLongUserClick(User)
+}
+
+class com.lian.myproject.adapters.UserAdapter$ViewHolder {
+~ TextView tvName
+~ Chip chipRole
++ <<Create>> ViewHolder(View)
+}
+
+
+class com.lian.myproject.services.ImageUtil {
++ {static} void requestPermission(Activity)
++ {static} String convertTo64Base(ImageView)
++ {static} Bitmap convertFrom64base(String)
+}
+
+class com.lian.myproject.utils.Validator {
++ {static} boolean isEmailValid(String)
++ {static} boolean isPasswordValid(String)
++ {static} boolean isPhoneValid(String)
++ {static} boolean isNameValid(String)
+}
+
+class com.lian.myproject.adapters.BookAdapter {
+- List<Book> bookList
+- BookAdapter.OnBookClickListener onBookClickListener
++ <<Create>> BookAdapter(List<Book>,OnBookClickListener)
++ <<Create>> BookAdapter(BookAdapter.OnBookClickListener)
++ BookAdapter.ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(BookAdapter.ViewHolder,int)
++ int getItemCount()
++ void setBookList(List<Book>)
++ void addBook(Book)
++ void updateBook(Book)
++ void removeBook(Book)
+}
+
+
+interface com.lian.myproject.adapters.BookAdapter$OnBookClickListener {
+~ void onBookClick(Book)
+~ void onLongBookClick(Book)
+}
+
+class com.lian.myproject.adapters.BookAdapter$ViewHolder {
+~ TextView tvCategory
+~ ImageView ivBookCover
++ <<Create>> ViewHolder(View)
+}
+
+
+class com.lian.myproject.adapters.LoanAdapter {
+- List<Loan> loanList
+- LoanAdapter.OnLoanClickListener onLoanClickListener
++ <<Create>> LoanAdapter(List<Loan>,LoanAdapter.OnLoanClickListener)
++ <<Create>> LoanAdapter(LoanAdapter.OnLoanClickListener)
++ LoanAdapter.ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(LoanAdapter.ViewHolder,int)
++ int getItemCount()
++ void setLoanList(List<Loan>)
+}
+
+
+interface com.lian.myproject.adapters.LoanAdapter$OnLoanClickListener {
+~ void onLoanClick(Loan)
+~ void onLongLoanClick(Loan)
+}
+
+class com.lian.myproject.adapters.LoanAdapter$ViewHolder {
+~ TextView tvUser
++ <<Create>> ViewHolder(View)
+}
+
+
+class com.lian.myproject.services.LateLoanWorker {
++ <<Create>> LateLoanWorker(Context,WorkerParameters)
++ Result doWork()
+- void sendNotification(Loan)
+}
+
+class com.lian.myproject.model.User {
+- String id
+# String fname
+# String lname
+# String phone
+# String email
+# String password
+# String joined
+# boolean isAdmin
++ <<Create>> User(String,String,String,String,String,String,String,boolean)
++ <<Create>> User()
++ String getFullName()
++ String getFullName(String)
++ void setId(String)
++ String getFirstName()
++ void setFirstName(String)
++ String getLastName()
++ void setLastName(String)
++ String getPhone()
++ void setPhone(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
++ String getId()
++ String getJoined()
++ void setJoined(String)
++ boolean isAdmin()
++ void setAdmin(boolean)
++ String toString()
+}
+
+
+class com.lian.myproject.utils.SharedPreferencesUtil {
+- {static} String PREF_NAME
+- {static} void saveString(Context,String,String)
+- {static} String getString(Context,String,String)
+- {static} void saveInt(Context,String,int)
+- {static} int getInt(Context,String,int)
++ {static} void clear(Context)
+- {static} void remove(Context,String)
+- {static} boolean contains(Context,String)
+- {static} void saveObject(Context,String,T)
+- {static} T getObject(Context,String,Class<T>)
++ {static} void saveUser(Context,User)
++ {static} User getUser(Context)
++ {static} void signOutUser(Context)
++ {static} boolean isUserLoggedIn(Context)
++ {static} String getUserId(Context)
+}
+
+
+class com.lian.myproject.Thanks {
+# void onCreate(Bundle)
+}
+
+class com.lian.myproject.services.DatabaseService {
+- {static} String TAG
+- {static} String USERS_PATH
+- {static} DatabaseService instance
+- DatabaseReference databaseReference
+- <<Create>> DatabaseService()
++ {static} DatabaseService getInstance()
+- void writeData(String,Object,DatabaseCallback<Void>)
+- void deleteData(String,DatabaseCallback<Void>)
+- DatabaseReference readData(String)
+- void getData(String,Class<T>,DatabaseCallback<T>)
+- void getDataList(String,Class<T>,DatabaseCallback<List<T>>)
+- String generateNewId(String)
+- void runTransaction(String,Class<T>,UnaryOperator<T>,DatabaseCallback<T>)
++ void createNewUser(User,DatabaseCallback<String>)
++ void LoginUser(String,String,DatabaseCallback<String>)
++ void getUser(String,DatabaseCallback<User>)
++ void getUserList(DatabaseCallback<List<User>>)
++ void deleteUser(String,DatabaseCallback<Void>)
++ void checkIfEmailExists(String,DatabaseCallback<Boolean>)
++ void updateUser(User,DatabaseCallback<Void>)
++ String generateBookId()
++ void createNewBook(Book,DatabaseCallback<Void>)
++ void getBook(String,DatabaseCallback<Book>)
++ void getBookList(DatabaseCallback<List<Book>>)
++ String generateLoanId()
++ void createNewLoan(Loan,DatabaseCallback<Void>)
++ void updateLoan(Loan,DatabaseCallback<Void>)
++ void getUserBookLoan(String,DatabaseCallback<List<Loan>>)
++ void getBookLoan(DatabaseCallback<List<Loan>>)
++ void getLateLoan(DatabaseCallback<List<Loan>>)
++ void updateBook(Book,DatabaseCallback<Void>)
+}
+
+
+interface com.lian.myproject.services.DatabaseService$DatabaseCallback {
++ void onCompleted(T)
++ void onFailed(Exception)
+}
+
+class com.lian.myproject.model.Loan {
+# String id
+# String bookId
+# String bookName
+# String userId
+# Date borrowDate
+# Date returnDate
+# boolean returned
+# boolean isOverdue
+# String message
++ <<Create>> Loan(String,String,String,String,Date,Date,boolean,boolean,String)
++ <<Create>> Loan(String,String,String,String,Date,Date,boolean)
++ <<Create>> Loan(String,String,String,String,Date,Date,boolean,String)
++ <<Create>> Loan(String,String,String,String)
++ <<Create>> Loan()
++ String getId()
++ void setId(String)
++ String getBookId()
++ void setBookId(String)
++ String getBookName()
++ void setBookName(String)
++ String getUserId()
++ void setUserId(String)
++ Date getBorrowDate()
++ void setBorrowDate(Date)
++ Date getReturnDate()
++ void setReturnDate(Date)
++ void setReturned(boolean)
++ boolean isReturned()
++ void returnBook()
++ boolean isOverdue()
++ void setOverdue(boolean)
++ void setReturnDateAutomatically()
++ String convertDateToString(Date)
++ String getMessage()
++ void setMessage(String)
++ String toString()
+}
+
+
+class com.lian.myproject.model.Book {
+- String id
+# String title
+# String author
+# boolean isAvailable
+# String category
+# String coverUrl
+# Date added
+# String description
++ <<Create>> Book(String,String,String,boolean,String,String,Date,String)
++ <<Create>> Book()
++ String getId()
++ void setId(String)
++ String getTitle()
++ void setTitle(String)
++ String getAuthor()
++ void setAuthor(String)
++ boolean isAvailable()
++ void setAvailable(boolean)
++ String getCategory()
++ void setCategory(String)
++ String getCoverUrl()
++ void setCoverUrl(String)
++ Date getAdded()
++ void setAdded(Date)
++ String getDescription()
++ void setDescription(String)
++ String toString()
+}
+
+
+class com.lian.myproject.utils.ImageUtil {
++ {static} void requestPermission(Activity)
++ {static} String convertTo64Base(ImageView)
++ {static} Bitmap convertFrom64base(String)
+}
+
+
+
+com.lian.myproject.adapters.Adapter <|-- com.lian.myproject.adapters.UserAdapter
+com.lian.myproject.adapters.UserAdapter +.. com.lian.myproject.adapters.UserAdapter$OnUserClickListener
+com.lian.myproject.adapters.UserAdapter +.. com.lian.myproject.adapters.UserAdapter$ViewHolder
+com.lian.myproject.adapters.ViewHolder <|-- com.lian.myproject.adapters.UserAdapter$ViewHolder
+com.lian.myproject.adapters.Adapter <|-- com.lian.myproject.adapters.BookAdapter
+com.lian.myproject.adapters.BookAdapter +.. com.lian.myproject.adapters.BookAdapter$OnBookClickListener
+com.lian.myproject.adapters.BookAdapter +.. com.lian.myproject.adapters.BookAdapter$ViewHolder
+com.lian.myproject.adapters.ViewHolder <|-- com.lian.myproject.adapters.BookAdapter$ViewHolder
+com.lian.myproject.adapters.Adapter <|-- com.lian.myproject.adapters.LoanAdapter
+com.lian.myproject.adapters.LoanAdapter +.. com.lian.myproject.adapters.LoanAdapter$OnLoanClickListener
+com.lian.myproject.adapters.LoanAdapter +.. com.lian.myproject.adapters.LoanAdapter$ViewHolder
+com.lian.myproject.adapters.ViewHolder <|-- com.lian.myproject.adapters.LoanAdapter$ViewHolder
+androidx.work.Worker <|-- com.lian.myproject.services.LateLoanWorker
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.Thanks
+com.lian.myproject.services.DatabaseService +.. com.lian.myproject.services.DatabaseService$DatabaseCallback
+@enduml

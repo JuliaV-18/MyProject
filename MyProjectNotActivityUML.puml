@@ -1,0 +1,248 @@
+@startuml
+class com.lian.myproject.LoginActivity {
+- {static} String TAG
+- EditText etEmail
+- Button btnLogin
+~ String email
+- TextView tvLogin
+- DatabaseService databaseService
++ {static} String MyPREFERENCES
+~ SharedPreferences sharedpreferences
+# void onCreate(Bundle)
+- void loginUser(String,String)
++ void onClick(android.view.View)
++ void goRegister2(View)
++ void goUserActivity(View)
+}
+
+
+class com.lian.myproject.LoanABookActivity {
+- ImageView imgBookCover
+- EditText etTitle
+- Button btnLoan
+~ Intent takeit
+~ String bookId
+~ Book book
+~ DatabaseService databaseService
+- FirebaseAuth mAuth
+# void onCreate(Bundle)
+}
+
+
+class com.lian.myproject.BaseActivity {
+# DatabaseService databaseService
+# void onCreate(Bundle)
+# void onPostCreate(Bundle)
+- void setupToolbar()
+# boolean shouldShowBackButton()
++ boolean onOptionsItemSelected(MenuItem)
+}
+
+
+class com.lian.myproject.AdminActivity {
+~ LinearLayout cardUsers
+# void onCreate(Bundle)
++ void goEditUsers(View)
++ void goEditBooks(View)
++ void goEditLoans(View)
++ void goLateLoans(View)
++ void goAddBook(View)
+}
+
+
+class com.lian.myproject.AllBooksActivity {
+- {static} String TAG
+- BookAdapter bookAdapter
+- TextView tvBookCount
+~ DatabaseService databaseService
+~ ArrayList<Book> books
+- SearchView searchView
+- RecyclerView rvBooks
+# void onCreate(Bundle)
+# void onResume()
++ void filterBooks(String)
+}
+
+
+class com.lian.myproject.LandingActivity {
+- {static} String TAG
+- Button btnLogin
+# void onCreate(Bundle)
++ void onClick(View)
+}
+
+
+class com.lian.myproject.UsersListActivity {
+- {static} String TAG
+- UserAdapter userAdapter
+- TextView tvUserCount
+~ ArrayList<User> users
+# void onCreate(Bundle)
+# void getUsers()
+}
+
+
+class com.lian.myproject.SplashActivity {
+- {static} String TAG
+- {static} int SPLASH_DISPLAY_TIME
+# void onCreate(Bundle)
+}
+
+
+class com.lian.myproject.AddBookActivity {
+- EditText etBookTitle
+- Spinner spCategory
+- Button btnImage
+- ImageView imageView
+- DatabaseService databaseService
+- ActivityResultLauncher<Intent> captureImageLauncher
+~ int SELECT_PICTURE
+# void onCreate(Bundle)
+- void InitViews()
+- void selectImageFromGallery()
+- void captureImageFromCamera()
+~ void imageChooser()
++ void onActivityResult(int,int,Intent)
+}
+
+
+class com.lian.myproject.BooksListActivity {
+- {static} String TAG
+- BookAdapter bookAdapter
+- TextView tvBookCount
+~ DatabaseService databaseService
+~ ArrayList<Book> books
+- SearchView searchView
+- RecyclerView rvBooks
+# void onCreate(Bundle)
+# void onResume()
++ void filterBooks(String)
+}
+
+
+class com.lian.myproject.LoanProfileActivity {
+# void onCreate(Bundle)
+}
+
+class com.lian.myproject.BookProfileActivity {
+- ImageView imgBookCover
+- EditText etTitle
+- Button btnEdit
+~ Intent takeit
+~ String bookId
+~ Book selectedBook
+~ Book book
+~ DatabaseService databaseService
+- FirebaseAuth mAuth
+# void onCreate(Bundle)
+}
+
+
+class com.lian.myproject.AllLoansActivity {
+- {static} String TAG
+- LoanAdapter loanAdapter
+- TextView tvLoanCount
+~ RecyclerView rvLoans
+~ DatabaseService databaseService
+~ ArrayList<Loan> loans
+# void onCreate(Bundle)
+# void onResume()
+}
+
+
+class com.lian.myproject.MainActivity {
++ CardView btnAdmin
+# void onCreate(Bundle)
++ void goBookList(View)
++ void goUserLoansBook(View)
++ void goProfile(View)
++ void goAdmin(View)
+}
+
+
+class com.lian.myproject.RegisterActivity {
+- {static} String TAG
+- EditText etEmail
+- Button btnRegister
+- TextView tvLogin
+- DatabaseService databaseService
++ {static} String MyPREFERENCES
+~ SharedPreferences sharedpreferences
+# void onCreate(Bundle)
++ void onClick(View)
+- void registerUser(String,String,String,String,String)
+- void createUserInDatabase(User)
++ void goLogin2(View)
+}
+
+
+class com.lian.myproject.UserLoansActivity {
+- {static} String TAG
+- LoanAdapter loanAdapter
+~ RecyclerView rvLoans
+~ DatabaseService databaseService
+~ ArrayList<Loan> loanArrayList
+- FirebaseAuth mAuth
+- String selectedUid
+# void onCreate(Bundle)
+# void onResume()
+}
+
+
+class com.lian.myproject.UserProfileActivity {
+- {static} String TAG
+- EditText etUserFirstName
+- TextView tvUserDisplayName
+- Button btnUpdateProfile
+- View adminBadge
+~ String selectedUid
+~ User selectedUser
+~ boolean isCurrentUser
+- FirebaseAuth mAuth
+# void onCreate(Bundle)
++ void onClick(View)
+- void showUserProfile()
+- void updateUserProfile()
+- void updateUserInDatabase(User)
+- boolean isValid(String,String,String,String,String)
+- void signOut()
+- void deleteUser()
+}
+
+
+class com.lian.myproject.LateLoansActivity {
+- {static} String TAG
+- LoanAdapter loanAdapter
+~ RecyclerView rvLoans
+~ DatabaseService databaseService
+~ ArrayList<Loan> loanArrayList
+# void onCreate(Bundle)
+# void onResume()
+}
+
+
+
+
+com.lian.myproject.OnClickListener <|.. com.lian.myproject.LoginActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.LoginActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.LoanABookActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.BaseActivity
+com.lian.myproject.BaseActivity <|-- com.lian.myproject.AdminActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.AllBooksActivity
+com.lian.myproject.OnClickListener <|.. com.lian.myproject.LandingActivity
+com.lian.myproject.BaseActivity <|-- com.lian.myproject.LandingActivity
+com.lian.myproject.BaseActivity <|-- com.lian.myproject.UsersListActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.SplashActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.AddBookActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.BooksListActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.LoanProfileActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.BookProfileActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.AllLoansActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.MainActivity
+com.lian.myproject.OnClickListener <|.. com.lian.myproject.RegisterActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.RegisterActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.UserLoansActivity
+com.lian.myproject.OnClickListener <|.. com.lian.myproject.UserProfileActivity
+com.lian.myproject.BaseActivity <|-- com.lian.myproject.UserProfileActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.lian.myproject.LateLoansActivity
+@enduml
