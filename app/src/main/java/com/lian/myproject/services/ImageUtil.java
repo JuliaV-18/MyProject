@@ -40,21 +40,10 @@ public class ImageUtil {
             return null;
         }
         Bitmap bitmap = ((BitmapDrawable) postImage.getDrawable()).getBitmap();
-
-        // Resize image
-        bitmap = Bitmap.createScaledBitmap(
-                bitmap,
-                300,  // width
-                450,  // height
-                true
-        );
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        // Compress image with lower quality
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-        byte[] bytes = baos.toByteArray();
-        return Base64.encodeToString(bytes, Base64.DEFAULT);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 
     /// Convert a base64 string to an image
