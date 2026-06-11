@@ -14,6 +14,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
 
 public class LoginActivity extends AppCompatActivity implements android.view.View.OnClickListener {
@@ -69,24 +71,42 @@ public class LoginActivity extends AppCompatActivity implements android.view.Vie
             /// Callback method called when the operation is completed
             // /// @param email  & password is logged in
             @Override
-            public void onCompleted(String  uid) {
-                Log.d(TAG, "onCompleted: User logged in: " + uid.toString());
-                /// save the user data to shared preferences
-                // SharedPreferencesUtil.saveUser(LoginActivity.this, user);
-
+            public void onCompleted(String uid) {
+                Log.d(TAG, "onCompleted: User logged in: " + uid);
 
                 SharedPreferences.Editor editor = sharedpreferences.edit();
-
                 editor.putString("email", email);
-                editor.putString("password",password);
-
+                editor.putString("password", password);
                 editor.commit();
 
-                /// Redirect to main activity and clear back stack to prevent user from going back to login screen
-                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                /// Clear the back stack (clear history) and start the MainActivity
-                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(mainIntent);
+                // check user data first
+                databaseService.getUser(uid, new DatabaseService.DatabaseCallback<User>() {
+                    @Override
+                    public void onCompleted(User user) {
+
+                        if (user.isBanned()) {
+
+                            FirebaseAuth.getInstance().signOut();
+
+                            etEmail.setError("This account is banned");
+                            etEmail.requestFocus();
+
+                            return; // STOP login flow
+                        }
+
+                        // if not banned, continue normally
+                        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(mainIntent);
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+                        Log.e(TAG, "Failed to fetch user", e);
+
+                        etEmail.setError("Login error");
+                    }
+                });
             }
 
             @Override

@@ -34,6 +34,7 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
     private Button btnUpdateProfile, btnSignOut, btnDelete, btnBan;
     private View adminBadge;
     String selectedUid=null;
+    String currentUid = FirebaseAuth.getInstance().getUid();
     User selectedUser;
     boolean isCurrentUser = false;
     private FirebaseAuth mAuth;
@@ -66,19 +67,22 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
 
        selectedUid=getIntent().getStringExtra("USER_UID");
 
-       if(selectedUid!=null){
+        selectedUid = getIntent().getStringExtra("USER_UID");
 
-           Toast.makeText(UserProfileActivity.this,selectedUid,LENGTH_LONG).show();
+        mAuth = FirebaseAuth.getInstance();
+        String currentUid = mAuth.getUid();
 
-           showUserProfile();
-       }
-       if(selectedUid==null) {
+        if (selectedUid == null) {
+            selectedUid = currentUid;
+        }
 
-           mAuth = FirebaseAuth.getInstance();
-           selectedUid = mAuth.getUid();
+        isCurrentUser = Objects.equals(selectedUid, currentUid);
 
-           showUserProfile();
-       }
+        Log.d(TAG, "selectedUid = " + selectedUid);
+        Log.d(TAG, "currentUid = " + currentUid);
+        Log.d(TAG, "isCurrentUser = " + isCurrentUser);
+
+        showUserProfile();
 
         Log.d(TAG, "Selected user: " + selectedUid);
 
@@ -110,10 +114,19 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         }
 
         if(v.getId() == R.id.btn_delete_user) {
+            if(!isCurrentUser){
+                Toast.makeText(this,
+                        "You can only delete your own account",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
             deleteUser();
         }
 
         if(v.getId() == R.id.btn_ban_user) {
+            if(isCurrentUser){
+                return;
+            }
             banUser();
         }
     }
@@ -166,14 +179,29 @@ public class UserProfileActivity extends com.lian.myproject.BaseActivity impleme
         }
 
 
-//        // display or hide delete and ban buttons
-//        if(!isCurrentUser && selectedUser.isAdmin()){
-//            btnDelete.setVisibility(View.GONE);
-//            btnBan.setVisibility(View.VISIBLE);
-//        } else if (isCurrentUser){
-//            btnDelete.setVisibility(View.VISIBLE);
-//            btnBan.setVisibility(View.GONE);
-//        }
+        btnDelete.setVisibility(
+                isCurrentUser ? View.VISIBLE : View.GONE
+        );
+
+
+        databaseService.getUser(currentUid,
+                new DatabaseService.DatabaseCallback<User>() {
+
+                    @Override
+                    public void onCompleted(User currentUser) {
+
+                        if(currentUser.isAdmin() && !isCurrentUser) {
+                            btnBan.setVisibility(View.VISIBLE);
+                        } else {
+                            btnBan.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+                        btnBan.setVisibility(View.GONE);
+                    }
+                });
     }
 
     private void updateUserProfile() {
