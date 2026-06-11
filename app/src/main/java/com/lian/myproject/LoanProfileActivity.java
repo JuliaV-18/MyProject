@@ -205,8 +205,11 @@ public class LoanProfileActivity extends AppCompatActivity {
             public void onCompleted(Void object) {
 
 
-                new Intent(LoanProfileActivity.this, AllLoansActivity.class);
-            }
+                startActivity(new Intent(
+                        LoanProfileActivity.this,
+                        AllLoansActivity.class));
+
+                finish();            }
 
             });
 

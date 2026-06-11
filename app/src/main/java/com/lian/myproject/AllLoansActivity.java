@@ -77,7 +77,9 @@ protected void onResume() {
         @Override
         public void onCompleted(List<Loan> loanList) {
 
+            loans.clear();
             loans.addAll(loanList);
+            loanAdapter.notifyDataSetChanged();
 
             loanAdapter.notifyDataSetChanged();
             //   tvLoanCount.setText("Total loans: " + loanList.size());
