@@ -60,7 +60,10 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         DatabaseService.getInstance().getUser(loan.getUserId(), new DatabaseService.DatabaseCallback<User>() {
             @Override
             public void onCompleted(User user) {
-                holder.tvUser.setText(user.getFullName());
+
+                if (user != null) {
+                    holder.tvUser.setText(user.getFullName());
+                }
             }
 
             @Override
