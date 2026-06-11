@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.services.DatabaseService;
 import com.lian.myproject.services.ImageUtil;
@@ -31,12 +33,10 @@ public class AddBookActivity extends AppCompatActivity {
     private Spinner spCategory;
     private Button btnImage, btnPicture, btnCancelBook, btnAddBook;
     private ImageView imageView;
-
-
-
+    private Uri selectedImageUri;
     private DatabaseService databaseService;
 
- 
+
     /// Activity result launcher for capturing image from camera
     private ActivityResultLauncher<Intent> captureImageLauncher;
 
@@ -105,6 +105,7 @@ public class AddBookActivity extends AppCompatActivity {
                 String bookAuthor= etBookAuthor.getText().toString();
                 String bookCategory = spCategory.getSelectedItem().toString();
                 String bookDescription = etDescription.getText().toString();
+                String bookCover = selectedImageUri.toString();
 
 
                 Calendar calendar = Calendar.getInstance();
@@ -116,19 +117,30 @@ public class AddBookActivity extends AppCompatActivity {
 
 
 
-                String coverPic = ImageUtil.convertTo64Base(imageView);
+                StorageReference storageRef =
+                        FirebaseStorage.getInstance().getReference();
 
+                String imagePath = "books/" + System.currentTimeMillis() + ".jpg";
+
+                StorageReference imageRef = storageRef.child(imagePath);
+
+                imageRef.putFile(selectedImageUri)
+                        .addOnSuccessListener(taskSnapshot -> {
+//                            book.setImagePath(imagePath);
+
+                            // save book to Firestore
+                        });
                 if (bookTitle.isEmpty() || bookAuthor.isEmpty() || bookCategory.isEmpty() ||
-                        bookDescription.isEmpty()) {
-                    Toast.makeText(AddBookActivity.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
+                        bookDescription.isEmpty() || bookCover.isEmpty()) {
+                    Toast.makeText(AddBookActivity.this, "Please fill all fields.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(AddBookActivity.this, "הספר נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddBookActivity.this, "Book added successfully!", Toast.LENGTH_SHORT).show();
                 }
 
                 /// generate a new id for the item
                 String id = databaseService.generateBookId();
 
-                Book newBook = new Book( id,  bookTitle,  bookAuthor,  true,  bookCategory,  coverPic, added,  bookDescription);
+                Book newBook = new Book( id,  bookTitle,  bookAuthor,  true,  bookCategory, imagePath, added,  bookDescription);
 
 
 
@@ -218,7 +230,7 @@ public class AddBookActivity extends AppCompatActivity {
                     // SELECT_PICTURE constant
                     if (requestCode == SELECT_PICTURE) {
                         // Get the url of the image from data
-                        Uri selectedImageUri = data.getData();
+                        selectedImageUri = data.getData();
                         if (null != selectedImageUri) {
                             // update the preview image in the layout
                             imageView.setImageURI(selectedImageUri);

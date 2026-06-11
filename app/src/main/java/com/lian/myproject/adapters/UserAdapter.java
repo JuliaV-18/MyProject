@@ -64,10 +64,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         
         // Show admin chip if user is admin
         if (user.isAdmin()) {
-            holder.chipRole.setVisibility(View.VISIBLE);
-            holder.chipRole.setText("Admin");
+            holder.chipAdmin.setVisibility(View.VISIBLE);
         } else {
-            holder.chipRole.setVisibility(View.GONE);
+            holder.chipAdmin.setVisibility(View.GONE);
+        }
+
+        // Show banned chip if user is banned
+        if (user.isBanned()) {
+            holder.tvBanned.setVisibility(View.VISIBLE);
+            holder.itemView.setAlpha(0.5f);
+        } else {
+            holder.tvBanned.setVisibility(View.GONE);
+            holder.itemView.setAlpha(1.0f);
         }
 
         holder.itemView.setOnClickListener(v -> {
@@ -115,8 +123,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvEmail, tvPhone, tvInitials;
-        Chip chipRole;
+        TextView tvName, tvEmail, tvPhone, tvInitials, tvBanned;
+        Chip chipAdmin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -124,7 +132,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             tvEmail = itemView.findViewById(R.id.tv_item_user_email);
             tvPhone = itemView.findViewById(R.id.tv_item_user_phone);
             tvInitials = itemView.findViewById(R.id.tv_user_initials);
-            chipRole = itemView.findViewById(R.id.chip_user_role);
+            chipAdmin = itemView.findViewById(R.id.chip_user_admin);
+            tvBanned = itemView.findViewById(R.id.tv_banned);
         }
     }
 }

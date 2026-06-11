@@ -50,16 +50,44 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_item_user_name"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="John Doe"
-                android:textColor="@color/txt2"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:text="@tools:sample/full_names" />
+                android:layout_marginBottom="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_item_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="John Doe"
+                    android:textColor="@color/txt2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="    "
+                    android:textSize="16sp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_user_admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="#00C0CA33"
+                    android:text="Admin"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:paddingHorizontal="5dp"
+                    app:chipBackgroundColor="@color/highlight"
+                    app:chipStrokeWidth="0dp"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -118,25 +146,15 @@
             android:gravity="center|end"
             android:orientation="vertical">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_user_role"
+            <TextView
+                android:id="@+id/tv_banned"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:background="#00C0CA33"
-                android:text="Admin"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:visibility="gone"
-                app:chipBackgroundColor="@color/highlight"
-                app:chipStrokeWidth="0dp"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="8dp"
-                android:src="@android:drawable/ic_menu_more"
-                app:tint="@color/txt1" />
+                android:layout_height="wrap_content"
+                android:text="BANNED"
+                android:textColor="#FFFFFF"
+                android:background="#AA0000"
+                android:padding="4dp"
+                android:visibility="visible"/>
 
         </LinearLayout>
 

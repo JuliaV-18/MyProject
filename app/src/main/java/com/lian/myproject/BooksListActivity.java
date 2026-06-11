@@ -16,9 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
 import com.lian.myproject.adapters.BookAdapter;
 import com.lian.myproject.model.Book;
 import com.lian.myproject.services.DatabaseService;
@@ -31,7 +28,7 @@ public class BooksListActivity extends AppCompatActivity {
     private static final String TAG = "BooksListActivity";
     private BookAdapter bookAdapter;
     private TextView tvBookCount;
-    private Spinner spFilter;
+
     DatabaseService databaseService;
 
     ArrayList<Book>books=new ArrayList<>();
@@ -91,19 +88,6 @@ public class BooksListActivity extends AppCompatActivity {
 
         });
 
-        spFilter = findViewById(R.id.spFilter);
-
-        ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(
-                        this,
-                        R.array.search_filters,
-                        android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-
-        spFilter.setAdapter(adapter);
-
         Toolbar toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
@@ -147,28 +131,13 @@ public class BooksListActivity extends AppCompatActivity {
         }
 
         String lowerQuery = query.toLowerCase();
-        String filterType = spFilter.getSelectedItem().toString();
-
         List<Book> filteredList = new ArrayList<>();
 
         for (Book book : books) {
-            switch (filterType) {
+            if (book.getTitle().toLowerCase().contains(lowerQuery) ||
+                    book.getAuthor().toLowerCase().contains(lowerQuery)) {
 
-                case "Title":
-                    if (book.getTitle().toLowerCase().contains(lowerQuery))
-                        filteredList.add(book);
-                    break;
-
-                case "Author":
-                    if (book.getAuthor().toLowerCase().contains(lowerQuery))
-                        filteredList.add(book);
-                    break;
-
-                default: // All
-                    if (book.getTitle().toLowerCase().contains(lowerQuery) ||
-                            book.getAuthor().toLowerCase().contains(lowerQuery))
-                        filteredList.add(book);
-                    break;
+                filteredList.add(book);
             }
         }
 

@@ -138,34 +138,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center|end"
-                android:orientation="vertical">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_user_role"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32dp"
-                    android:background="#00C0CA33"
-                    android:text="Admin"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:visibility="gone"
-                    app:chipBackgroundColor="@color/highlight"
-                    app:chipStrokeWidth="0dp"
-                    tools:visibility="visible" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@android:drawable/ic_menu_more"
-                    app:tint="@color/txt1" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
