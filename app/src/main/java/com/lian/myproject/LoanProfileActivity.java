@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lian.myproject.R;
+import com.lian.myproject.model.Book;
 import com.lian.myproject.model.Loan;
 import com.lian.myproject.model.User;
 import com.lian.myproject.services.DatabaseService;
@@ -139,9 +140,46 @@ public class LoanProfileActivity extends AppCompatActivity {
 
     private void returnBook() {
 
-        Toast.makeText(this, "Book returned successfully", Toast.LENGTH_SHORT).show();
-        currentLoan.setReturned(true);
-        new Intent(LoanProfileActivity.this, AllLoansActivity.class);
+        databaseService.getBook(currentLoan.getBookId(), new DatabaseService.DatabaseCallback<Book>() {
+
+                    @Override
+                    public void onCompleted(Book book) {
+
+                        book.setAvailable(true);
+
+                        databaseService.updateBook(book, new DatabaseService.DatabaseCallback<Void>() {
+
+                                    @Override
+                                    public void onCompleted(Void object) {
+
+                                        databaseService.deleteLoan(currentLoan, new DatabaseService.DatabaseCallback<Void>() {
+
+                                                    @Override
+                                                    public void onCompleted(Void object) {
+
+                                                        Toast.makeText(LoanProfileActivity.this, "Book returned successfully", Toast.LENGTH_SHORT).show();
+                                                        finish();
+                                                    }
+
+                                                    @Override
+                                                    public void onFailed(Exception e) {
+
+                                                    }
+                                                });
+                                    }
+
+                                    @Override
+                                    public void onFailed(Exception e) {
+
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+
+                    }
+                });
     }
 
     private void addExtraTime() {
@@ -159,9 +197,7 @@ public class LoanProfileActivity extends AppCompatActivity {
             @Override
             public void onFailed(Exception e) {
 
-                Toast.makeText(LoanProfileActivity.this,
-                        e.getMessage(),
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoanProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
 

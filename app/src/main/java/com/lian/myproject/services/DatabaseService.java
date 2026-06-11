@@ -379,6 +379,11 @@ public class DatabaseService {
         getDataList(BOOKS_PATH, Book.class, callback);
     }
 
+
+    public void updateBook(@NotNull final Book book, @Nullable final DatabaseCallback<Void> callback) {
+        writeData(BOOKS_PATH + "/" + book.getId(), book, callback) ;
+    }
+
     /// generate a new id for a new food in the database
     /// @return a new id for the food
     /// @see #generateNewId(String)
@@ -540,13 +545,19 @@ public class DatabaseService {
     }
 
 
+    public void deleteLoan(@NotNull final Loan loan,
+                           @Nullable final DatabaseCallback<Void> callback) {
 
+        deleteData(BOOK_LOAN + "/" + loan.getId(), callback);
 
-
-
-    public void updateBook(@NotNull final Book book, @Nullable final DatabaseCallback<Void> callback) {
-        writeData(BOOKS_PATH + "/" + book.getId(), book, callback) ;
+        deleteData(USER_LOAN + "/" +
+                loan.getUserId() + "/" +
+                loan.getId(), callback);
     }
+
+
+
+
 
 
 
