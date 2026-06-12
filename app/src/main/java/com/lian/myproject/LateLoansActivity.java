@@ -73,7 +73,6 @@ protected void onResume() {
         public void onCompleted(List<Loan> loanList) {
 
             loanArrayList.clear();
-            Toast.makeText(LateLoansActivity.this,"test" ,LENGTH_LONG).show();
 
             Date currentDate = new Date();
 
@@ -86,7 +85,6 @@ protected void onResume() {
 
                 if (loan.isOverdue()) {
                     loanArrayList.add(loan);
-                    Toast.makeText(LateLoansActivity.this,loan.getBorrowDate().toString()+"  "+loan.getReturnDate().toString(),LENGTH_LONG).show();
                 }
             }
 
