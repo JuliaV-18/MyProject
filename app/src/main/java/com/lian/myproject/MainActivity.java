@@ -118,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
         Intent go= new Intent( this, UserProfileActivity.class);
         startActivity(go);
     }
-    public void goThanks(View view) {
-        Intent go = new Intent(this, ThanksActivity.class);
+    public void goTutorial(View view) {
+        Intent go = new Intent(this, TutorialActivity.class);
         startActivity(go);
     }
-        public void goAdmin(View view){
+    public void goAdmin(View view){
         Intent go=new Intent(this, AdminActivity.class);
         startActivity(go);
     }

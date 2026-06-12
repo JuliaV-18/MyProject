@@ -69,6 +69,9 @@
             android:name=".ThanksActivity"
             android:exported="false" />
         <activity
+            android:name=".TutorialActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserLoansActivity"
             android:exported="false" />
         <activity

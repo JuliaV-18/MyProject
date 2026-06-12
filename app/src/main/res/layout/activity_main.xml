@@ -61,14 +61,14 @@
                 app:cardElevation="4dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_main_thanks"
+                    android:id="@+id/btn_main_tutorial"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     app:backgroundTint="@color/dark"
                     android:text="❤️ TUTORIAL HERE"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:onClick="goThanks" />
+                    android:onClick="goTutorial" />
 
             </com.google.android.material.card.MaterialCardView>
 

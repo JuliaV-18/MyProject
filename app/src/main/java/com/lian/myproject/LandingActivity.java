@@ -1,5 +1,6 @@
 package com.lian.myproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,8 +22,9 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
 
     private static final String TAG = "LandingActivity";
 
-    private Button btnLogin, btnRegister;
+    private Button btnLogin, btnRegister, btnThanks;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +35,13 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
         /// get the views
         btnLogin = findViewById(R.id.btn_landing_login);
         btnRegister = findViewById(R.id.btn_landing_register);
+        btnThanks = findViewById(R.id.btn_thanks);
+
 
         /// set the click listeners
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+        btnThanks.setOnClickListener(this);
     }
 
     @Override
@@ -45,12 +50,19 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
             Log.d(TAG, "onClick: LoginActivity button clicked");
             Intent loginIntent = new Intent(LandingActivity.this, LoginActivity.class);
             startActivity(loginIntent);
-        } else if (v.getId() == btnRegister.getId()) {
+        }
+
+        if (v.getId() == btnRegister.getId()) {
             Log.d(TAG, "onClick: RegisterActivity button clicked");
             Intent registerIntent = new Intent(LandingActivity.this, RegisterActivity.class);
             startActivity(registerIntent);
         }
-    }
+
+        if (v.getId() == btnThanks.getId()) {
+            Log.d(TAG, "onClick: ThanksActivity button clicked");
+            Intent registerIntent = new Intent(LandingActivity.this, ThanksActivity.class);
+            startActivity(registerIntent);
+        }    }
 
 
 

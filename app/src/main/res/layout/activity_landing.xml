@@ -80,8 +80,11 @@
             android:layout_weight="1.5" />
 
         <Button
+            android:id="@+id/btn_thanks"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Credits :)"
+            app:backgroundTint="@color/dark"/>
 
         <TextView
             android:layout_width="wrap_content"

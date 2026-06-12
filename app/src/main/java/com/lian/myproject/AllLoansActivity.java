@@ -52,7 +52,6 @@ public class AllLoansActivity extends AppCompatActivity {
                 Intent intent = new Intent(AllLoansActivity.this, LoanProfileActivity.class);
                 intent.putExtra("LOAN_UID", loan.getId());
                 startActivity(intent);
-
             }
 
             @Override
@@ -79,8 +78,6 @@ protected void onResume() {
 
             loans.clear();
             loans.addAll(loanList);
-            loanAdapter.notifyDataSetChanged();
-
             loanAdapter.notifyDataSetChanged();
             //   tvLoanCount.setText("Total loans: " + loanList.size());
         }

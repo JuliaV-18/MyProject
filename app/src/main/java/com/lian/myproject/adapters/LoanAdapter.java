@@ -108,12 +108,8 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
 
 
-
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvUser, tvTitle, tvBorrowDate, tvReturnDate;
-
-
 
 
         public ViewHolder(@NonNull View itemView) {
